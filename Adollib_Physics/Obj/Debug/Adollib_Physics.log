@@ -1,0 +1,158 @@
+﻿  closest_func.cpp
+  ALP_broadphase.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_collider.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_contact.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_generate_contact.cpp
+  ALP_integrate.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_joint.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_midphase.cpp
+  ALP_physics.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_raycast.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(119,23): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(169,62): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(169,39): error C2530: 'vertices': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,50): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,2): error C2530: 'facet': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,2): error C3531: 'facet': 'auto' を含む型のシンボルには初期化子が必要です
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,19): error C2143: 構文エラー: ';' が ':' の前にありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,2): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(178,50): error C2143: 構文エラー: ';' が ')' の前にありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(180,20): error C2530: 'n': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(181,21): error C2530: 'PA': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(182,21): error C2530: 'PB': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(183,21): error C2530: 'PC': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(376,23): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(422,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(423,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(424,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(426,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(427,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(428,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(485,21): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(486,21): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(487,21): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(516,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(517,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(518,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(578,62): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(578,39): error C2530: 'vertices': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,50): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,2): error C2530: 'facet': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,2): error C3531: 'facet': 'auto' を含む型のシンボルには初期化子が必要です
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,19): error C2143: 構文エラー: ';' が ':' の前にありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,2): error C2027: 認識できない型 'Adollib::Physics_function::Meshcollider_data' が使われています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(584,50): error C2143: 構文エラー: ';' が ')' の前にありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(586,20): error C2530: 'n': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(587,21): error C2530: 'PA': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(588,21): error C2530: 'PB': 参照が初期化されずに宣言されています。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_raycast.cpp(589,21): error C2530: 'PC': 参照が初期化されずに宣言されています。
+  ALP_resolve_contact.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  ALP_resolve_contact_SIM.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_resolve_contact_SIM.cpp(467,12): warning C4101: 'position': ローカル変数は 1 度も使われていません。
+  ALP__physics_manager.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP__physics_manager.cpp(123,27): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+  collider.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(26,5): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(26,17): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(27,63): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(27,47): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(30,5): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(30,17): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(31,63): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(31,47): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(34,5): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(34,17): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(35,64): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(35,48): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(38,5): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(38,17): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(39,66): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(39,50): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(42,5): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(42,17): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(43,66): error C2653: 'Al_Global': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(43,50): error C2065: 'second_per_frame': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(54,21): error C2065: 'transform': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(83,16): error C2039: 'awake': 'Adollib::Collider' のメンバーではありません
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP__physics_manager.h(27): message : 'Adollib::Collider' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(86,39): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(86,43): error C2660: 'Adollib::Physics_function::Physics_manager::add_collider': 関数に 1 個の引数を指定できません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP__physics_manager.h(187,32): message : 'Adollib::Physics_function::Physics_manager::add_collider' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(88,2): error C2065: 'ALPcollider_ptr': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(89,2): error C2065: 'ALPphysics_ptr': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(95,16): error C2039: 'finalize': 'Adollib::Collider' のメンバーではありません
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP__physics_manager.h(27): message : 'Adollib::Collider' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(99,63): error C2065: 'ALPcollider_ptr': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(99,80): error C2065: 'ALPphysics_ptr': 定義されていない識別子です。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(114,5): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(114,13): error C3861: 'BeginTabBar': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(115,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(115,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(116,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(116,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(117,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(117,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(118,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(118,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(119,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(119,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(120,18): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(120,10): error C3861: 'Checkbox': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(122,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(122,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(124,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(124,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(126,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(126,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(128,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(128,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(129,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(129,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(131,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(131,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(132,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(132,10): error C3861: 'DragFloat': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(134,14): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(134,10): error C3861: 'Text': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(135,14): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(135,10): error C3861: 'Text': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(138,19): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(138,10): error C3861: 'EndTabBar': 識別子が見つかりませんでした
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(148,20): error C3083: 'Collider_ResourceManager': '::' の左側のシンボルには、型を指定しなければなりません
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(148,46): error C2039: 'CreateMCFromFBX': 'Adollib::Physics_function' のメンバーではありません
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\shape_croth.h(9): message : 'Adollib::Physics_function' の宣言を確認してください
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\collider.cpp(148,61): error C3861: 'CreateMCFromFBX': 識別子が見つかりませんでした
+  collider_shape.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  conejoint.cpp
+  coneTwistjoint.cpp
+  hingejoint.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\hingejoint.cpp(133,78): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  joint.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  joint_base.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  コードを生成中...
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP__physics_manager.cpp(507): error C4716: 'Adollib::Physics_function::Physics_manager::adapt_transform_to_gameobject': 値を返さなければいけません
+  コンパイル中...
+  meshcoll_resorce_manager.cpp
+  ray.cpp
+C:\Users\waaaa\source\repos\Adollib_Physics\Src\Physics\ALP_broadphase.h(27,5): warning C4091: 'static ': 変数が何も宣言されていないときは、'Adollib::Physics_function::Broadphase_static::Edge_sort_axis' の左辺を無視します。
+  twistjoint.cpp
+  コードを生成中...
