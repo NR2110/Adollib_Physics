@@ -6,15 +6,12 @@
 #include <unordered_map>
 #include <map>
 #include "../Math/math.h"
-#include "../Object/component.h"
 
 #include "ALP__tags.h"
 //#include "ALP_collider.h"
 #include "ALP_physics.h"
 
 #include "collider.h"
-
-#include "../Imgui/imgui_all.h"
 
 namespace Adollib {
 
@@ -48,7 +45,7 @@ namespace Adollib {
 		}
 	}
 
-	class Collider_Croth : public Component {
+	class Collider_Croth  {
 
 	public:
 		//::: tag ::::::::
@@ -144,14 +141,13 @@ namespace Adollib {
 	public:
 		void load_file(const std::string& filename, bool is_right_rtiangle, bool is_permit_edge_have_many_facet);
 
-		void Update_hierarchy() override;
+		void Update_hierarchy();
 
-		void update() override;
+		void update();
 
-		void awake() override;
+		void awake();
 
-		// user‚ªŒÄ‚Î‚È‚¢‚æ‚¤‚É!!
-		void finalize() override;
+		void finalize();
 
 	};
 }

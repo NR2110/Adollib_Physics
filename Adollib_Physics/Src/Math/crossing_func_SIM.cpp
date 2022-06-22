@@ -2,6 +2,7 @@
 
 using namespace Adollib;
 using namespace DirectX;
+using namespace Physics_function;
 
 const bool Crossing_func_SIM::getCrossingLine_two_plane(
 	const XMVECTOR& l_nA, const float& dA,

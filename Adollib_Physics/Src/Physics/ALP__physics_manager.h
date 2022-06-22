@@ -166,9 +166,7 @@ namespace Adollib
 			static bool is_stop_physics_thread; //trueになったときthread_updateを止める
 
 		public:
-			static volatile bool is_updated_mainthread;    //mainthread更新したframeだけtrueになる
-			static volatile bool is_updated_physicsthread; //physicsを更新したframeだけtrueになる
-			static volatile bool is_added_ALPcollider;    //mainthread更新したframeだけtrueになる
+			static volatile bool is_added_ALPcollider;    //Colliderが追加されたときtrueになる
 
 			// 生成時のphysicsの値
 			static Physics_function::PhysicsParams physicsParams;
@@ -388,11 +386,11 @@ namespace Adollib
 			static void dadapt_delete_data(bool is_mutex_lock = true);
 
 		public:
-			// gameobject.transformをALPcollider.transformで更新する gameobjectのtransformが変化したらtrueを返す
-			static bool adapt_transform_to_gameobject();
+			//// gameobject.transformをALPcollider.transformで更新する gameobjectのtransformが変化したらtrueを返す
+			//static bool adapt_transform_to_gameobject();
 
-			// gameobjectのtransformをコピーする
-			static void copy_gameobject_transform();
+			//// gameobjectのtransformをコピーする
+			//static void copy_gameobject_transform();
 
 			// 別threadでupdateを回す
 			static void thread_start();

@@ -72,6 +72,9 @@ namespace Adollib {
 			//
 			std::mutex mtx;
 
+			//::: GOの座標更新が入ったらtrueにする :::
+			bool is_updated_transform = false;
+
 		public:
 			// privateにしたかった けどprivateにするとbitの変更めんどくさいから取り合えずpublic
 			//::: oncoll_enter :::::::
@@ -210,7 +213,7 @@ namespace Adollib {
 			void adapt_to_gameobject_transform(Vector3& local_pos, Quaternion& local_orient, const Quaternion& Worient) const;
 
 			// gameobjectのtransformをコピーする
-			void copy_transform_gameobject(const Vector3& Wpos, const Quaternion& Worient, const Vector3& Wscale, const Quaternion& pearentWorient);
+			void copy_transform_gameobject(const Vector3& Wpos, const Quaternion& Worient, const Vector3& Wscale, const Quaternion& pearentWorient_inverse);
 
 			// ヒエラルキー描画用
 			void Update_hierarchy();

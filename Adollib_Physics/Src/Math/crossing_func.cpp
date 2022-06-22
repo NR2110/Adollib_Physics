@@ -1,6 +1,7 @@
 #include "crossing_func.h"
 
 using namespace Adollib;
+using namespace Physics_function;
 using namespace Crossing_func;
 
 const bool Crossing_func::getCrossingLine_two_plane(

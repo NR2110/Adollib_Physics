@@ -18,25 +18,25 @@ namespace Adollib {
 		TwistJoint(Collider* l_colliderA_comp, Collider* l_colliderB_comp, Physics_function::ALP_Joint* l_ALPjoint)
 			: Joint_base(l_colliderA_comp, l_colliderB_comp, l_ALPjoint) {}
 
-		Vector3 vec0 = Vector3(1, 0, 0); //collider_comp[0]の軸
-		Vector3 vec1 = Vector3(1, 0, 0); //collider_comp[1]の軸
+		Physics_function::Vector3 vec0 = Physics_function::Vector3(1, 0, 0); //collider_comp[0]の軸
+		Physics_function::Vector3 vec1 = Physics_function::Vector3(1, 0, 0); //collider_comp[1]の軸
 
 		float max_radian_pow = 10; //角度の差が大きすぎると跳ねてきもいので limit_effectで力を加える時に考慮する角度の最大値
 
-		Vector2 limit = Vector2(0, 360);
+		Physics_function::Vector2 limit = Physics_function::Vector2(0, 360);
 
 	public:
 		void adapt_anchor() override {
 			anchor_count = 0;
 		}
 
-		Matrix33 tensor_effect() const override {
-			return matrix33_zero();
+		Physics_function::Matrix33 tensor_effect() const override {
+			return Physics_function::matrix33_zero();
 		}
 
 		void velocity_effect() const override {};
 
-		bool limit_effect(Vector3& contactP0, Vector3& contactP1, float& penetrate) const override;
+		bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const override;
 
 
 

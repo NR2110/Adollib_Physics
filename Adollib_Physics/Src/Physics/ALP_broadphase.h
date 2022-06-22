@@ -11,7 +11,7 @@ namespace Adollib {
 		// 挿入法の
 		struct Insert_edge {
 			Collider_shape* shape; //shapeへのポインタ
-			float pos_value[2] = {0}; //値 0:X 1:Z
+			float pos_value[2] = { 0 }; //値 0:X 1:Z
 			bool edge_start = false; //true = start, false = goal
 			u_int shape_index = 0; //Insert_edgeの情報から対応するaccess_axislist_itr_にアクセスできるように
 
@@ -44,7 +44,7 @@ namespace Adollib {
 		void BroadMidphase(
 			std::list<Physics_function::ALP_Collider*>& ALP_colliders,
 			//std::vector<Contacts::Collider_2>& out_pair,
-			std::vector < Contacts::Contact_pair*> & out_pair,
+			std::vector < Contacts::Contact_pair*>& out_pair,
 			std::vector<Physics_function::ALP_Collider*>& moved_collider, //動いたもの
 			std::vector<Physics_function::ALP_Collider*>& added_collider, //追加されたもの
 			std::mutex& mtx

@@ -4,20 +4,20 @@ namespace Adollib {
 	//BoxÉNÉâÉX
 	class Capsule : public Collider_shape {
 	public:
-		Vector3	center;	//íÜêSç¿ïW
-		Vector3	rotate;	//âÒì]
+		Physics_function::Vector3	center;	//íÜêSç¿ïW
+		Physics_function::Vector3	rotate;	//âÒì]
 		float r;		//îºåa
 		float length;	//í∑Ç≥
 
-		Capsule(Physics_function::ALP_Collider* l_ALPcollider_ptr) : center(Vector3(0)), rotate(Vector3(0)), r(1), length(1) {
+		Capsule(Physics_function::ALP_Collider* l_ALPcollider_ptr) : center(Physics_function::Vector3(0)), rotate(Physics_function::Vector3(0)), r(1), length(1) {
 			shape_tag = Physics_function::ALPCollider_shape_type::Capsule;
 			ALPcollider_ptr = l_ALPcollider_ptr;
 		};
 
 		void adapt_Colliderdata() override {
 			local_position = center;
-			local_orientation = quaternion_from_euler(rotate);
-			local_scale = Vector3(r, length, r);
+			local_orientation = Physics_function::quaternion_from_euler(rotate);
+			local_scale = Physics_function::Vector3(r, length, r);
 
 		};
 
@@ -47,24 +47,24 @@ namespace Adollib {
 		};
 
 		void update_dop14() override {
-			Vector3 p = vector3_quatrotate(Vector3(0, world_scale().y, 0), world_orientation());
+			Physics_function::Vector3 p = Physics_function::vector3_quatrotate(Physics_function::Vector3(0, world_scale().y, 0), world_orientation());
 			dop14.pos = world_position();
-			for (int i = 0; i < DOP::DOP_size; i++) {
+			for (int i = 0; i < Physics_function::DOP::DOP_size; i++) {
 				float v0, v1, v2, v3;
-				v0 = vector3_dot(+p, DOP::DOP_14_axis[i]) + +world_scale().x * 1.0000001f;
-				v1 = vector3_dot(+p, DOP::DOP_14_axis[i]) + -world_scale().x * 1.0000001f;
-				v2 = vector3_dot(-p, DOP::DOP_14_axis[i]) + +world_scale().x * 1.0000001f;
-				v3 = vector3_dot(-p, DOP::DOP_14_axis[i]) + -world_scale().x * 1.0000001f;
+				v0 = Physics_function::vector3_dot(+p, Physics_function::DOP::DOP_14_axis[i]) + +world_scale().x * 1.0000001f;
+				v1 = Physics_function::vector3_dot(+p, Physics_function::DOP::DOP_14_axis[i]) + -world_scale().x * 1.0000001f;
+				v2 = Physics_function::vector3_dot(-p, Physics_function::DOP::DOP_14_axis[i]) + +world_scale().x * 1.0000001f;
+				v3 = Physics_function::vector3_dot(-p, Physics_function::DOP::DOP_14_axis[i]) + -world_scale().x * 1.0000001f;
 				dop14.max[i] = ALmax(ALmax(v0, v1), ALmax(v2, v3));
 				dop14.min[i] = ALmin(ALmin(v0, v1), ALmin(v2, v3));
 			}
 		};
 
-		const Matrix33 local_tensor() const override {
-			const Vector3& Wsize = world_scale();
-			Matrix33 ret;
+		const Physics_function::Matrix33 local_tensor() const override {
+			const Physics_function::Vector3& Wsize = world_scale();
+			Physics_function::Matrix33 ret;
 
-			ret = matrix33_identity();
+			ret = Physics_function::matrix33_identity();
 
 			//RÇÕîºåa HÇÕâ~íåÇÃçÇÇ≥
 			//â~íå
@@ -80,8 +80,8 @@ namespace Adollib {
 
 			//Wsize.yÇÕâ~íåÇÃçÇÇ≥/2Ç»ÇÃÇ≈
 			const float H = Wsize.y * 2;
-			float Mc = PI * Wsize.x * Wsize.x * H;
-			float Ms = PI * Wsize.x * Wsize.x * Wsize.x * 1.3333333f;
+			float Mc = Physics_function::PI * Wsize.x * Wsize.x * H;
+			float Ms = Physics_function::PI * Wsize.x * Wsize.x * Wsize.x * 1.3333333f;
 			Mc /= Mc + Ms; //ëÃêœî‰Ç≈ï\Ç∑
 			Ms /= Mc + Ms;
 

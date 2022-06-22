@@ -4,12 +4,9 @@
 #include <assert.h>
 #include <string>
 #include <unordered_map>
-#include "../Math/math.h"
-//#include "../Object/component.h"
 
 #include "ALP__tags.h"
-#include "ALP_physics.h"
-
+#include "ALP_Collider.h"
 #include "ALP_struct_contacted_data.h"
 
 namespace Adollib {
@@ -37,6 +34,8 @@ namespace Adollib {
 }
 
 namespace Adollib {
+	class Joint_base;
+
 	namespace Physics_function {
 		class ALP_Joint;
 		class ALP_Collider;
@@ -47,7 +46,7 @@ namespace Adollib {
 	}
 
 
-	class Collider /*: public Component*/ {
+	class Collider {
 
 	public:
 		//::: tag ::::::::
@@ -60,25 +59,24 @@ namespace Adollib {
 		//::: 自身の関わるcontact_pairの情報をメンバに保存するかどうか :::
 		bool is_save_contacted_colls = false;
 
+		//::: transform(落下方向はworld方向なので このColliderの親情報のinverseを使う)
+		DirectX::XMFLOAT3 Wposition;
+		DirectX::XMFLOAT4 Worientation;
+		DirectX::XMFLOAT3 Wscale;
+		DirectX::XMFLOAT4 pearent_Worientation_inverse;
+
 	private:
 		Physics_function::ALP_Physics* ALPphysics_ptr = nullptr;
 		Physics_function::ALP_Collider* ALPcollider_ptr = nullptr;
 
 	public:
 		//::: 後で変更する :::
-		const Vector3 linear_velocity() const { return ALPphysics_ptr->linear_velocity(); }
-		const Vector3 angula_velocity() const { return ALPphysics_ptr->angula_velocity(); }
-		const void linear_velocity(Vector3 v) {
-			ALPphysics_ptr->set_linear_velocity(v);
-			ALPphysics_ptr->set_old_linear_velocity(v);
-		}
-		const void angula_velocity(Vector3 v) {
-			ALPphysics_ptr->set_angula_velocity(v);
-			ALPphysics_ptr->set_old_angula_velocity(v);
-		}
-
+		const DirectX::XMFLOAT3 linear_velocity() const;
+		const DirectX::XMFLOAT3 angula_velocity() const;
+		const void linear_velocity(DirectX::XMFLOAT3 v);
+		const void angula_velocity(DirectX::XMFLOAT3 v);
 		// 指定した一点での速度
-		const Vector3 get_point_velocity(const Vector3& pos, bool is_local = false);
+		const DirectX::XMFLOAT3 get_point_velocity(const DirectX::XMFLOAT3& pos, bool is_local = false);
 
 		// アタッチされたjointの数
 		const int get_joint_count();
@@ -94,26 +92,26 @@ namespace Adollib {
 		const bool concoll_enter(const Collider_tagbit tag_name);
 
 		// 並進移動に力を加える
-		void add_force(const Vector3& force, const bool& is_force_local = false);
+		void add_force(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_force_local = false);
 
 		// 並進移動に力を加える
-		void add_force(const Vector3& force, const Vector3& position, const bool& is_position_local = false, const bool& is_force_local = false);
+		void add_force(const DirectX::XMFLOAT3& force, const DirectX::XMFLOAT3& position, const float& delta_time, const bool& is_position_local = false, const bool& is_force_local = false);
 
 		// 角回転に力を加える
-		void add_torque(const Vector3& force, const bool& is_local = false);
+		void add_torque(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_local = false);
 
 		// 並進加速に値を加える
-		void add_linear_acc(const Vector3& force);
+		void add_linear_acc(const DirectX::XMFLOAT3& force, const float& delta_time);
 
 		// 角加速に値を加える
-		void add_angula_acc(const Vector3& force);
+		void add_angula_acc(const DirectX::XMFLOAT3& force, const float& delta_time);
 
 		// 現在かかっている速度、加速度、力を0にする
-		void reset_force() { ALPphysics_ptr->reset_force(); };
+		void reset_force();
 
 		// 速度制限を行う
-		void set_max_linear_velocity(const float& max_scalar) { ALPphysics_ptr->set_max_linear_velocity(max_scalar); };
-		void set_max_angula_velocity(const float& max_scalar) { ALPphysics_ptr->set_max_angula_velocity(max_scalar); };
+		void set_max_linear_velocity(const float& max_scalar);
+		void set_max_angula_velocity(const float& max_scalar);
 
 		// shapeのアタッチ
 		template<typename T>
@@ -123,27 +121,30 @@ namespace Adollib {
 		void add_mesh_shape(const char* filepass, bool is_right_rtiangle = true, bool is_permit_edge_have_many_facet = false);
 
 		// 慣性モーメントをユーザー定義で設定する
-		void set_tensor(const Matrix33& tensor) { ALPphysics_ptr->set_tensor(tensor); };
+		void set_tensor(const Physics_function::Matrix33& tensor);
 
 		// 重心をユーザー定義で設定する
-		void set_barycenter(const Vector3& cent) { ALPphysics_ptr->set_barycenter(cent); };
+		void set_barycenter(const DirectX::XMFLOAT3& cent);
 
 		// 現在の慣性モーメントの値
-		const Matrix33 get_tensor();
+		const Physics_function::Matrix33 get_tensor();
 
 		// 重心のlocal座標を返す
-		const Vector3 get_barycenter() const;
+		const DirectX::XMFLOAT3 get_barycenter() const;
 
 		// 衝突したcolliderの配列を返す is_save_contacted_collsがtrueになっていないと衝突したcolliderの情報は保存されない
 		std::vector<Contacted_data> get_Contacted_data() const;
 
 	public:
+
+		// Goptr : ユニークな値ならなんでもOK
+		void awake(void* Goptr);
+
+		void update();
+
 		void Update_hierarchy();
 
-		//void awake() override;
-
-		//// userが呼ばないように!!
-		//void finalize() override;
+		void finalize();
 
 	};
 }

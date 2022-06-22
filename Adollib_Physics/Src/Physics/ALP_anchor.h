@@ -3,7 +3,7 @@
 
 namespace Adollib {
 	struct Anchor {
-		Vector3 posA;
-		Vector3 posB;
+		Physics_function::Vector3 posA;
+		Physics_function::Vector3 posB;
 	};
 }

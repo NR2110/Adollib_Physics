@@ -140,9 +140,12 @@ void ALP_Collider::copy_transform() {
 	//std::lock_guard <std::mutex> lock(mtx);
 	//
 	if (is_deleted)return;  //goがすでにdeleteされていればgameobject->transformにアクセスできないからreturn
+	if (is_updated_transform == false)return; //GOからの座標更新が入っていなければ何もせずreturn
 
 	transform = transform_gameobject;
 	transform_start = transform_gameobject;
+
+	is_updated_transform = false;
 };
 
 void ALP_Collider::adapt_collider_component_data() {
@@ -164,6 +167,8 @@ void ALP_Collider::Update_hierarchy() {
 
 void ALP_Collider::adapt_to_gameobject_transform(Vector3& local_pos, Quaternion& local_orient, const Quaternion& Worient) const
 {
+	//Physics_manager::mutex_lock();
+
 	// mainthreaddから呼ばれるためここでis_deletedチェックを行えばよい
 	if (is_deleted) return; // gameobjectが削除されていたらreturn
 	if (ALPphysics->is_movable() == false)return;
@@ -192,18 +197,18 @@ void ALP_Collider::adapt_to_gameobject_transform(Vector3& local_pos, Quaternion&
 		return;
 	}
 
-	local_pos += position_amount_of_change;
-	local_orient *= orientation_amount_of_change;
+	local_pos = position_amount_of_change;
+	local_orient = orientation_amount_of_change;
 }
 
-void ALP_Collider::copy_transform_gameobject(const Vector3& Wpos, const Quaternion& Worient, const Vector3& Wscale, const Quaternion& pearentWorient) {
+void ALP_Collider::copy_transform_gameobject(const Vector3& Wpos, const Quaternion& Worient, const Vector3& Wscale, const Quaternion& pearentWorient_inverse) {
 	if (is_deleted)return;
 
 	transform_gameobject.position = Wpos;
 	transform_gameobject.orientation = Worient;
 	transform_gameobject.scale = Wscale;
 
-	transform_gameobject.parent_orientate_inv = pearentWorient.inverse();
+	transform_gameobject.parent_orientate_inv = pearentWorient_inverse;
 
 	// もしshapeが変なことするなら (ex. croth.collider.poisition = GOの座標 + vertexの座標)
 	if (is_adapt_shape_for_copy_transform_gameobject) {
@@ -212,6 +217,7 @@ void ALP_Collider::copy_transform_gameobject(const Vector3& Wpos, const Quaterni
 		}
 	}
 
+	is_updated_transform = true;
 }
 
 //:::::

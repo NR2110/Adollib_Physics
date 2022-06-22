@@ -50,13 +50,13 @@ namespace Adollib {
 		virtual void adapt_anchor() = 0;
 
 		// joint‚Ìtensor‚Ö‚Ì‰e‹¿‚ð‚©‚¦‚·
-		virtual Matrix33 tensor_effect() const = 0;
+		virtual Physics_function::Matrix33 tensor_effect() const = 0;
 
 		// linear,angular speed‚Ö‚Ì‰e‹¿‚ðŒvŽZ‚·‚é
 		virtual void velocity_effect() const = 0;
 
 		// limit‚Ì‰e‹¿‚ð•Ô‚·
-		virtual bool limit_effect(Vector3& contactP0, Vector3& contactP1, float& penetrate) const = 0;
+		virtual bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const = 0;
 		// user‚ªŒÄ‚Î‚È‚¢‚æ‚¤‚É!!
 		void destroy();
 	};

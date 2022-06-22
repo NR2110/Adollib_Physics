@@ -24,13 +24,13 @@ namespace Adollib {
 			anchors[0] = anchor;
 		}
 
-		Matrix33 tensor_effect() const override {
-			return matrix33_zero();
+		Physics_function::Matrix33 tensor_effect() const override {
+			return Physics_function::matrix33_zero();
 		}
 
 		void velocity_effect() const override {};
 
-		bool limit_effect(Vector3& contactP0, Vector3& contactP1, float& penetrate) const override {
+		bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const override {
 			return false;
 		}
 

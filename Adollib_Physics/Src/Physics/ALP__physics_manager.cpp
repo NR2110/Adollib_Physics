@@ -23,8 +23,6 @@ using namespace Contacts;
 
 namespace Adollib
 {
-	volatile bool Physics_manager::is_updated_mainthread = true; //physicsを更新したframeだけtrueになる
-	volatile bool Physics_manager::is_updated_physicsthread = true; //physicsを更新したframeだけtrueになる
 	volatile bool Physics_manager::is_added_ALPcollider = true; //physicsを更新したframeだけtrueになる
 
 	std::thread Physics_manager::physics_thread; //physicsのthread用
@@ -98,14 +96,8 @@ bool Physics_manager::update()
 
 		}
 
-		// mainthreadが更新したら
-		if (is_updated_mainthread) {
-			is_updated_mainthread = false; // mainthreadがgameobject_transformを呼んだあと gameobjectのtransformをphysicsにコピーする
-
-			// gameobjectが更新したworld_trnsformの更新
-			copy_transform(ALP_colliders, ALP_physicses);
-
-		}
+		// gameobjectが更新したworld_trnsformの更新
+		copy_transform(ALP_colliders, ALP_physicses);
 
 		// ColliderのWorld情報の更新
 		adapt_component_data(ALP_colliders, ALP_physicses, ALP_joints);
@@ -181,19 +173,15 @@ bool Physics_manager::update()
 				{
 
 					std::lock_guard <std::mutex> lock(mtx);
-					// 計算中にgameobjectへtransformが適応されていた場合 ちゃんとtransformを更新してからintegrateを行う
-					if (is_updated_mainthread) {
-						is_updated_mainthread = false; // mainthreadがgameobject_transformを呼んだあと gameobjectのtransformをphysicsにコピーする
 
-						//Colliderのframe毎に保存するdataをreset
-						copy_transform(ALP_colliders, ALP_physicses);
-					}
+					//Colliderのframe毎に保存するdataをreset
+					copy_transform(ALP_colliders, ALP_physicses);
+
 					// 位置の更新
 					integrate(ALP_physicses);
 
 					dadapt_delete_data(false);
 
-					is_updated_physicsthread = true;
 				}
 			}
 
@@ -492,50 +480,16 @@ void Physics_manager::dadapt_delete_data(bool is_mutex_lock) {
 	if (is_mutex_lock) mtx.unlock();
 }
 
-bool Physics_manager::adapt_transform_to_gameobject() {
-	std::lock_guard <std::mutex> lock(mtx);
-
-	if (is_updated_physicsthread == false) return false;
-
-	for (auto coll : ALP_colliders) {
-		coll->adapt_to_gameobject_transform();
-	}
-
-	is_updated_physicsthread = false;
-
-	return true;
-}
-
-void Physics_manager::copy_gameobject_transform() {
-	std::lock_guard <std::mutex> lock(mtx);
-
-	for (auto& coll : added_buffer_ALP_colliders) {
-		coll->copy_transform_gameobject();
-	}
-	for (auto& coll : ALP_colliders) {
-		coll->copy_transform_gameobject();
-	}
-
-	Physics_manager::is_updated_mainthread = true;
-	is_added_ALPcollider = false;
-}
-
-
-
-
 
 // 別threadでupdateを回す
 void Physics_manager::thread_start() {
 	is_stop_physics_thread = false;
-	is_updated_mainthread = false;
-	is_updated_physicsthread = false;
 	physics_thread = std::thread(thread_update);
 }
 
 // 別threadでのupdateを止めて、joinを行う
 void Physics_manager::thread_stop_and_join() {
 	is_stop_physics_thread = true;
-	is_updated_mainthread = true;
 	if (physics_thread.joinable())physics_thread.join();
 }
 

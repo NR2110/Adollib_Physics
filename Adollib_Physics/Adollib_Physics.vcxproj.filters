@@ -19,6 +19,12 @@
     <Filter Include="Math">
       <UniqueIdentifier>{a8545c36-362b-4bce-8413-a30f1ce9870c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="fbx sdk">
+      <UniqueIdentifier>{142da70f-734d-48b2-a5e9-0e352782b162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inc">
+      <UniqueIdentifier>{25612678-7391-44f9-ad83-e72916c1c4dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Physics\ALP__meshcoll_data.h">
@@ -176,6 +182,12 @@
     </ClInclude>
     <ClInclude Include="Src\Math\vectorSIM_e.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FBX SDK\2019.2\include\fbxsdk.h">
+      <Filter>fbx sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Adollibphysics.h">
+      <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
