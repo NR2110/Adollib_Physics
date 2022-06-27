@@ -82,7 +82,11 @@ const Physics_data& Collider_Croth::get_vertex_data(const int& mesh_num, const i
 	return colliders.at(&meshcoll_data->at(mesh_num)).at(vertex_num)->physics_data;
 }
 
-void Collider_Croth::load_file(const std::string& filename, bool is_right_rtiangle, const void* unique_ptr, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, const bool is_permit_edge_have_many_facet) {
+void Collider_Croth::load_file(const std::string& filename, bool is_right_rtiangle, const void* unique_ptr, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, const bool is_permit_edge_have_many_facet) {
+	const Vector3& Wpos = l_Wpos;
+	const Quaternion& Worient = l_Worient;
+	const Vector3& Wscale = l_Wscale;
+
 	//FBXÇÃLoadÇçsÇ§
 	//std::vector<Physics_function::Meshcollider_data>* meshcoll_data = nullptr;
 	meshcoll_data = nullptr;
@@ -107,7 +111,8 @@ void Collider_Croth::load_file(const std::string& filename, bool is_right_rtiang
 			auto collider = std::make_shared<Collider>();
 			collider->tag = tag;
 			collider->ignore_tags = ignore_tags;
-			collider->awake(unique_ptr, Wpos, Worient, Wscale, pearent_Worient_inv);
+
+			collider->awake(unique_ptr, vector3_quatrotate(data.vertices[vertex_num] * Wscale, Worient) + Wpos, Worient, Wscale, pearent_Worient_inv);
 
 			collider->physics_data = default_physics_data;
 
