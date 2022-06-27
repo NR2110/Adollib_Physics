@@ -146,9 +146,7 @@ namespace Adollib {
 
 		void update();
 
-		void update_get_amount_of_change(DirectX::XMFLOAT3& pos_amount_of_change, DirectX::XMFLOAT4& orient_amount_of_change);
-
-		void update_set_Wtransform(const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv = DirectX::XMFLOAT4(0,0,0,0));
+		void update_Wtransform(const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
 
 		void Update_hierarchy();
 
