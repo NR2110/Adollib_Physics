@@ -1,10 +1,10 @@
-#include "joint.h"
-#include "ALP__physics_manager.h"
-#include "collider.h"
+#include "../../Inc/joint.h"
+#include "../../Inc/ALP__physics_manager.h"
+#include "../../Inc/collider.h"
 
-#include "balljoint.h"
-#include "hingejoint.h"
-#include "twistjoint.h"
+#include "../../Inc/balljoint.h"
+#include "../../Inc/hingejoint.h"
+#include "../../Inc/twistjoint.h"
 
 using namespace Adollib;
 using namespace Physics_function;

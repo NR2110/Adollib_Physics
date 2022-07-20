@@ -1,15 +1,14 @@
 
 #include "ALP_collider.h"
 
-#include "ALP__physics_manager.h"
+#include "../../Inc/ALP__physics_manager.h"
 
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 #include "ALP_physics.h"
 #include "ALP_joint.h"
 #include "ALP__meshcoll_data.h"
 
 #include "shape_meshcoll.h"
-#include "shape_croth.h"
 
 using namespace Adollib;
 using namespace Physics_function;
@@ -207,6 +206,10 @@ void ALP_Collider::copy_transform_gameobject(const Vector3& Wpos, const Quaterni
 	transform_gameobject.position = Wpos;
 	transform_gameobject.orientation = Worient;
 	transform_gameobject.scale = Wscale;
+
+	transform_start.position = Wpos;
+	transform_start.orientation = Worient;
+	transform_start.scale = Wscale;
 
 	transform_gameobject.parent_orientate_inv = pearentWorient_inverse;
 

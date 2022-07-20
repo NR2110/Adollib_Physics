@@ -33,9 +33,6 @@
     <ClInclude Include="Src\Physics\ALP__physics_function.h">
       <Filter>Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Physics\ALP__physics_manager.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Physics\ALP__tags.h">
       <Filter>Physics</Filter>
     </ClInclude>
@@ -186,7 +183,52 @@
     <ClInclude Include="Src\FBX SDK\2019.2\include\fbxsdk.h">
       <Filter>fbx sdk</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\Adollibphysics.h">
+    <ClInclude Include="Inc\balljoint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\collider.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\collider_shape.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\conejoint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\coneTwistjoint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\hingejoint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\joint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\joint_base.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ray.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\shape_box.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\shape_capsule.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\shape_sphere.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\twistjoint.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\shape_plane.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Physics\ALP__physics_manager.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ALP__physics_manager.h">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

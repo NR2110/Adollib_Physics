@@ -4,7 +4,7 @@
 
 #include "ALP_contact.h"
 #include "ALP_physics.h"
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 
 namespace Adollib {
 	namespace Physics_function {
@@ -21,7 +21,7 @@ namespace Adollib {
 
 		namespace Broadphase_static {
 
-			static struct Edge_sort_axis {
+			struct Edge_sort_axis {
 				constexpr static u_int X = 0;
 				constexpr static u_int Z = 1;
 			};

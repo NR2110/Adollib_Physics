@@ -2,7 +2,7 @@
 
 #include "ALP_resolve_contact.h"
 
-#include "ALP__physics_manager.h"
+#include "../../Inc/ALP__physics_manager.h"
 #include "ALP_physics.h"
 
 using namespace Adollib;

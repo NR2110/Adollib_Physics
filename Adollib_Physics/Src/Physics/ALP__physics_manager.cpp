@@ -1,10 +1,10 @@
 #include "ALP__physics_function.h"
-#include "ALP__physics_manager.h"
+#include "../../Inc/ALP__physics_manager.h"
 
 #include <thread>
 #include <chrono>
 
-#include "collider.h"
+#include "../../Inc/collider.h"
 #include "ALP_joint.h"
 
 #include "ALP_raycast.h"
@@ -24,6 +24,7 @@ using namespace Contacts;
 namespace Adollib
 {
 	volatile bool Physics_manager::is_added_ALPcollider = true; //physicsを更新したframeだけtrueになる
+	volatile bool Physics_manager::is_caluculate_physics = true; //trueの時に処理する
 
 	std::thread Physics_manager::physics_thread; //physicsのthread用
 	bool Physics_manager::is_stop_physics_thread = false; //trueになったときthread_updateを止める
@@ -103,7 +104,11 @@ bool Physics_manager::update()
 		adapt_component_data(ALP_colliders, ALP_physicses, ALP_joints);
 
 	}
-
+	// もし処理しないなら適当にreturn
+	if (is_caluculate_physics == false) {
+		physicsParams.timeStep = 0;
+		return true;
+	}
 
 	LARGE_INTEGER time;
 	{
@@ -112,15 +117,14 @@ bool Physics_manager::update()
 		QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&time));
 		LONGLONG counts_per_sec;
 		QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&counts_per_sec));
-		float seconds_per_count = 1.0f / static_cast<double>(counts_per_sec);
+		float seconds_per_count = 1.0f / static_cast<float>(counts_per_sec);
 
 		if (frame_count_stop.QuadPart != 0) {
-			frame_count.QuadPart += time.QuadPart - frame_count_stop.QuadPart;
-			frame_count_stop.QuadPart = time.QuadPart;
+			frame_count.QuadPart = time.QuadPart - frame_count_stop.QuadPart;
 		}
+		frame_count_stop.QuadPart = time.QuadPart;
 
-		physicsParams.timeStep += (float)(time.QuadPart - frame_count.QuadPart) * seconds_per_count;
-		frame_count.QuadPart = time.QuadPart;
+		physicsParams.timeStep += (float)(frame_count.QuadPart) * seconds_per_count;
 	}
 
 	if (physicsParams.timeStep > physicsParams.caluculate_time)
@@ -378,7 +382,7 @@ void Physics_manager::adapt_added_data(bool is_mutex_lock) {
 		}
 
 		// 引っ越す
-		int save_size = ALP_colliders.size();
+		int save_size = (int)ALP_colliders.size();
 		ALP_colliders.splice(ALP_colliders.end(), std::move(added_buffer_ALP_colliders));
 
 		// listを引っ越したためitrが変化している 自身のitrを更新
@@ -399,7 +403,7 @@ void Physics_manager::adapt_added_data(bool is_mutex_lock) {
 			phys->copy_transform_ptr();
 		}
 
-		int save_size = ALP_physicses.size();
+		int save_size = (int)ALP_physicses.size();
 		ALP_physicses.splice(ALP_physicses.end(), std::move(added_buffer_ALP_physicses));
 
 		// listを引っ越したためitrが変化している 自身のitrを更新
@@ -501,6 +505,15 @@ void Physics_manager::timer_stop() {
 void Physics_manager::timer_start() {
 	std::lock_guard<std::mutex> lock(mtx);
 	frame_count_stop.QuadPart = 0;
+}
+
+void Physics_manager::reset_calculated_data() {
+	std::lock_guard<std::mutex> lock(mtx);
+	for (auto& phys : ALP_physicses) {
+		phys->reset_force();
+	}
+	pairs[0].clear();
+	pairs[1].clear();
 }
 
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "ALP_contact.h"
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 #include "ALP_joint.h"
 
 #include <memory>

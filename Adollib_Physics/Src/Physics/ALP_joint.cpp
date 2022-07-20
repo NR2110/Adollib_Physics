@@ -1,7 +1,7 @@
 #include "ALP_joint.h"
 
-#include "joint_base.h"
-#include "ALP__physics_manager.h"
+#include "../../Inc/joint_base.h"
+#include "../../Inc/ALP__physics_manager.h"
 
 using namespace Adollib;
 using namespace Physics_function;

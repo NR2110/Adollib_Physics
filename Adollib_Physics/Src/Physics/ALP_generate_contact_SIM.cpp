@@ -1,6 +1,6 @@
 #include "ALP_generate_contact.h"
 
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 #include "ALP__meshcoll_data.h"
 #include "ALP_contact.h"
 

@@ -3,7 +3,7 @@
 #include "ALP_collider.h"
 #include "ALP_Physics.h"
 #include "ALP_joint.h"
-#include "ALP__physics_manager.h"
+#include "../../Inc/ALP__physics_manager.h"
 
 #include <unordered_map>
 

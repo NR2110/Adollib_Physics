@@ -1,6 +1,6 @@
 #pragma once
 
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 #include "meshcoll_resorce_manager.h"
 #include "ALP__meshcoll_data.h"
 

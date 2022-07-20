@@ -1,4 +1,4 @@
-#include "hingejoint.h"
+#include "../../Inc/hingejoint.h"
 
 #include "ALP_joint.h"
 #include "ALP_collider.h"

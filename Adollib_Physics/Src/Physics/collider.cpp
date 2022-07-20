@@ -1,5 +1,5 @@
 
-#include "ALP__physics_manager.h"
+#include "../../Inc/ALP__physics_manager.h"
 
 #include "../Math/math.h"
 #include "ALP_contact.h"
@@ -107,10 +107,10 @@ const int Collider::get_joint_count() {
 }
 // 指定した番号にアタッチされているjointの情報を得る
 Joint_base* Collider::get_joint(const int num) {
-	int size = ALPcollider_ptr->get_joints().size();
+	int size = (int)ALPcollider_ptr->get_joints().size();
 	if (size < num + 1)return nullptr;
 
-	auto itr = ALPcollider_ptr->get_joints().begin();
+	std::list<ALP_Joint*>::iterator itr = ALPcollider_ptr->get_joints().begin();
 	for (int i = 0; i < num; ++i) ++itr;
 
 	return (*itr)->userjoint;
@@ -151,19 +151,19 @@ Joint_base* Collider::get_joint(const int num) {
 //}
 
 //meshcolliderのアタッチ
-void Collider::add_mesh_shape(const char* filepass, bool is_right_rtiangle, bool is_permit_edge_have_many_facet) {
-
-	//FBXのLoadを行う
-	std::vector<Physics_function::Meshcollider_data>* meshcoll_data = nullptr;
-	Physics_function::Collider_ResourceManager::CreateMCFromFBX(filepass, &meshcoll_data, is_right_rtiangle, is_permit_edge_have_many_facet);
-
-	for (auto& data : *meshcoll_data) {
-		Physics_function::Meshcoll_part* shape = ALPcollider_ptr->add_mesh_shape(filepass, &data);
-	}
-
-	//Physics_function::ALP_shape coll_mesh;
-	//coll_mesh.ALPcollider = ALPcollider_itr;
-}
+//void Collider::add_mesh_shape(const char* filepass, bool is_right_rtiangle, bool is_permit_edge_have_many_facet) {
+//
+//	//FBXのLoadを行う
+//	std::vector<Physics_function::Meshcollider_data>* meshcoll_data = nullptr;
+//	Physics_function::Collider_ResourceManager::CreateMCFromFBX(filepass, &meshcoll_data, is_right_rtiangle, is_permit_edge_have_many_facet);
+//
+//	for (auto& data : *meshcoll_data) {
+//		Physics_function::Meshcoll_part* shape = ALPcollider_ptr->add_mesh_shape(filepass, &data);
+//	}
+//
+//	//Physics_function::ALP_shape coll_mesh;
+//	//coll_mesh.ALPcollider = ALPcollider_itr;
+//}
 
 void Collider::set_ptr_to_joint(Physics_function::ALP_Joint* joint) {
 	if (joint->ALPcollider[0] == nullptr)joint->ALPcollider[0] = ALPcollider_ptr;

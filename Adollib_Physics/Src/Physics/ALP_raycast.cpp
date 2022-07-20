@@ -5,7 +5,7 @@
 using namespace Adollib;
 using namespace Physics_function;
 
-#include "collider_shape.h"
+#include "../../Inc/collider_shape.h"
 #include "meshcoll_resorce_manager.h"
 
 #pragma region Ray_cast
