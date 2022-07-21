@@ -2,6 +2,9 @@
 #include "collider_shape.h"
 
 namespace Adollib {
+	namespace Physics_function {
+		class ALP_Collider;
+	}
 
 	//‹…‘Ì—pƒNƒ‰ƒX
 	class Sphere : public Collider_shape {

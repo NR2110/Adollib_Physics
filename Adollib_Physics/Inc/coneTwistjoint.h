@@ -19,7 +19,7 @@ namespace Adollib {
 			: ConeJoint(l_colliderA_comp, l_colliderB_comp, l_ALPjoint) {}
 
 		Anchor anchor; //Ú‘±“_
-		Physics_function::Vector3 limit_axis[2]; //² axis‚Æaxis‚ÌŠp“x‚Ålimit‚ğ‚Æ‚é
+		DirectX::XMFLOAT3 limit_axis[2]; //² axis‚Æaxis‚ÌŠp“x‚Ålimit‚ğ‚Æ‚é
 
 		float limit = 90;
 
@@ -32,11 +32,11 @@ namespace Adollib {
 
 		void velocity_effect() const override {};
 
-		Physics_function::Matrix33 tensor_effect() const override {
+		DirectX::XMFLOAT3X3 tensor_effect() const override {
 			return Physics_function::matrix33_zero();
 		}
 
-		bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const override;
+		bool limit_effect(DirectX::XMFLOAT3& contactP0, DirectX::XMFLOAT3& contactP1, float& penetrate) const override;
 
 	};
 

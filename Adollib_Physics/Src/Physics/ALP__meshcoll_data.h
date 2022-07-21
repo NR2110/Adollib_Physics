@@ -1,5 +1,5 @@
 														#pragma once
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 
 namespace Adollib {
 	namespace Physics_function {

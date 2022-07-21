@@ -4,10 +4,10 @@
 #include <assert.h>
 #include <string>
 #include <unordered_map>
+#include <DirectXMath.h>
 
-#include "../Src/Physics/ALP__tags.h"
-#include "../Src/Physics/ALP_Collider.h"
-#include "../Src/Physics/ALP_struct_contacted_data.h"
+#include "collider_shape.h"
+#include "ALP_struct_contacted_data.h"
 
 namespace Adollib {
 
@@ -50,8 +50,8 @@ namespace Adollib {
 
 	public:
 		//::: tag ::::::::
-		Collider_tagbit tag = 0; //自身のtag(bit)
-		Collider_tagbit ignore_tags = 0; //衝突しないtags(bit)
+		unsigned int tag = 0; //自身のtag(bit)
+		unsigned int ignore_tags = 0; //衝突しないtags(bit)
 
 		//::: unityのphysics部分 分ける必要なんてないやろ ::::
 		Physics_data physics_data;
@@ -89,7 +89,7 @@ namespace Adollib {
 
 	public:
 		// 交差していたらtrueを返す
-		const bool concoll_enter(const Collider_tagbit tag_name);
+		const bool concoll_enter(const unsigned int tag_name);
 
 		// 並進移動に力を加える
 		void add_force(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_force_local = false);
@@ -115,19 +115,32 @@ namespace Adollib {
 
 		// shapeのアタッチ
 		template<typename T>
-		T* add_shape() { return ALPcollider_ptr->add_shape<T>(); };
+		T* add_shape() {
+			static_assert(std::is_base_of<Collider_shape, T>::value == true, "template T must inherit Collider_shape");
+
+			T* shape = new T(ALPcollider_ptr);
+
+			auto collider_shape = static_cast<Collider_shape*>(shape);
+
+			add_shape(collider_shape);
+
+			return shape;
+		};
+	private:
+		void add_shape(Collider_shape* shape);
+	public:
 
 		// meshcolliderのアタッチ
 		//void add_mesh_shape(const char* filepass, bool is_right_rtiangle = true, bool is_permit_edge_have_many_facet = false);
 
 		// 慣性モーメントをユーザー定義で設定する
-		void set_tensor(const Physics_function::Matrix33& tensor);
+		void set_tensor(const DirectX::XMFLOAT3X3& tensor);
 
 		// 重心をユーザー定義で設定する
 		void set_barycenter(const DirectX::XMFLOAT3& cent);
 
 		// 現在の慣性モーメントの値
-		const Physics_function::Matrix33 get_tensor();
+		const DirectX::XMFLOAT3X3 get_tensor();
 
 		// 重心のlocal座標を返す
 		const DirectX::XMFLOAT3 get_barycenter() const;

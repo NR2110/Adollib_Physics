@@ -1,14 +1,14 @@
 #pragma once
 #include <unordered_map>
 #include <string>
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 
 #include "ALP__tags.h"
 #include "../../Inc/collider_shape.h"
 #include "../../Inc/joint_base.h"
+#include "../../Inc/ALP_struct_contacted_data.h"
 
 #include "ALP_struct_world_transform.h"
-#include "ALP_struct_contacted_data.h"
 
 #include <mutex>
 #include <vector>
@@ -181,18 +181,22 @@ namespace Adollib {
 
 			//:::::::::::::::::::::::::::
 			// 規定のshapeをアタッチする
-			template<typename T>
-			T* add_shape() {
+			//template<typename T>
+			//T* add_shape() {
+			//	std::lock_guard <std::mutex> lock(mtx);
+
+			//	static_assert(std::is_base_of<Collider_shape, T>::value == true, "template T must inherit ALP_shape");
+
+			//	T* shape = newD T(this);
+
+			//	added_buffer_shapes.emplace_back(shape);
+			//	//adapt_added_data();
+			//	return shape;
+			//};
+			void add_shape(Collider_shape* shape) {
 				std::lock_guard <std::mutex> lock(mtx);
-
-				static_assert(std::is_base_of<Collider_shape, T>::value == true, "template T must inherit ALP_shape");
-
-				T* shape = newD T(this);
-
 				added_buffer_shapes.emplace_back(shape);
-				//adapt_added_data();
-				return shape;
-			};
+			}
 			Meshcoll_part* add_mesh_shape(const char* filepath, Physics_function::Meshcollider_data* mesh_data);
 
 			// gameobjectのtransformからcolliderのworld空間での情報を更新

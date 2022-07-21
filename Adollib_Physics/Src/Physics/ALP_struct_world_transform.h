@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../Math/vector.h"
-#include "../Math/quaternion.h"
+#include "../../Inc/Math/math.h"
 
 #include <list>
 #include <memory>

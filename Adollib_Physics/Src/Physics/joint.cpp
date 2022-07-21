@@ -6,12 +6,14 @@
 #include "../../Inc/hingejoint.h"
 #include "../../Inc/twistjoint.h"
 
+#include "ALP_joint.h"
+
 using namespace Adollib;
 using namespace Physics_function;
 //#pragma optimize("", off)
 BallJoint* Joint::add_balljoint(
 	std::shared_ptr<Collider> colliderA, std::shared_ptr<Collider> colliderB,
-	const Vector3& anchorA, const Vector3& anchorB,
+	const DirectX::XMFLOAT3& anchorA, const DirectX::XMFLOAT3& anchorB,
 	const float& bias
 ) {
 	//jointÇÃê∂ê¨
@@ -34,8 +36,8 @@ BallJoint* Joint::add_balljoint(
 
 HingeJoint* Joint::add_Hingejoint(
 	std::shared_ptr<Collider> colliderA, std::shared_ptr<Collider> colliderB,
-	const Vector3& anchorA_s, const Vector3& anchorA_g,
-	const Vector3& anchorB_s, const Vector3& anchorB_g,
+	const DirectX::XMFLOAT3& anchorA_s, const DirectX::XMFLOAT3& anchorA_g,
+	const DirectX::XMFLOAT3& anchorB_s, const DirectX::XMFLOAT3& anchorB_g,
 	const float& bias,
 	const float& hingepow
 ) {
@@ -65,8 +67,8 @@ HingeJoint* Joint::add_Hingejoint(
 
 ConeJoint* Joint::add_Conejoint(
 	std::shared_ptr<Collider> colliderA, std::shared_ptr<Collider> colliderB,
-	const Vector3& anchorA, const Vector3& anchorB,
-	const Vector3& axisA, const Vector3& axisB,
+	const DirectX::XMFLOAT3& anchorA, const DirectX::XMFLOAT3& anchorB,
+	const DirectX::XMFLOAT3& axisA, const DirectX::XMFLOAT3& axisB,
 	const float& bias
 ) {
 	//jointÇÃê∂ê¨
@@ -92,8 +94,8 @@ ConeJoint* Joint::add_Conejoint(
 
 ConetwistJoint* Joint::add_Conetwistjoint(
 	std::shared_ptr<Collider> colliderA, std::shared_ptr<Collider> colliderB,
-	const Vector3& anchorA, const Vector3& anchorB,
-	const Vector3& axisA, const Vector3& axisB,
+	const DirectX::XMFLOAT3& anchorA, const DirectX::XMFLOAT3& anchorB,
+	const DirectX::XMFLOAT3& axisA, const DirectX::XMFLOAT3& axisB,
 	const float& bias
 ) {
 	//jointÇÃê∂ê¨
@@ -119,8 +121,8 @@ ConetwistJoint* Joint::add_Conetwistjoint(
 
 TwistJoint* Joint::add_Twistjoint(
 	std::shared_ptr<Collider> colliderA, std::shared_ptr<Collider> colliderB,
-	const Vector3& axisA,
-	const Vector3& axisB,
+	const DirectX::XMFLOAT3& axisA,
+	const DirectX::XMFLOAT3& axisB,
 	const float& bias
 ) {
 	//jointÇÃê∂ê¨

@@ -6,9 +6,10 @@
 using namespace Adollib;
 using namespace Physics_function;
 
-bool ConeJoint::limit_effect(Vector3& contactP0, Vector3& contactP1, float& penetrate) const {
+bool ConeJoint::limit_effect(DirectX::XMFLOAT3 &contactP0, DirectX::XMFLOAT3& contactP1, float& penetrate) const {
 
 	constexpr float power = 2; //“ä ‚È‚º‚©‚È‚¢‚Æ’£‚è•t‚­
+	const Vector3 limit_axis_[2] = { limit_axis[0],limit_axis[1] };
 
 	const world_trans* transforms[2]{
 		&ALPjoint->ALPcollider[0]->transform,
@@ -41,10 +42,9 @@ bool ConeJoint::limit_effect(Vector3& contactP0, Vector3& contactP1, float& pene
 	//limit_axis_world[0]‚ðŠî€‚É‚µ‚½limit‚Ìvector_worldcoord
 	//Vector3 limit_world = vector3_quatrotate(limit_axis_world[0], quaternion_radian_axis(limit_rad, vector3_cross(limit_axis_world[0], limit_axis_world[1])));
 
-
 	penetrate = DirectX::XM_2PI * power * (radian - limit_rad) * DirectX::XM_1DIV2PI; //—]•ª‚ÈŒÊ‚Ì’·‚³
 
-	const Vector3 p1_pos_world = vector3_quatrotate(anchor.posB + limit_axis[1] * power, transforms[1]->orientation) + transforms[1]->position;
+	const Vector3 p1_pos_world = vector3_quatrotate(Vector3(anchor.posB) + limit_axis_[1] * power, transforms[1]->orientation) + transforms[1]->position;
 	const Vector3 rotate_axis = vector3_cross(limit_axis_world[0], limit_axis_world[1]).unit_vect();
 
 	const Vector3 tangent = vector3_cross(limit_axis_world[1], rotate_axis).unit_vect();
@@ -56,7 +56,7 @@ bool ConeJoint::limit_effect(Vector3& contactP0, Vector3& contactP1, float& pene
 
 		//contactP0 = anchor.posA + vector3_quatrotate(p1_limit_vec_world, transforms[0]->orientation.inverse());
 		contactP0 = p1_limit_pos_0coord;
-		contactP1 = anchor.posB + limit_axis[1] * power;
+		contactP1 = Vector3(anchor.posB) + limit_axis_[1] * power;
 		//contactP1 = vector3_quatrotate(limit_world, collider_comp[1]->transform->orientation.inverse());
 		//contactP0 = limit_axis[0];
 

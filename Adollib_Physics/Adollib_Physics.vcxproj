@@ -163,15 +163,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\ALP_anchor.h" />
+    <ClInclude Include="Inc\ALP_struct_contacted_data.h" />
     <ClInclude Include="Inc\ALP__physics_manager.h" />
     <ClInclude Include="Inc\balljoint.h" />
     <ClInclude Include="Inc\collider.h" />
     <ClInclude Include="Inc\collider_shape.h" />
+    <ClInclude Include="Inc\collider_types.h" />
     <ClInclude Include="Inc\conejoint.h" />
     <ClInclude Include="Inc\coneTwistjoint.h" />
     <ClInclude Include="Inc\hingejoint.h" />
     <ClInclude Include="Inc\joint.h" />
     <ClInclude Include="Inc\joint_base.h" />
+    <ClInclude Include="Inc\math\closest_func.h" />
+    <ClInclude Include="Inc\math\complex.h" />
+    <ClInclude Include="Inc\math\crossing_func.h" />
+    <ClInclude Include="Inc\math\DOP.h" />
+    <ClInclude Include="Inc\math\math.h" />
+    <ClInclude Include="Inc\math\math_e.h" />
+    <ClInclude Include="Inc\math\matrix.h" />
+    <ClInclude Include="Inc\math\matrixSIM_e.h" />
+    <ClInclude Include="Inc\math\quaternion.h" />
+    <ClInclude Include="Inc\math\quaternionSIM_e.h" />
+    <ClInclude Include="Inc\math\vector.h" />
+    <ClInclude Include="Inc\math\vectorSIM_e.h" />
     <ClInclude Include="Inc\ray.h" />
     <ClInclude Include="Inc\shape_box.h" />
     <ClInclude Include="Inc\shape_capsule.h" />
@@ -324,6 +339,10 @@
     <ClCompile Include="Src\Physics\twistjoint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Inc\math\matrix3x3.inl" />
+    <None Include="Inc\math\matrix4x4.inl" />
+    <None Include="Inc\math\quaternion.inl" />
+    <None Include="Inc\math\vector.inl" />
     <None Include="Src\Math\matrix3x3.inl" />
     <None Include="Src\Math\matrix4x4.inl" />
     <None Include="Src\Math\quaternion.inl" />

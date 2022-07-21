@@ -33,12 +33,14 @@ namespace Adollib {
 
 		void velocity_effect() const override;
 
-		Physics_function::Matrix33 tensor_effect() const override {
+		DirectX::XMFLOAT3X3 tensor_effect() const override {
 			// hingeï˚å¸à»äOÇ…ÇÕã»Ç™ÇËÇ…Ç≠Ç≠Ç∑ÇÈ
-			Physics_function::Vector3 axis;
+			DirectX::XMFLOAT3 axis;
 			//if (coll == collider_comp[0])axis = anchor_s.posA - anchor_g.posA;
 			//else axis = anchor_s.posB - anchor_g.posB;
-			axis = anchor_s.posA - anchor_g.posA;
+			axis.x = anchor_s.posA.x - anchor_g.posA.x;
+			axis.y = anchor_s.posA.y - anchor_g.posA.y;
+			axis.z = anchor_s.posA.z - anchor_g.posA.z;
 
 			Physics_function::Matrix33 mat = Physics_function::matrix33_zero();
 
@@ -56,7 +58,7 @@ namespace Adollib {
 		}
 
 		// âÒì]ÇÃäpìxêßå¿
-		bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const override;
+		bool limit_effect(DirectX::XMFLOAT3& contactP0, DirectX::XMFLOAT3& contactP1, float& penetrate) const override;
 
 
 

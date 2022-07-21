@@ -1,6 +1,6 @@
 #include "ALP_raycast.h"
 
-#include "../Math/crossing_func.h"
+#include "../../Inc/Math/crossing_func.h"
 
 using namespace Adollib;
 using namespace Physics_function;
@@ -361,8 +361,8 @@ bool sphere_cast_box(const Vector3& Ray_pos, const Vector3& Ray_dir, const float
 			// ŠeŽ²‚Ì“ñ‚Â‚Ìslab‚Éray‚ªŒð·‚·‚ét‚ð‹‚ß‚é
 			// radius‚¾‚¯‘å‚«‚­‚·‚é
 			float ood = 1.0f / D;
-			float t1 = (+coll->world_scale()[i] + radius - P) * ood;
-			float t2 = (-coll->world_scale()[i] - radius - P) * ood;
+			float t1 = (+Vector3(coll->world_scale())[i] + radius - P) * ood;
+			float t2 = (-Vector3(coll->world_scale())[i] - radius - P) * ood;
 
 			// ts‚Ì‚Ù‚¤‚É‘å‚«‚¢•û‚ð•Û‘¶
 			int reverce = 1;
@@ -468,12 +468,12 @@ bool sphere_cast_box(const Vector3& Ray_pos, const Vector3& Ray_dir, const float
 			area[0] = 0;
 			area[1] = 0;
 			area[2] = 0;
-			if (vector3_dot(min_point_boxcoord, xyz[0]) > +coll->world_scale()[0]) area[0] = +1;
-			if (vector3_dot(min_point_boxcoord, xyz[0]) < -coll->world_scale()[0]) area[0] = -1;
-			if (vector3_dot(min_point_boxcoord, xyz[1]) > +coll->world_scale()[1]) area[1] = +1;
-			if (vector3_dot(min_point_boxcoord, xyz[1]) < -coll->world_scale()[1]) area[1] = -1;
-			if (vector3_dot(min_point_boxcoord, xyz[2]) > +coll->world_scale()[2]) area[2] = +1;
-			if (vector3_dot(min_point_boxcoord, xyz[2]) < -coll->world_scale()[2]) area[2] = -1;
+			if (vector3_dot(min_point_boxcoord, xyz[0]) > +coll->world_scale().x) area[0] = +1;
+			if (vector3_dot(min_point_boxcoord, xyz[0]) < -coll->world_scale().x) area[0] = -1;
+			if (vector3_dot(min_point_boxcoord, xyz[1]) > +coll->world_scale().y) area[1] = +1;
+			if (vector3_dot(min_point_boxcoord, xyz[1]) < -coll->world_scale().y) area[1] = -1;
+			if (vector3_dot(min_point_boxcoord, xyz[2]) > +coll->world_scale().z) area[2] = +1;
+			if (vector3_dot(min_point_boxcoord, xyz[2]) < -coll->world_scale().z) area[2] = -1;
 
 			count_area0 = 0;
 			if (area[0] == 0)++count_area0;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Math/math.h"
+#include "Math/math.h"
 #include "collider_types.h"
 
 namespace Adollib {

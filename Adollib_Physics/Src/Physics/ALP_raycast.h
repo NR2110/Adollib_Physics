@@ -1,5 +1,5 @@
 #pragma once
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 #include "ALP_collider.h"
 
 namespace Adollib {

@@ -1,7 +1,12 @@
 #pragma once
 #include "collider_shape.h"
 namespace Adollib {
-	//Boxクラス
+	namespace Physics_function {
+		class ALP_Collider;
+	}
+
+
+	//Capsuleクラス
 	class Capsule : public Collider_shape {
 	public:
 		Physics_function::Vector3	center;	//中心座標
@@ -61,7 +66,7 @@ namespace Adollib {
 		};
 
 		const Physics_function::Matrix33 local_tensor() const override {
-			const Physics_function::Vector3& Wsize = world_scale();
+			const DirectX::XMFLOAT3& Wsize = world_scale();
 			Physics_function::Matrix33 ret;
 
 			ret = Physics_function::matrix33_identity();

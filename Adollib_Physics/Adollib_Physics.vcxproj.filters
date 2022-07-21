@@ -25,15 +25,15 @@
     <Filter Include="Inc">
       <UniqueIdentifier>{25612678-7391-44f9-ad83-e72916c1c4dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Inc\Math">
+      <UniqueIdentifier>{97c96922-f77c-417f-9a1f-92097bdd757b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Physics\ALP__meshcoll_data.h">
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Src\Physics\ALP__physics_function.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Physics\ALP__tags.h">
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Src\Physics\ALP_anchor.h">
@@ -72,9 +72,6 @@
     <ClInclude Include="Src\Physics\ALP_solverbody.h">
       <Filter>Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Physics\ALP_struct_contacted_data.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Physics\ALP_struct_world_transform.h">
       <Filter>Physics</Filter>
     </ClInclude>
@@ -91,9 +88,6 @@
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Src\Physics\collider_shape.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Physics\collider_types.h">
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Src\Physics\conejoint.h">
@@ -231,6 +225,60 @@
     <ClInclude Include="Inc\ALP__physics_manager.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Physics\ALP__tags.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Physics\ALP_struct_contacted_data.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ALP_struct_contacted_data.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ALP_anchor.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\closest_func.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\complex.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\crossing_func.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\DOP.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\math.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\math_e.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\matrix.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\matrixSIM_e.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\quaternion.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\quaternionSIM_e.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\vector.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\math\vectorSIM_e.h">
+      <Filter>Inc\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Physics\collider_types.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\collider_types.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Physics\ALP__physics_manager.cpp">
@@ -345,6 +393,18 @@
     </None>
     <None Include="Src\Math\vector.inl">
       <Filter>Math</Filter>
+    </None>
+    <None Include="Inc\math\matrix3x3.inl">
+      <Filter>Inc\Math</Filter>
+    </None>
+    <None Include="Inc\math\matrix4x4.inl">
+      <Filter>Inc\Math</Filter>
+    </None>
+    <None Include="Inc\math\quaternion.inl">
+      <Filter>Inc\Math</Filter>
+    </None>
+    <None Include="Inc\math\vector.inl">
+      <Filter>Inc\Math</Filter>
     </None>
   </ItemGroup>
 </Project>

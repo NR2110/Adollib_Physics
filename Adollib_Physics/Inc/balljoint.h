@@ -24,13 +24,13 @@ namespace Adollib {
 			anchors[0] = anchor;
 		}
 
-		Physics_function::Matrix33 tensor_effect() const override {
-			return Physics_function::matrix33_zero();
+		DirectX::XMFLOAT3X3 tensor_effect() const override {
+			return DirectX::XMFLOAT3X3(0,0,0,0,0,0,0,0,0);
 		}
 
 		void velocity_effect() const override {};
 
-		bool limit_effect(Physics_function::Vector3& contactP0, Physics_function::Vector3& contactP1, float& penetrate) const override {
+		bool limit_effect(DirectX::XMFLOAT3& contactP0, DirectX::XMFLOAT3& contactP1, float& penetrate) const override {
 			return false;
 		}
 

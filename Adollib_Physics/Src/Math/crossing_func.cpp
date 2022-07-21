@@ -1,4 +1,4 @@
-#include "crossing_func.h"
+#include "../../Inc/Math/crossing_func.h"
 
 using namespace Adollib;
 using namespace Physics_function;

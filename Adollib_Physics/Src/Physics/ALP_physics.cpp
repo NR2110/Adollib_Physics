@@ -3,6 +3,7 @@
 #include "../../Inc/ALP__physics_manager.h"
 
 #include "ALP_collider.h"
+#include "ALP_joint.h"
 
 
 using namespace Adollib;

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 #include "ALP_collider.h"
 
-#include "collider_types.h"
+#include "../../Inc/collider_types.h"
 
 #include <mutex>
 

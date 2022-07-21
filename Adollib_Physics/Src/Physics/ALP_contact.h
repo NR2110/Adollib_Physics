@@ -2,8 +2,7 @@
 #include <vector>
 #include <list>
 #include <assert.h>
-#include "../Math/quaternion.h"
-#include "../Math/matrix.h"
+#include "../../Inc/Math/math.h"
 #include "ALP_collider.h"
 
 namespace Adollib {

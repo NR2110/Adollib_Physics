@@ -26,8 +26,8 @@ void HingeJoint::velocity_effect() const {
 	};
 	//Hinge‚ÌŒü‚«
 	const Vector3 hinge_vec[2] = {
-		(anchor_s.posA - anchor_g.posA).unit_vect(),
-		(anchor_s.posB - anchor_g.posB).unit_vect()
+		(Vector3(anchor_s.posA) -Vector3(anchor_g.posA)).unit_vect(),
+		(Vector3(anchor_s.posB) -Vector3(anchor_g.posB)).unit_vect()
 	};
 	//Hinge‚Ìworld_vec
 	const Vector3 hinge_vec_world[2] = {
@@ -50,7 +50,7 @@ void HingeJoint::velocity_effect() const {
 
 }
 
-bool HingeJoint::limit_effect(Vector3& contactP0, Vector3& contactP1, float& penetrate) const {
+bool HingeJoint::limit_effect(DirectX::XMFLOAT3& contactP0, DirectX::XMFLOAT3& contactP1, float& penetrate) const {
 	constexpr float power = 2; //“ä ‚È‚º‚©‚È‚¢‚Æ’£‚è•t‚­
 
 	// transform
@@ -61,8 +61,8 @@ bool HingeJoint::limit_effect(Vector3& contactP0, Vector3& contactP1, float& pen
 
 	//Hinge‚ÌŒü‚«
 	const Vector3 hinge_vec[2] = {
-		(anchor_s.posA - anchor_g.posA).unit_vect(),
-		(anchor_s.posB - anchor_g.posB).unit_vect()
+		(Vector3(anchor_s.posA) - Vector3(anchor_g.posA)).unit_vect(),
+		(Vector3(anchor_s.posB) - Vector3(anchor_g.posB)).unit_vect()
 	};
 	//Hinge‚Ìworld_vec
 	const Vector3 hinge_vec_world[2] = {

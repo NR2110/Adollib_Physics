@@ -908,8 +908,8 @@ bool Physics_function::generate_contact_sphere_sphere(const Collider_shape* SA, 
 	n = DirectX::XMVector3Normalize(n);
 
 	if (length < SA->world_scale().x + SB->world_scale().x) {
-		DirectX::XMVECTOR quat_A = DirectX::XMLoadFloat4(&SA->world_orientation().inverse());
-		DirectX::XMVECTOR quat_B = DirectX::XMLoadFloat4(&SB->world_orientation().inverse());
+		DirectX::XMVECTOR quat_A = DirectX::XMLoadFloat4(&Quaternion(SA->world_orientation()).inverse());
+		DirectX::XMVECTOR quat_B = DirectX::XMLoadFloat4(&Quaternion(SB->world_orientation()).inverse());
 
 		//DirectX::XMVector3Rotate
 		//衝突していたらContactオブジェクトを生成用に準備する
@@ -962,7 +962,7 @@ bool Physics_function::generate_contact_sphere_plane(const Collider_shape* spher
 
 	//球面と平面の衝突判定を行う
 	Matrix44 rotate, inverse_rotate;
-	rotate = plane->world_orientation().get_rotate_matrix();
+	rotate = Quaternion(plane->world_orientation()).get_rotate_matrix();
 	rotate._41 = plane->world_position().x; //transpseの入力
 	rotate._42 = plane->world_position().y;
 	rotate._43 = plane->world_position().z;
@@ -990,7 +990,7 @@ bool Physics_function::generate_contact_sphere_plane(const Collider_shape* spher
 		ACpenetration = sphere->world_scale().x - abs(p.y);
 		ACnormal = n;
 		ACcontact_pointA = Vector3(p.x, 0, p.z);
-		ACcontact_pointB = sphere->world_scale().x * vector3_quatrotate(-n, sphere->world_orientation().inverse());
+		ACcontact_pointB = sphere->world_scale().x * vector3_quatrotate(-n, Quaternion(sphere->world_orientation()).inverse());
 
 	}
 

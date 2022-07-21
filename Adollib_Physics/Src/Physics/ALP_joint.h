@@ -1,7 +1,7 @@
 #pragma once
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 #include "ALP_contact.h"
-#include "ALP_anchor.h"
+#include "../../Inc/ALP_anchor.h"
 
 #include "ALP_struct_world_transform.h"
 

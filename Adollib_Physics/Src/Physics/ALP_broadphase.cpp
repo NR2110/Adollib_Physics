@@ -392,7 +392,7 @@ void Physics_function::BroadMidphase(
 		plane_dis = vector3_dot(V, plane->world_position());
 
 		for (int i = 0; i < DOP_size; i++) {
-			float coll_len = vector3_dot(V, mesh->world_position() + DOP_14_axis[i] * mesh->get_DOP().max[i]);
+			float coll_len = vector3_dot(V, Vector3(mesh->world_position()) + DOP_14_axis[i] * mesh->get_DOP().max[i]);
 			if (plane_dis > coll_len)return true;
 		}
 

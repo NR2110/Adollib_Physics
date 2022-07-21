@@ -1,7 +1,9 @@
 
+#include "../../Inc/collider.h"
 #include "../../Inc/ALP__physics_manager.h"
+#include "../../Inc/ALP_struct_contacted_data.h"
 
-#include "../Math/math.h"
+#include "../../Inc/Math/math.h"
 #include "ALP_contact.h"
 
 #include "ALP_collider.h"
@@ -10,6 +12,9 @@
 
 #include "shape_meshcoll.h"
 #include "shape_croth.h"
+
+#include "ALP__tags.h"
+#include "ALP_Collider.h"
 
 
 using namespace Adollib;
@@ -74,13 +79,12 @@ void Collider::set_max_linear_velocity(const float& max_scalar) { ALPphysics_ptr
 void Collider::set_max_angula_velocity(const float& max_scalar) { ALPphysics_ptr->set_max_angula_velocity(max_scalar); };
 
 // 慣性モーメントをユーザー定義で設定する
-void Collider::set_tensor(const Matrix33& tensor) { ALPphysics_ptr->set_tensor(tensor); };
+void Collider::set_tensor(const DirectX::XMFLOAT3X3& tensor) { ALPphysics_ptr->set_tensor(tensor); };
 
 // 重心をユーザー定義で設定する
 void Collider::set_barycenter(const DirectX::XMFLOAT3& cent) { ALPphysics_ptr->set_barycenter(cent); };
 #pragma endregion
 //::::::::::::::::::::::::::::::::::::::::::::
-
 
 // 指定した一点での速度
 const DirectX::XMFLOAT3 Collider::get_point_velocity(const DirectX::XMFLOAT3& pos, bool is_local) {
@@ -116,6 +120,9 @@ Joint_base* Collider::get_joint(const int num) {
 	return (*itr)->userjoint;
 }
 
+void Collider::add_shape(Collider_shape* shape) {
+	ALPcollider_ptr->add_shape(shape);
+}
 
 //void Collider::Update_hierarchy() {
 //
@@ -179,7 +186,7 @@ std::vector<Contacted_data> Collider::get_Contacted_data() const {
 }
 
 // 現在の慣性モーメントの値
-const Matrix33 Collider::get_tensor() {
+const DirectX::XMFLOAT3X3 Collider::get_tensor() {
 
 	// shapeの情報などを変更するためmutexをlockする
 	Physics_function::Physics_manager::mutex_lock();
@@ -200,6 +207,8 @@ const DirectX::XMFLOAT3 Collider::get_barycenter() const {
 
 	return ret;
 };
+
+
 
 void Collider::awake(const void* Goptr, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv) {
 	Physics_manager::ColliderPhysics_ptrs data;

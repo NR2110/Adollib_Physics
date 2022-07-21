@@ -154,8 +154,8 @@ bool Contact::chack_remove_contact_point(
 	for (int i = 0; i < contact_num;) {
 		Vector3& normal = contactpoints[i].normal;
 
-		Vector3 contactpointA = shape0->world_position() + vector3_quatrotate(contactpoints[i].point[0], shape0->world_orientation());
-		Vector3 contactpointB = shape1->world_position() + vector3_quatrotate(contactpoints[i].point[1], shape1->world_orientation());
+		Vector3 contactpointA = Vector3(shape0->world_position()) + vector3_quatrotate(contactpoints[i].point[0], shape0->world_orientation());
+		Vector3 contactpointB = Vector3(shape1->world_position()) + vector3_quatrotate(contactpoints[i].point[1], shape1->world_orientation());
 
 		// normal•ûŒü‚Ì‹——£‚ð”ä‚×‚é
 		const float dis_N = vector3_dot(normal, contactpointB - contactpointA);

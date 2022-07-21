@@ -1,6 +1,8 @@
+
 #include "../../Inc/collider_shape.h"
 
 #include "../../Inc/ALP__physics_manager.h"
+#include "ALP_collider.h"
 
 using namespace Adollib;
 using namespace Physics_function;
