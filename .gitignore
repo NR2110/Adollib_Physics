@@ -26,7 +26,6 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
@@ -35,17 +34,6 @@
 
 *.wav
 
-DirectXTK-master/
-FBX SDK/
-Adollib/cereal-master/
-Adollib/Release/
-Adollib/Debug/
-Adollib/Adollib/Release/
-Adollib/Adollib/Debug/
-Adollib/Data/Skymaps/
-Adollib/Sounds/sound_effects.xwb
-Adollib/Musics/bgm_title.wav
-Adollib/Musics/bgm_result.wav
-
+FBX/
 */Debug/
 *.vs/
