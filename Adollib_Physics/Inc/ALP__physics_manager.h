@@ -186,7 +186,7 @@ namespace Adollib
 				ALP_Physics* ALPphysics_ptr = nullptr;
 			};
 
-			static ColliderPhysics_ptrs add_collider(Collider* coll, const void* GO_ptr, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
+			static ColliderPhysics_ptrs add_collider(Collider* coll, const __int64 ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
 
 			static ALP_Joint* add_Joint();
 

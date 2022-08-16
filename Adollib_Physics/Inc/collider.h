@@ -130,6 +130,7 @@ namespace Adollib {
 		};
 	private:
 		void add_shape(Collider_shape* shape);
+
 	public:
 
 		// meshcolliderのアタッチ
@@ -153,11 +154,11 @@ namespace Adollib {
 	public:
 
 		//:::::::::
-		// Goptr : ユニークな値ならなんでもOK 同じ値を持つものとは衝突しない
+		// ID : ユニークな値ならなんでもOK 同じ値を持つものとは衝突しない
 		// Wpos, Worient, Wscale : world transform の初期値
 		// pearent_Worient_inv : 落下方向はWorld座標系での落下方向なので 変化量の算出時に親の回転のinvをかける
 		//:::::::::
-		void awake(const void* Goptr, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
+		void awake(const __int64 ID, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
 
 		void update();
 

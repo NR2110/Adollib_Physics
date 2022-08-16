@@ -270,7 +270,7 @@ bool Physics_manager::update_Gui() {
 */
 
 #pragma region Add_collider, Remove_collider
-Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const void* GO_ptr, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv) {
+Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const __int64 ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv) {
 	std::lock_guard <std::mutex> lock(mtx);
 
 	is_added_ALPcollider = true;
@@ -292,7 +292,6 @@ Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* co
 		auto physics_itr = added_buffer_ALP_physicses.end();
 		physics_itr--;
 
-		__int64 ID = reinterpret_cast<__int64>(GO_ptr);
 		//colliderのアドレスだけ生成 (ALPphysics,ALPcolliderのコンストラクタにお互いのアドレスが必要なため)
 		ALPcollider_ptr = newD Physics_function::ALP_Collider(ID, coll, collider_itr, nullptr, collider_index_count);
 

@@ -214,7 +214,7 @@ const DirectX::XMFLOAT3 Collider::get_barycenter() const {
 
 
 
-void Collider::awake(const void* Goptr, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv) {
+void Collider::awake(const __int64 ID, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv) {
 	Physics_manager::ColliderPhysics_ptrs data;
 
 	Wposition = l_Wpos;
@@ -223,7 +223,7 @@ void Collider::awake(const void* Goptr, const DirectX::XMFLOAT3& l_Wpos, const D
 	pearent_Worientation_inverse = l_pearent_Worient_inv;
 
 
-	data = Physics_manager::add_collider(this, Goptr, Wposition, Worientation, Wscale, pearent_Worientation_inverse);
+	data = Physics_manager::add_collider(this, ID, Wposition, Worientation, Wscale, pearent_Worientation_inverse);
 
 	ALPcollider_ptr = data.ALPcollider_ptr;
 	ALPphysics_ptr = data.ALPphysics_ptr;
