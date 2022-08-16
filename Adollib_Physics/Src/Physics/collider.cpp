@@ -124,6 +124,10 @@ void Collider::add_shape(Collider_shape* shape) {
 	ALPcollider_ptr->add_shape(shape);
 }
 
+
+const __int64 Collider::get_UUID() const {
+	return ALPcollider_ptr->get_UUID();
+}
 //void Collider::Update_hierarchy() {
 //
 //	ALPcollider_ptr->Update_hierarchy();

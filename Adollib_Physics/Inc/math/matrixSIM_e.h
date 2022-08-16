@@ -55,7 +55,7 @@ namespace Adollib {
 
 			return R;
 		}
-		inline Matrix44 Adollib::operator*(float S, const Matrix44& M) {
+		inline Matrix44 operator*(float S, const Matrix44& M) {
 			return M * S;
 		}
 
@@ -116,13 +116,13 @@ namespace Adollib {
 #pragma endregion
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		inline Matrix44 Adollib::matrix44_identity() {
+		inline Matrix44 matrix44_identity() {
 			Matrix44 M;
 			M._11 = M._22 = M._33 = M._44 = 1;
 			return M;
 		}
 
-		inline Matrix44 Adollib::matrix_trans(const Matrix44& M) {
+		inline Matrix44 matrix_trans(const Matrix44& M) {
 			DirectX::XMMATRIX Mv = DirectX::XMLoadFloat4x4(&M);
 
 			Matrix44 R;
@@ -137,7 +137,7 @@ namespace Adollib {
 				- M._11 * M._23 * M._32 - M._12 * M._21 * M._33 - M._13 * M._22 * M._31;
 		}
 
-		inline float Adollib::matrix_determinant(const Matrix44& M) {
+		inline float matrix_determinant(const Matrix44& M) {
 
 			DirectX::XMMATRIX Mv = DirectX::XMLoadFloat4x4(&M);
 
@@ -150,7 +150,7 @@ namespace Adollib {
 		}
 
 
-		inline Matrix44 Adollib::matrix_inverse(const Matrix44& M) {
+		inline Matrix44 matrix_inverse(const Matrix44& M) {
 			DirectX::XMMATRIX Mv = DirectX::XMLoadFloat4x4(&M);
 
 			Matrix44 R;
@@ -158,7 +158,7 @@ namespace Adollib {
 			return R;
 		}
 
-		inline Vector3 Adollib::matrix_to_euler(const Matrix44& M) {
+		inline Vector3 matrix_to_euler(const Matrix44& M) {
 			Vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -181,7 +181,7 @@ namespace Adollib {
 
 			return R;
 		}
-		inline Vector3 Adollib::matrix_to_euler_radian(const Matrix44& M) {
+		inline Vector3 matrix_to_euler_radian(const Matrix44& M) {
 			Vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -201,7 +201,7 @@ namespace Adollib {
 			return R;
 		}
 
-		inline Vector3 Adollib::vector3_trans(const Vector3& V, const Matrix44& M) {
+		inline Vector3 vector3_trans(const Vector3& V, const Matrix44& M) {
 			DirectX::XMMATRIX Mv = DirectX::XMLoadFloat4x4(&M);
 			DirectX::XMVECTOR Vv = DirectX::XMLoadFloat3(&V);
 
@@ -215,7 +215,7 @@ namespace Adollib {
 			return R;
 		}
 
-		inline Matrix44 Adollib::matrix_world(const Vector3& scale, const Matrix44& rotate, const Vector3& trans) {
+		inline Matrix44 matrix_world(const Vector3& scale, const Matrix44& rotate, const Vector3& trans) {
 			Matrix44 ret = rotate;
 			ret._11 *= scale.x; ret._12 *= scale.x; ret._13 *= scale.x;
 			ret._21 *= scale.y; ret._22 *= scale.y; ret._23 *= scale.y;
@@ -229,18 +229,18 @@ namespace Adollib {
 		}
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		inline DirectX::XMMATRIX Adollib::matrix_to_XMMATRIX(const Matrix44& M) {
+		inline DirectX::XMMATRIX matrix_to_XMMATRIX(const Matrix44& M) {
 			return DirectX::XMLoadFloat4x4(&M);
 		}
 
-		inline Matrix44 Adollib::XMMATRIX_to_matrix44(const DirectX::XMMATRIX& X) {
+		inline Matrix44 XMMATRIX_to_matrix44(const DirectX::XMMATRIX& X) {
 			Matrix44 M;
 			DirectX::XMStoreFloat4x4(&M, X);
 
 			return M;
 		}
 
-		inline Matrix44 Adollib::matrix44_cross(const Vector3& vec) {
+		inline Matrix44 matrix44_cross(const Vector3& vec) {
 			return Matrix44(
 				0.0f, vec.z, -vec.y, 0,
 				-vec.z, 0.0f, vec.x, 0,
@@ -249,7 +249,7 @@ namespace Adollib {
 			);
 		}
 
-		inline Matrix44 Adollib::matrix44_scale(const Vector3& vec) {
+		inline Matrix44 matrix44_scale(const Vector3& vec) {
 			return Matrix44(
 				vec.x, 0, 0, 0,
 				0, vec.y, 0, 0,
@@ -350,7 +350,7 @@ namespace Adollib {
 
 			return R;
 		}
-		matrix Adollib::operator*(float S, const matrix& M) {
+		matrix operator*(float S, const matrix& M) {
 			return M * S;
 		}
 
@@ -410,13 +410,13 @@ namespace Adollib {
 #pragma endregion
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		matrix Adollib::matrix_identity() {
+		matrix matrix_identity() {
 			matrix M;
 			M._11 = M._22 = M._33 = M._44 = 1;
 			return M;
 		}
 
-		matrix Adollib::matrix_trans(const matrix& M) {
+		matrix matrix_trans(const matrix& M) {
 			matrix R = M;
 			std::swap(R._21, R._12);
 			std::swap(R._31, R._13);	std::swap(R._32, R._23);
@@ -458,7 +458,7 @@ namespace Adollib {
 
 		}
 
-		float Adollib::matrix_determinant(const matrix& M) {
+		float matrix_determinant(const matrix& M) {
 
 			float V1 = M._11 * (M._22 * M._33 * M._44 + M._23 * M._34 * M._42 + M._24 * M._32 * M._43
 				- M._24 * M._33 * M._42 - M._23 * M._32 * M._44 - M._22 * M._34 * M._43
@@ -478,7 +478,7 @@ namespace Adollib {
 		}
 
 
-		matrix Adollib::matrix_inverse(const matrix& M) {
+		matrix matrix_inverse(const matrix& M) {
 
 			matrix R;
 
@@ -572,7 +572,7 @@ namespace Adollib {
 			return R;
 		}
 
-		vector3 Adollib::matrix_to_euler(const matrix& M) {
+		vector3 matrix_to_euler(const matrix& M) {
 			vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -595,7 +595,7 @@ namespace Adollib {
 
 			return R;
 		}
-		vector3 Adollib::matrix_to_euler_radian(const matrix& M) {
+		vector3 matrix_to_euler_radian(const matrix& M) {
 			vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -615,7 +615,7 @@ namespace Adollib {
 			return R;
 		}
 
-		vector3 Adollib::vector3_trans(const vector3& V, const matrix& M) {
+		vector3 vector3_trans(const vector3& V, const matrix& M) {
 			vector3 R;
 			R.x = M._11 * V.x + M._21 * V.y + M._31 * V.z + M._41 * 1;
 			R.y = M._12 * V.x + M._22 * V.y + M._32 * V.z + M._42 * 1;
@@ -628,7 +628,7 @@ namespace Adollib {
 			return R;
 		}
 
-		matrix Adollib::matrix_world(const vector3& scale, const matrix& rotate, const vector3& trans) {
+		matrix matrix_world(const vector3& scale, const matrix& rotate, const vector3& trans) {
 			matrix ret = rotate;
 			ret._11 *= scale.x; ret._12 *= scale.x; ret._13 *= scale.x;
 			ret._21 *= scale.y; ret._22 *= scale.y; ret._23 *= scale.y;
@@ -642,7 +642,7 @@ namespace Adollib {
 		}
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		DirectX::XMMATRIX Adollib::matrix_to_XMMATRIX(const matrix& M) {
+		DirectX::XMMATRIX matrix_to_XMMATRIX(const matrix& M) {
 			DirectX::XMFLOAT4X4 V;
 			V._11 = M._11;	V._12 = M._12;	V._13 = M._13;	V._14 = M._14;
 			V._21 = M._21;	V._22 = M._22;	V._23 = M._23;	V._24 = M._24;
@@ -652,7 +652,7 @@ namespace Adollib {
 			return DirectX::XMLoadFloat4x4(&V);
 		}
 
-		matrix Adollib::XMMATRIX_to_matrix(const DirectX::XMMATRIX& X) {
+		matrix XMMATRIX_to_matrix(const DirectX::XMMATRIX& X) {
 			DirectX::XMFLOAT4X4 M;
 			DirectX::XMStoreFloat4x4(&M, X);
 

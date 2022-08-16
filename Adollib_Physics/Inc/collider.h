@@ -83,6 +83,8 @@ namespace Adollib {
 		// 指定した番号にアタッチされているjointの情報を得る
 		Joint_base* get_joint(const int num);
 
+		const __int64 get_UUID() const;
+
 	public:
 		// jointに自身の保持するALPColliderの情報を入れる
 		void set_ptr_to_joint(Physics_function::ALP_Joint* joint_base);

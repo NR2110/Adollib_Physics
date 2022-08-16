@@ -72,7 +72,7 @@ namespace Adollib {
 
 			return R;
 		}
-		inline Matrix44 Adollib::Physics_function::operator*(float S, const Matrix44& M) {
+		inline Matrix44 operator*(float S, const Matrix44& M) {
 			return M * S;
 		}
 

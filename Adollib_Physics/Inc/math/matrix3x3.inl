@@ -60,7 +60,7 @@ namespace Adollib {
 
 			return R;
 		}
-		inline Matrix33 Adollib::Physics_function::operator*(float S, const Matrix33& M) {
+		inline Matrix33 operator*(float S, const Matrix33& M) {
 			return M * S;
 		}
 
@@ -113,33 +113,33 @@ namespace Adollib {
 #pragma endregion
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		inline Matrix33 Adollib::Physics_function::matrix33_identity() {
+		inline Matrix33 matrix33_identity() {
 			Matrix33 M;
 			M._11 = M._22 = M._33 = 1;
 			return M;
 		}
 
-		inline Matrix33 Adollib::Physics_function::matrix33_zero() {
+		inline Matrix33 matrix33_zero() {
 			Matrix33 M;
 			M *= 0;
 			return M;
 		}
 
-		inline Matrix33 Adollib::Physics_function::matrix_trans(const Matrix33& M) {
+		inline Matrix33 matrix_trans(const Matrix33& M) {
 			Matrix33 R = M;
 			std::swap(R._21, R._12);
 			std::swap(R._31, R._13);	std::swap(R._32, R._23);
 			return R;
 		}
 
-		inline float Adollib::Physics_function::matrix_determinant(const Matrix33& M) {
+		inline float matrix_determinant(const Matrix33& M) {
 			return
 				M._11 * M._22 * M._33 + M._12 * M._23 * M._31 + M._13 * M._21 * M._32
 				- M._11 * M._23 * M._32 - M._12 * M._21 * M._33 - M._13 * M._22 * M._31;
 		}
 
 
-		inline Matrix33 Adollib::Physics_function::matrix_inverse(const Matrix33& M) {
+		inline Matrix33 matrix_inverse(const Matrix33& M) {
 
 			const float det = matrix_determinant(M);
 			if (det == 0)return matrix33_zero();
@@ -163,7 +163,7 @@ namespace Adollib {
 			return Ret;
 		}
 
-		inline Vector3 Adollib::Physics_function::matrix_to_euler(const Matrix33& M) {
+		inline Vector3 matrix_to_euler(const Matrix33& M) {
 			Vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -186,7 +186,7 @@ namespace Adollib {
 
 			return R;
 		}
-		inline Vector3 Adollib::Physics_function::matrix_to_euler_radian(const Matrix33& M) {
+		inline Vector3 matrix_to_euler_radian(const Matrix33& M) {
 			Vector3 R;
 			if (M._32 >= 1.0f) {
 				R.x = DirectX::XM_PIDIV2;
@@ -206,7 +206,7 @@ namespace Adollib {
 			return R;
 		}
 
-		inline Vector3 Adollib::Physics_function::vector3_trans(const Vector3& V, const Matrix33& M) {
+		inline Vector3 vector3_trans(const Vector3& V, const Matrix33& M) {
 			Vector3 R;
 			R.x = M._11 * V.x + M._21 * V.y + M._31 * V.z;
 			R.y = M._12 * V.x + M._22 * V.y + M._32 * V.z;
@@ -219,7 +219,7 @@ namespace Adollib {
 			return R;
 		}
 
-		inline Matrix44 Adollib::Physics_function::matrix_world(const Vector3& scale, const Matrix33& rotate, const Vector3& trans) {
+		inline Matrix44 matrix_world(const Vector3& scale, const Matrix33& rotate, const Vector3& trans) {
 			Matrix44 ret = matrix44_identity();
 			ret._11 = rotate._11; ret._12 = rotate._12;	ret._13 = rotate._13;
 			ret._21 = rotate._21; ret._22 = rotate._22;	ret._23 = rotate._23;
@@ -237,18 +237,18 @@ namespace Adollib {
 		}
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-		inline DirectX::XMMATRIX Adollib::Physics_function::matrix_to_XMMATRIX(const Matrix33& M) {
+		inline DirectX::XMMATRIX matrix_to_XMMATRIX(const Matrix33& M) {
 			return DirectX::XMLoadFloat3x3(&M);
 		}
 
-		inline Matrix33 Adollib::Physics_function::XMMATRIX_to_matrix33(const DirectX::XMMATRIX& X) {
+		inline Matrix33 XMMATRIX_to_matrix33(const DirectX::XMMATRIX& X) {
 			Matrix33 M;
 			DirectX::XMStoreFloat3x3(&M, X);
 
 			return M;
 		}
 
-		inline Matrix33 Adollib::Physics_function::matrix33_cross(const Vector3& vec) {
+		inline Matrix33 matrix33_cross(const Vector3& vec) {
 			return Matrix33(
 				0.0f, vec.z, -vec.y,
 				-vec.z, 0.0f, vec.x,
@@ -256,7 +256,7 @@ namespace Adollib {
 			);
 		}
 
-		inline Matrix33 Adollib::Physics_function::matrix33_scale(const Vector3& vec) {
+		inline Matrix33 matrix33_scale(const Vector3& vec) {
 			return Matrix33(
 				vec.x, 0, 0,
 				0, vec.y, 0,
@@ -264,7 +264,7 @@ namespace Adollib {
 			);
 		}
 
-		inline Matrix33 Adollib::Physics_function::make_box_tensor(Vector3 size, float mass) {
+		inline Matrix33 make_box_tensor(Vector3 size, float mass) {
 
 			Matrix33 ret = matrix33_identity();
 			ret._11 = mass * 0.3333333f * ((size.y * size.y) + (size.z * size.z));
