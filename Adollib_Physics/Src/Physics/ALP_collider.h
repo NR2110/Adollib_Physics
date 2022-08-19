@@ -7,6 +7,7 @@
 #include "../../Inc/collider_shape.h"
 #include "../../Inc/joint_base.h"
 #include "../../Inc/ALP_struct_contacted_data.h"
+#include "../../Inc/id_struct.h"
 
 #include "ALP_struct_world_transform.h"
 
@@ -35,7 +36,7 @@ namespace Adollib {
 		public:
 			//コンストラクタ
 			ALP_Collider(
-				const __int64 l_UUID,
+				const Physics_ID l_UUID,
 				Collider* l_collitr,
 				std::list<ALP_Collider*>::iterator l_itr,
 				ALP_Physics* l_ALPphysics,
@@ -51,7 +52,7 @@ namespace Adollib {
 			ALP_Physics* ALPphysics = nullptr;
 
 			//::: このColliderがアタッチされたGOの持つユニークな値 ポインタ :::
-			const __int64 UUID = 0;
+			const Physics_ID UUID = {};
 
 			//::: 自身へのイテレータ(remove用) :::
 			std::list<ALP_Collider*>::iterator this_itr;
@@ -100,7 +101,7 @@ namespace Adollib {
 			void unlock_mtx() { mtx.unlock(); };
 
 			// gameobjectのユニークなIDを返す
-			const __int64 get_UUID() const { return UUID; };
+			const Physics_ID get_UUID() const { return UUID; };
 
 		public:
 			//[[nodiscard]] /

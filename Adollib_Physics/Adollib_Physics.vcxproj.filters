@@ -279,6 +279,9 @@
     <ClInclude Include="Inc\collider_types.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\id_struct.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Physics\ALP__physics_manager.cpp">

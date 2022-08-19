@@ -4,6 +4,7 @@
 #include "ALP_collider.h"
 
 #include "../../Inc/collider_types.h"
+#include "../../Inc/id_struct.h"
 
 #include <mutex>
 
@@ -30,7 +31,7 @@ namespace Adollib {
 		public:
 			//コンストラクタ
 			ALP_Physics(
-				__int64 l_UUID, std::list<ALP_Physics*>::iterator l_itr, ALP_Collider* _ALPcollider, u_int l_index
+				Physics_ID l_UUID, std::list<ALP_Physics*>::iterator l_itr, ALP_Collider* _ALPcollider, u_int l_index
 			) :
 				UUID(l_UUID), this_itr(l_itr), ALPcollider(_ALPcollider), index(l_index) {
 			};
@@ -51,7 +52,7 @@ namespace Adollib {
 			ALP_Collider* ALPcollider = nullptr;
 
 			//::: アタッチされたGOへのポインタ :::
-			__int64 UUID = 0;
+			Physics_ID UUID = {};
 
 			//::: マルチスレッド用にcolliderにコピーされたtransformのポインタ physicsからは読み取りのみ :::
 			world_trans* transform = nullptr;

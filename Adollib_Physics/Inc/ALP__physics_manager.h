@@ -12,6 +12,7 @@
 //#include "../Src/Physics/ALP_contact.h"
 
 #include "collider_shape.h"
+#include "id_struct.h"
 
 
 //#include "../Src/Physics/ALP_joint.h"
@@ -186,7 +187,7 @@ namespace Adollib
 				ALP_Physics* ALPphysics_ptr = nullptr;
 			};
 
-			static ColliderPhysics_ptrs add_collider(Collider* coll, const __int64 ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
+			static ColliderPhysics_ptrs add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
 
 			static ALP_Joint* add_Joint();
 

@@ -1,5 +1,6 @@
 #include "ALP__physics_function.h"
 #include "../../Inc/ALP__physics_manager.h"
+#include "../../Inc/id_struct.h"
 
 #include <thread>
 #include <chrono>
@@ -270,7 +271,7 @@ bool Physics_manager::update_Gui() {
 */
 
 #pragma region Add_collider, Remove_collider
-Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const __int64 ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv) {
+Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv) {
 	std::lock_guard <std::mutex> lock(mtx);
 
 	is_added_ALPcollider = true;

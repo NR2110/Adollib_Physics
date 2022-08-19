@@ -173,6 +173,7 @@
     <ClInclude Include="Inc\conejoint.h" />
     <ClInclude Include="Inc\coneTwistjoint.h" />
     <ClInclude Include="Inc\hingejoint.h" />
+    <ClInclude Include="Inc\id_struct.h" />
     <ClInclude Include="Inc\joint.h" />
     <ClInclude Include="Inc\joint_base.h" />
     <ClInclude Include="Inc\math\closest_func.h" />

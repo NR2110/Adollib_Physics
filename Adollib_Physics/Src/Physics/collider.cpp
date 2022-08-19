@@ -2,6 +2,7 @@
 #include "../../Inc/collider.h"
 #include "../../Inc/ALP__physics_manager.h"
 #include "../../Inc/ALP_struct_contacted_data.h"
+#include "../../Inc/id_struct.h"
 
 #include "../../Inc/Math/math.h"
 #include "ALP_contact.h"
@@ -125,7 +126,7 @@ void Collider::add_shape(Collider_shape* shape) {
 }
 
 
-const __int64 Collider::get_UUID() const {
+const Physics_ID Collider::get_UUID() const {
 	return ALPcollider_ptr->get_UUID();
 }
 //void Collider::Update_hierarchy() {
@@ -214,7 +215,7 @@ const DirectX::XMFLOAT3 Collider::get_barycenter() const {
 
 
 
-void Collider::awake(const __int64 ID, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv) {
+void Collider::awake(const Physics_ID ID, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv) {
 	Physics_manager::ColliderPhysics_ptrs data;
 
 	Wposition = l_Wpos;
