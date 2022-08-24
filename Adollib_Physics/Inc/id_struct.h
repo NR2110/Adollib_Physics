@@ -1,5 +1,6 @@
 #pragma once
 
+#define Physics_ID_128
 namespace Adollib {
 
 	// IDにしたいものによって適当にサイズ合わせて

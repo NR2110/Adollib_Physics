@@ -94,7 +94,7 @@ bool Physics_manager::update()
 		//
 		//if (is_added_ALPcollider == false) {
 			// 追加したものを配列に加える 追加された瞬間はis_added_ALPcolliderがtrue worldtransformが更新されたら毎フレームfalseになる
-			adapt_added_data(false);
+		adapt_added_data(false);
 
 		//}
 
@@ -630,6 +630,7 @@ void Physics_manager::dadapt_delete_data(bool is_mutex_lock) {
 // 別threadでupdateを回す
 void Physics_manager::thread_start() {
 	is_stop_physics_thread = false;
+	physicsParams.timeStep = 0;
 	physics_thread = std::thread(thread_update);
 }
 
@@ -677,5 +678,6 @@ void Physics_manager::destroy() {
 	}
 	pairs[0].clear();
 	pairs[1].clear();
+
 }
 
