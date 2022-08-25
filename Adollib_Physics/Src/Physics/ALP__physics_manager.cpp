@@ -70,6 +70,7 @@ namespace Adollib
 
 bool Physics_manager::update()
 {
+
 	QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&update_start_time));
 
 	//if (Al_Global::second_per_game < 1) {

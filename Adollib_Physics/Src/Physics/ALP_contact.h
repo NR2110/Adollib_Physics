@@ -122,6 +122,43 @@ namespace Adollib {
 				keep_pair, // 維持
 			};
 
+			struct Contact_pair_Key {
+				double key0;
+				double key1;
+
+				bool operator== (const Contact_pair_Key& key) const {
+					return (key0 == key.key0 && key1 == key.key1);
+				}
+				bool operator> (const Contact_pair_Key& key) const {
+					if      (key0 > key.key0)return true;
+					else if (key0 < key.key0)return false;
+					else if (key1 > key.key1)return true;
+					else if (key1 < key.key1)return false;
+					return false;
+				}
+				bool operator< (const Contact_pair_Key& key) const {
+					if      (key0 > key.key0)return false;
+					else if (key0 < key.key0)return true;
+					else if (key1 > key.key1)return false;
+					else if (key1 < key.key1)return true;
+					return false;
+				}
+				bool operator>= (const Contact_pair_Key& key) const {
+					if      (key0 > key.key0)return true;
+					else if (key0 < key.key0)return false;
+					else if (key1 > key.key1)return true;
+					else if (key1 < key.key1)return false;
+					return true;
+				}
+				bool operator<= (const Contact_pair_Key& key) const {
+					if      (key0 > key.key0)return false;
+					else if (key0 < key.key0)return true;
+					else if (key1 > key.key1)return false;
+					else if (key1 < key.key1)return true;
+					return true;
+				}
+			};
+
 			struct Contact_pair {
 
 				Pairtype type = Pairtype::new_pair; //衝突の種類(前フレームからある衝突かどうか)
@@ -130,7 +167,7 @@ namespace Adollib {
 					struct {
 						Collider_shape* body[2]; //接触したobject
 					};
-					double key; //ポインタ2つからなるユニークな数字
+					Contact_pair_Key key; //ポインタ2つからなるユニークな数字
 				};
 
 				Contact contacts; //衝突の情報
