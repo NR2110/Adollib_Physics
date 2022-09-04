@@ -310,20 +310,12 @@ Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* co
 	}
 	//::: ‰Šú’l‚ğ‚¢‚ê‚é :::
 	ALPcollider_ptr->copy_transform_gameobject(Wpos, Worient, Wscale, pearent_Worient_inv);
+	ALPcollider_ptr->transform.position = Wpos;
+	ALPcollider_ptr->transform.orientation = Worient;
+	ALPcollider_ptr->transform.scale = Wscale;
+	ALPcollider_ptr->transform.parent_orientate_inv = pearent_Worient_inv;
 
 	physicsParams.set_default_physics_data(coll->physics_data);
-	//coll->physics_data.inertial_mass = physicsParams.inertial_mass; //¿—Ê
-	//coll->physics_data.drag = physicsParams.linear_drag; //‹ó‹C’ïR
-	//coll->physics_data.anglar_drag = physicsParams.anglar_drag; //‹ó‹C’ïR
-	//coll->physics_data.dynamic_friction = physicsParams.dynamic_friction; //“®–€C
-	//coll->physics_data.static_friction = physicsParams.static_friction; //Ã–€C
-	//coll->physics_data.restitution = physicsParams.restitution;	 //”½”­ŒW”
-
-	//coll->physics_data.is_fallable = physicsParams.is_fallable; //—‚¿‚È‚¢
-	//coll->physics_data.is_kinmatic_anglar = physicsParams.is_kinmatic_anglar;//‰e‹¿‚¤‚¯‚È‚¢(fall‚Í‚·‚é)
-	//coll->physics_data.is_kinmatic_linear = physicsParams.is_kinmatic_linear;//‰e‹¿‚¤‚¯‚È‚¢(fall‚Í‚·‚é)
-	//coll->physics_data.is_moveable = physicsParams.is_moveable; //“®‚©‚È‚¢
-	//coll->physics_data.is_hitable = physicsParams.is_hitable;  //Õ“Ë‚µ‚È‚¢
 
 	collider_index_count++;
 
