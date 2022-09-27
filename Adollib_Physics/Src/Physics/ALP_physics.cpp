@@ -9,26 +9,6 @@
 using namespace Adollib;
 using namespace Physics_function;
 
-//void ALP_Physics::set_default() {
-//	std::lock_guard <std::mutex> lock(mtx);
-//
-//	inertial_mass = PhysicsParams_default::inertial_mass; //¿—Ê
-//	linear_drag = PhysicsParams_default::linear_drag;//‹ó‹C’ïR
-//	angula_drag = PhysicsParams_default::anglar_drag;//‹ó‹C’ïR
-//	dynamic_friction = PhysicsParams_default::dynamic_friction;//“®–€C
-//	static_friction = PhysicsParams_default::static_friction;//Ã–€C
-//	restitution = PhysicsParams_default::restitution; //”½”­ŒW”
-//
-//	is_fallable = PhysicsParams_default::is_fallable;//—‚¿‚È‚¢
-//	is_kinmatic_anglar = PhysicsParams_default::is_kinmatic_anglar;//‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å‰ñ“]‘¬“x‚ª•Ï‰»‚µ‚È‚¢
-//	is_kinmatic_linear = PhysicsParams_default::is_kinmatic_linear;//‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å•Ài‘¬“x‚ª•Ï‰»‚µ‚È‚¢
-//	is_moveable = PhysicsParams_default::is_moveable;//“®‚©‚È‚¢
-//	is_hitable = PhysicsParams_default::is_hitable;
-//
-//	is_sleep = true; //Å‰sleep‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
-//
-//};
-
 void ALP_Physics::add_force(const Vector3& force, const bool& is_force_local) {
 	if (transform == nullptr)return;
 	std::lock_guard <std::mutex> lock(mtx);
@@ -146,7 +126,7 @@ void ALP_Physics::apply_external_force(float duration, const float timeratio_60)
 	old_angula_velocity_ = angula_velocity_;
 	old_linear_velocity_ = linear_velocity_;
 
-	if (is_movable()) {
+	if (is_movable() && is_active) {
 		// —Í‚ğŠ’è‚Ì•b”‚Ì‚Ì—Ê‚É’¼‚·
 		//accumulated_force *= timeratio_60;
 		//accumulated_torque *= timeratio_60;
@@ -211,7 +191,7 @@ void ALP_Physics::apply_external_force(float duration, const float timeratio_60)
 void ALP_Physics::integrate(float duration) {
 	std::lock_guard <std::mutex> lock(mtx); //linear_velocity_ = Vector3(0)‚ª‚ ‚é‚½‚ß
 
-	if (is_movable() == false)return;
+	if ((is_movable() && is_active) == false)return;
 
 	//float threrhold_pow = (duration * 60) * (duration * 60);
 	float threrhold_pow = 1;
@@ -462,6 +442,7 @@ void ALP_Physics::adapt_collider_component_data() {
 	is_moveable        = Cdata.is_moveable;
 	is_hitable         = Cdata.is_hitable;
 	is_static          = Cdata.is_static;
+	is_active          = Cdata.is_active;
 }
 
 void ALP_Physics::destroy() {

@@ -401,6 +401,7 @@ void Physics_function::BroadMidphase(
 	void Broadphase_static::Midphase_DOP_14(std::vector<Contacts::Contact_pair*> & new_pairs, Collider_shape * meshA, Collider_shape * meshB) {
 
 		if (meshA->get_ALPcollider()->get_UUID() == meshB->get_ALPcollider()->get_UUID())return; //同じGOにアタッチされたshape同士は衝突しない
+		if (meshA->get_ALPcollider()->get_ALPphysics()->is_active == false || meshB->get_ALPcollider()->get_ALPphysics()->is_active == false)return; //どちらかがactiveでなければ処理しない
 
 		const ALP_Collider* collA = meshA->get_ALPcollider();
 		const ALP_Collider* collB = meshB->get_ALPcollider();

@@ -30,6 +30,7 @@ namespace Adollib {
 		bool is_moveable = false; // “®‚©‚È‚¢
 		bool is_hitable = false;  // Õ“Ë‚µ‚È‚¢
 		bool is_static = false;  // static“¯m‚Íoncoll_enter‚ªg‚¦‚È‚¢ ‚¯‚ÇŒy‚­‚È‚é
+		bool is_active = true; //false‚Ìˆ—‚ªs‚í‚ê‚È‚¢
 	};
 	//:::::::::::::::::::::::::
 }
