@@ -167,11 +167,16 @@ void Physics_function::BroadMidphase(
 
 				const u_int collider_index = added->get_index(); //collider‚Ìunique‚ÈID
 
-				access_axislist_itr[collider_index].clear(); // ‰Šú‰»
+				access_axislist_itr[collider_index];
+				const int size = access_axislist_itr[collider_index].size();
 
 				u_int shape_count = 0;
 
 				for (auto& shape : added->get_shapes()) {
+					if (size > shape_count) {
+						shape_count += 2;
+						continue;
+					}
 
 					{
 						Insert_edge* ed = newD Insert_edge;

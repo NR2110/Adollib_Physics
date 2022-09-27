@@ -145,14 +145,16 @@ namespace Adollib {
 
 		public:
 			// added_data‚ðmain‚Ìdata”z—ñ‚Éˆø‚Á‰z‚·
-			void adapt_added_data() {
-				if (added_buffer_shapes.size() == 0)return;
+			bool adapt_added_data() {
+				if (added_buffer_shapes.size() == 0)return false;
 
 				std::lock_guard <std::mutex> lock(mtx);
 
 				shapes.splice(shapes.end(), std::move(added_buffer_shapes));
 
 				added_buffer_shapes.clear();
+
+				return true;
 			};
 
 		public:

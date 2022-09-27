@@ -153,8 +153,10 @@ void ALP_Physics::apply_external_force(float duration, const float timeratio_60)
 		//const float ka = angula_drag * inv_mass; //空気抵抗やらなんやらを考慮した値 のはずだけど適当に簡略化
 		//_angula_velocity = _angula_velocity * exp(-ka * duration); // 空気抵抗
 
+		linear_acceleration /= duration;
+
 		//並進移動に加える力(accumulated_force)から加速度を出して並進速度を更新する 向きを間違えないように!!
-		linear_acceleration += accumulated_force * inv_mass / duration;
+		linear_acceleration += accumulated_force / duration * inv_mass;
 
 		if (is_fallable) linear_acceleration += Vector3(0, -Physics_manager::physicsParams.gravity, 0); //落下
 

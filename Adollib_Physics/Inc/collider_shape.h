@@ -118,7 +118,7 @@ namespace Adollib {
 
 
 	public:
-		virtual ~Collider_shape() {}; //派生クラスの持つshaerd_ptrのlefカウントを減らすため
+		virtual ~Collider_shape() { if (mesh_data != nullptr) delete mesh_data; }; //派生クラスの持つshaerd_ptrのlefカウントを減らすため
 	};
 
 

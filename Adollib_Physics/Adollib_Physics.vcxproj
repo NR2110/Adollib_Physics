@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="Inc\ALP_anchor.h" />
     <ClInclude Include="Inc\ALP_struct_contacted_data.h" />
+    <ClInclude Include="Inc\ALP__meshcoll_data.h" />
     <ClInclude Include="Inc\ALP__physics_manager.h" />
     <ClInclude Include="Inc\balljoint.h" />
     <ClInclude Include="Inc\collider.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Inc\ray.h" />
     <ClInclude Include="Inc\shape_box.h" />
     <ClInclude Include="Inc\shape_capsule.h" />
+    <ClInclude Include="Inc\shape_meshcoll.h" />
     <ClInclude Include="Inc\shape_plane.h" />
     <ClInclude Include="Inc\shape_sphere.h" />
     <ClInclude Include="Inc\twistjoint.h" />

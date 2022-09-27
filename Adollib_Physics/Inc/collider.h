@@ -177,3 +177,4 @@ namespace Adollib {
 #include "shape_plane.h"
 #include "shape_sphere.h"
 #include "shape_capsule.h"
+#include "shape_meshcoll.h"

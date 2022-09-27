@@ -559,7 +559,7 @@ void Physics_manager::adapt_added_data(bool is_mutex_lock) {
 
 	for (auto added_coll : ALP_colliders) {
 		// Šecollider‚Ìshape‚Ìadded_data‚ðˆ—
-		added_coll->adapt_added_data();
+		if(added_coll->adapt_added_data()) added_collider_for_insertsort.emplace_back(added_coll);
 	}
 
 	if (added_buffer_ALP_joints.size() != 0)
@@ -624,6 +624,7 @@ void Physics_manager::dadapt_delete_data(bool is_mutex_lock) {
 void Physics_manager::thread_start() {
 	is_stop_physics_thread = false;
 	physicsParams.timeStep = 0;
+	frame_count_stop.QuadPart = 0;
 	physics_thread = std::thread(thread_update);
 }
 

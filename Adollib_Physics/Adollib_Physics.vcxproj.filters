@@ -282,6 +282,12 @@
     <ClInclude Include="Inc\id_struct.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\shape_meshcoll.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ALP__meshcoll_data.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Physics\ALP__physics_manager.cpp">

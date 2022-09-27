@@ -6,9 +6,7 @@
 #include "../../Inc/collider_shape.h"
 #include "ALP_physics.h"
 #include "ALP_joint.h"
-#include "ALP__meshcoll_data.h"
 
-#include "shape_meshcoll.h"
 
 using namespace Adollib;
 using namespace Physics_function;
@@ -274,14 +272,6 @@ void ALP_Collider::add_contacted_collider(const Contacts::Contact_pair* pair, co
 	}
 
 }
-
-Meshcoll_part* ALP_Collider::add_mesh_shape(const char* filepath, Physics_function::Meshcollider_data* mesh_data) {
-	std::lock_guard <std::mutex> lock(mtx);
-	auto shape = newD Meshcoll_part(this, filepath, mesh_data);
-
-	added_buffer_shapes.emplace_back(shape);
-	return shape;
-};
 
 void ALP_Collider::destroy() {
 	//std::lock_guard <std::mutex> lock(mtx);

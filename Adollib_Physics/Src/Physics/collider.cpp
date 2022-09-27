@@ -11,7 +11,7 @@
 #include "ALP_physics.h"
 #include "ALP_joint.h"
 
-#include "shape_meshcoll.h"
+
 #include "shape_croth.h"
 
 #include "ALP__tags.h"
