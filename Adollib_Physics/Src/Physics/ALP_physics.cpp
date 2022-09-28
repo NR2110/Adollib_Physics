@@ -121,12 +121,14 @@ void ALP_Physics::copy_transform_ptr() {
 
 void ALP_Physics::apply_external_force(float duration, const float timeratio_60) {
 	if (transform == nullptr)return;
+	if (is_active == false)return;
+
 	std::lock_guard <std::mutex> lock(mtx);
 
 	old_angula_velocity_ = angula_velocity_;
 	old_linear_velocity_ = linear_velocity_;
 
-	if (is_movable() && is_active) {
+	if (is_movable()) {
 		// —Í‚ğŠ’è‚Ì•b”‚Ì‚Ì—Ê‚É’¼‚·
 		//accumulated_force *= timeratio_60;
 		//accumulated_torque *= timeratio_60;
