@@ -31,7 +31,7 @@ void edge_insert_sort(std::list<Insert_edge*>& axis_list, const int& axis_num, s
 		const Insert_edge* now_edge = *itr[now_num];
 
 		// ‚à‚µŸ‚Ì’l‚ª¡‚Ì’l‚æ‚è
-		if (next_edge->pos_value[axis_num] < now_edge->pos_value[axis_num]) {
+		if (next_edge->pos_value[axis_num] < now_edge->pos_value[axis_num] || ((next_edge->pos_value[axis_num] == now_edge->pos_value[axis_num]) && (next_edge->edge_start))) {
 
 			const std::list<Insert_edge*>::iterator itr_begin = axis_list.begin();
 

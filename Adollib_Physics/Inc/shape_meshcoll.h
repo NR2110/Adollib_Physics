@@ -123,6 +123,8 @@ namespace Adollib {
 
 				auto& is_Convex = mesh_data->is_Convex;
 
+				index_num = l_indexes.size();
+				vertex_num = l_vertices.size();
 				indexes = l_indexes;
 				vertices = l_vertices;
 				vertex_involvements.resize(vertex_num);
@@ -315,8 +317,10 @@ namespace Adollib {
 							}
 						}
 					}
-				}
 
+
+					update_dop14();
+				}
 
 
 			}
