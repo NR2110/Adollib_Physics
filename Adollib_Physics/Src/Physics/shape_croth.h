@@ -29,10 +29,6 @@ namespace Adollib {
 				local_scale = Vector3(size);
 			}
 
-			void Update_hierarchy(int hierarchy_num) override {
-
-			};
-
 
 			void update_dop14() override {
 				dop14.pos = world_position();

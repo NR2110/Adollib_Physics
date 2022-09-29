@@ -26,30 +26,12 @@ namespace Adollib {
 
 		};
 
-		void Update_hierarchy(int hierarchy_num) override {
-			//float ave = 1;
-			////position
-			//{
-			//	float vec3[3] = { center.x,center.y,center.z };
-			//	ImGui::DragFloat3((std::string("center##") + std::to_string(hierarchy_num)).c_str(), vec3, ave * 0.001f, 0, 0, "%.2f");
-			//	center = Vector3(vec3[0], vec3[1], vec3[2]);
-			//}
-			////rotate
-			//{
-			//	float vec3[3] = { rotate.x, rotate.y, rotate.z };
-			//	ImGui::DragFloat3((std::string("rotate##") + std::to_string(hierarchy_num)).c_str(), vec3, 0.1f, 0, 0, "%.2f");
-			//	rotate = Vector3(vec3[0], vec3[1], vec3[2]);
-			//}
-			////”¼Œa
-			//{
-			//	ImGui::DragFloat((std::string("r##") + std::to_string(hierarchy_num)).c_str(), &r, ave * 0.001f, 0, 0, "%.2f");
-			//}
-			////length
-			//{
-			//	ImGui::DragFloat((std::string("length##") + std::to_string(hierarchy_num)).c_str(), &length, ave * 0.001f, 0, 0, "%.2f");
-			//}
-
-		};
+		void initiazlie(Physics_function::Shape_InitData* base) override {
+			center = base->center;
+			rotate = base->rotate;
+			r = base->radius;
+			length = base->length;
+		}
 
 		void update_dop14() override {
 			Physics_function::Vector3 p = Physics_function::vector3_quatrotate(Physics_function::Vector3(0, world_scale().y, 0), world_orientation());

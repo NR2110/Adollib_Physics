@@ -41,6 +41,7 @@ void ALP_Collider::update_world_trans() {
 	ALPphysics->update_tensor_and_barycenter(shapes, joints);
 }
 void ALP_Collider::update_contacted_collider_data() {
+
 	contacted_colliders_num = 1 - contacted_colliders_num;
 	contacted_colliders[contacted_colliders_num].clear();
 

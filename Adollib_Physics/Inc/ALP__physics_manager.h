@@ -113,7 +113,7 @@ namespace Adollib
 			bool is_hitable = true;  //Õ“Ë‚µ‚È‚¢
 			bool is_static = false; //static“¯m‚ÍÕ“Ë‚¹‚¸ oncoll_enter‚ª”­¶‚µ‚È‚¢ ‚¯‚ÇŒy‚­‚È‚é
 
-			void set_default_physics_data(Physics_data& physics_data) {
+			void set_default_physics_data(Rigitbody_params& physics_data) {
 				//::: ‰Šú’l‚ğ‚¢‚ê‚é :::
 				physics_data.inertial_mass = inertial_mass; //¿—Ê
 				physics_data.drag = linear_drag; //‹ó‹C’ïR
@@ -187,7 +187,7 @@ namespace Adollib
 				ALP_Physics* ALPphysics_ptr = nullptr;
 			};
 
-			static ColliderPhysics_ptrs add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
+			static ColliderPhysics_ptrs add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam);
 
 			static ALP_Joint* add_Joint();
 

@@ -144,10 +144,9 @@ bool Physics_manager::update()
 		// timescaleの影響は座標の更新のみなので
 		physicsParams.timeStep *= time_scale;
 
-		update_per_calculate(ALP_colliders);
-
 		if (physicsParams.timeStep != 0)
 			for (int i = 0; i < physicsParams.calculate_iteration; i++) {
+
 
 				// shapeのworld情報, physicsのtensorなどの更新
 				update_world_trans(ALP_colliders);
@@ -170,11 +169,15 @@ bool Physics_manager::update()
 
 				Midphase(pairs[1 - pairs_new_num], pairs[pairs_new_num]);
 
+				// contacted dataの交換
+				update_per_calculate(ALP_colliders);
+
 				// 衝突生成
 				generate_contact(pairs[pairs_new_num]);
 
 				// 衝突解決
 				resolve_contact(ALP_colliders, pairs[pairs_new_num], ALP_joints, time_scale);
+
 
 				{
 
@@ -272,7 +275,7 @@ bool Physics_manager::update_Gui() {
 */
 
 #pragma region Add_collider, Remove_collider
-Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv) {
+Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam) {
 	std::lock_guard <std::mutex> lock(mtx);
 
 	is_added_ALPcollider = true;
@@ -315,7 +318,7 @@ Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* co
 	ALPcollider_ptr->transform.scale = Wscale;
 	ALPcollider_ptr->transform.parent_orientate_inv = pearent_Worient_inv;
 
-	physicsParams.set_default_physics_data(coll->physics_data);
+	if(is_use_defaultrigitbodyparam) physicsParams.set_default_physics_data(coll->physics_data);
 
 	collider_index_count++;
 

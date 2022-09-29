@@ -9,31 +9,7 @@
 #include "id_struct.h"
 #include "collider_shape.h"
 #include "ALP_struct_contacted_data.h"
-
-namespace Adollib {
-
-	//表示用のphysics_data ユーザーが簡単に変更できるように
-	struct Physics_data {
-		float inertial_mass = 0; //質量
-		float drag = 0; //空気抵抗
-		float anglar_drag = 0; //空気抵抗
-		float dynamic_friction = 0; //動摩擦
-		float static_friction = 0; //静摩擦
-		float restitution = 0;	 //反発係数
-		float linear_sleep_threrhold = 0; //freezeの閾値
-		float angula_sleep_threrhold = 0; //freezeの閾値
-
-		bool is_fallable = false; // 落ちない
-		bool is_kinematic = false;// 影響うけない(fallはする)
-		bool is_kinmatic_anglar = false; // ほかの物体からの影響で回転速度が変化しない
-		bool is_kinmatic_linear = false; // ほかの物体からの影響で並進速度が変化しない
-		bool is_moveable = false; // 動かない
-		bool is_hitable = false;  // 衝突しない
-		bool is_static = false;  // static同士はoncoll_enterが使えない けど軽くなる
-		bool is_active = true; //falseの時処理が行われない
-	};
-	//:::::::::::::::::::::::::
-}
+#include "rigitbody_params.h"
 
 namespace Adollib {
 	class Joint_base;
@@ -56,7 +32,7 @@ namespace Adollib {
 		unsigned int ignore_tags = 0; //衝突しないtags(bit)
 
 		//::: unityのphysics部分 分ける必要なんてないやろ ::::
-		Physics_data physics_data;
+		Rigitbody_params physics_data;
 
 		//::: 自身の関わるcontact_pairの情報をメンバに保存するかどうか :::
 		bool is_save_contacted_colls = false;
@@ -119,12 +95,13 @@ namespace Adollib {
 
 		// shapeのアタッチ
 		template<typename T>
-		T* add_shape() {
+		T* add_shape(Physics_function::Shape_InitData* basedata = nullptr) {
 			static_assert(std::is_base_of<Collider_shape, T>::value == true, "template T must inherit Collider_shape");
 
 			T* shape = new T(ALPcollider_ptr);
 
 			auto collider_shape = static_cast<Collider_shape*>(shape);
+			if (basedata != nullptr) collider_shape->initiazlie(basedata);
 
 			add_shape(collider_shape);
 
@@ -160,7 +137,7 @@ namespace Adollib {
 		// Wpos, Worient, Wscale : world transform の初期値
 		// pearent_Worient_inv : 落下方向はWorld座標系での落下方向なので 変化量の算出時に親の回転のinvをかける
 		//:::::::::
-		void awake(const Physics_ID ID, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv);
+		void awake(const Physics_ID ID, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam = true);
 
 		void update();
 

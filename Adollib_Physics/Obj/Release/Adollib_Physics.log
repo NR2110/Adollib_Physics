@@ -1,8 +1,14 @@
-﻿  closest_func.cpp
-  closest_func_SIM.cpp
-  complex.cpp
-  crossing_func.cpp
-  crossing_func_SIM.cpp
+﻿  ALP__physics_manager.cpp
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(126,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(127,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(169,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(170,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(171,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
   ALP_broadphase.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
@@ -127,18 +133,6 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(17
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_resolve_contact_SIM.cpp(467,12): warning C4101: 'position': ローカル変数は 1 度も使われていません。
-  ALP__physics_manager.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(126,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(127,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(169,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(170,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(171,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  balljoint.cpp
   collider.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
@@ -151,7 +145,6 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(17
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\collider.cpp(111,45): warning C4267: 'return': 'size_t' から 'const int' に変換しました。データが失われているかもしれません。
-  コンパイル中...
   collider_shape.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
@@ -163,7 +156,7 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(17
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  conejoint.cpp
+  coneTwistjoint.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(126,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
@@ -174,7 +167,7 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(17
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  coneTwistjoint.cpp
+  conejoint.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(126,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
@@ -219,17 +212,7 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(17
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  ray.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(126,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(127,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(169,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(170,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(171,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(176,1): warning C4267: '=': 'size_t' から 'Adollib::Physics_function::u_int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(229,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\shape_meshcoll.h(230,1): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  コンパイル中...
   twistjoint.cpp
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(9): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください

@@ -2,6 +2,7 @@
 
 #include "Math/math.h"
 #include "collider_types.h"
+#include "shape_initalizedata.h"
 
 namespace Adollib {
 	namespace Physics_function {
@@ -110,8 +111,7 @@ namespace Adollib {
 			adapt_Colliderdata();
 		};
 
-		// ヒエラルキーへの表示
-		virtual void Update_hierarchy(int hierarchy_num = 0) = 0;
+		virtual void initiazlie(Physics_function::Shape_InitData* base) = 0;
 
 		// DOPの更新
 		virtual void update_dop14() = 0;

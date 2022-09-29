@@ -190,8 +190,10 @@
     <ClInclude Include="Inc\math\vector.h" />
     <ClInclude Include="Inc\math\vectorSIM_e.h" />
     <ClInclude Include="Inc\ray.h" />
+    <ClInclude Include="Inc\rigitbody_params.h" />
     <ClInclude Include="Inc\shape_box.h" />
     <ClInclude Include="Inc\shape_capsule.h" />
+    <ClInclude Include="Inc\shape_initalizedata.h" />
     <ClInclude Include="Inc\shape_meshcoll.h" />
     <ClInclude Include="Inc\shape_plane.h" />
     <ClInclude Include="Inc\shape_sphere.h" />

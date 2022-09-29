@@ -23,20 +23,10 @@ namespace Adollib {
 			local_scale = Physics_function::Vector3(r);
 		};
 
-		void Update_hierarchy(int hierarchy_num) override {
-			//float ave = (r);
-			////position
-			//{
-			//	float vec3[3] = { center.x,center.y,center.z };
-			//	ImGui::DragFloat3((std::string("center##") + std::to_string(hierarchy_num)).c_str(), vec3, ave * 0.001f, 0, 0, "%.2f");
-			//	center = Vector3(vec3[0], vec3[1], vec3[2]);
-			//}
-			////scale
-			//{
-			//	ImGui::DragFloat3((std::string("radius##") + std::to_string(hierarchy_num)).c_str(), &r, ave * 0.001f, 0, 0, "%.2f");
-			//}
-		};
-
+		void initiazlie(Physics_function::Shape_InitData* base) override {
+			center = base->center;
+			r = base->radius;
+		}
 
 		void update_dop14() override {
 			dop14.pos = world_position();
