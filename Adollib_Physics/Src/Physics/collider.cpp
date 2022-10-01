@@ -30,27 +30,27 @@ const bool Collider::concoll_enter(const Collider_tagbit tag_name) {
 }
 
 void Collider::add_force(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_force_local) {
-	if (delta_time > inv60)return;
+	if (delta_time > inv60 * 10)return;
 	const Vector3& force_casted = force;
 	ALPphysics_ptr->add_force(force_casted * delta_time, is_force_local);
 }
 void Collider::add_force(const DirectX::XMFLOAT3& force, const DirectX::XMFLOAT3& position, const float& delta_time, const bool& is_position_local, const bool& is_force_local) {
-	if (delta_time > inv60)return;
+	if (delta_time > inv60 * 10)return;
 	const Vector3& force_casted = force;
 	ALPphysics_ptr->add_force(force_casted * delta_time, position, is_position_local, is_force_local);
 }
 void Collider::add_torque(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_local) {
-	if (delta_time > inv60)return;
+	if (delta_time > inv60 * 10)return;
 	const Vector3& force_casted = force;
 	ALPphysics_ptr->add_torque(force_casted * delta_time, is_local);
 }
 void Collider::add_linear_acc(const DirectX::XMFLOAT3& acc, const float& delta_time) {
-	if (delta_time > inv60)return;
+	if (delta_time > inv60 * 10)return;
 	const Vector3& acc_casted = acc;
 	ALPphysics_ptr->add_linear_acc(acc_casted * delta_time);
 }
 void Collider::add_angula_acc(const DirectX::XMFLOAT3& acc, const float& delta_time) {
-	if (delta_time > inv60)return;
+	if (delta_time > inv60 * 10)return;
 	const Vector3& acc_casted = acc;
 	ALPphysics_ptr->add_angula_acc(acc_casted * delta_time);
 }
