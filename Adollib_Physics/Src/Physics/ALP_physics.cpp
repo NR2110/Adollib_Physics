@@ -105,8 +105,8 @@ void ALP_Physics::reset_force() {
 	linear_velocity_ = Vector3(0, 0, 0);
 	angula_velocity_ = Vector3(0, 0, 0);
 
-	old_linear_velocity_ = Vector3(0, 0, 0);
-	old_angula_velocity_ = Vector3(0, 0, 0);
+	linear_velocity_buffer_ = Vector3(0, 0, 0);
+	angula_velocity_buffer_ = Vector3(0, 0, 0);
 
 	accumulated_force = Vector3(0, 0, 0);
 	accumulated_torque = Vector3(0, 0, 0);
@@ -125,16 +125,16 @@ void ALP_Physics::apply_external_force(float duration, const float timeratio_60)
 
 	std::lock_guard <std::mutex> lock(mtx);
 
-	old_angula_velocity_ = angula_velocity_;
-	old_linear_velocity_ = linear_velocity_;
-
 	if (is_movable()) {
+		linear_velocity_ = linear_velocity_buffer_;
+		angula_velocity_ = angula_velocity_buffer_;
+
 		// —Í‚ðŠ’è‚Ì•b”‚Ì‚Ì—Ê‚É’¼‚·
 		//accumulated_force *= timeratio_60;
 		//accumulated_torque *= timeratio_60;
 
-		angula_velocity_ = angula_velocity_ * pow(1 - angula_drag, duration);
 		linear_velocity_ = linear_velocity_ * pow(1 - linear_drag, duration);
+		angula_velocity_ = angula_velocity_ * pow(1 - angula_drag, duration);
 
 		const float inv_mass = 1 / inertial_mass;
 
@@ -177,12 +177,15 @@ void ALP_Physics::apply_external_force(float duration, const float timeratio_60)
 		if (linear_velocity_.norm() > max_linear_velocity * max_linear_velocity) linear_velocity_ = linear_velocity_.unit_vect() * max_linear_velocity;
 		if (angula_velocity_.norm() > max_angula_velocity * max_angula_velocity) angula_velocity_ = angula_velocity_.unit_vect() * max_angula_velocity;
 
+
+		linear_velocity_buffer_ = linear_velocity_;
+		angula_velocity_buffer_ = angula_velocity_;
 	}
 	else {
 		linear_velocity_ = Vector3(0, 0, 0);
 		angula_velocity_ = Vector3(0, 0, 0);
-		old_linear_velocity_ = Vector3(0, 0, 0);
-		old_angula_velocity_ = Vector3(0, 0, 0);
+		linear_velocity_buffer_ = Vector3(0, 0, 0);
+		angula_velocity_buffer_ = Vector3(0, 0, 0);
 	}
 
 	//‰Á‘¬‚ð0‚É‚·‚é
@@ -216,7 +219,7 @@ void ALP_Physics::integrate(float duration) {
 		is_sleep_ = false;
 	}
 
-	ALPcollider->integrate(duration, linear_velocity_, angula_velocity_, old_linear_velocity_, old_angula_velocity_);
+	ALPcollider->integrate(duration, linear_velocity_, angula_velocity_, linear_velocity_buffer_, angula_velocity_buffer_);
 
 }
 

@@ -63,15 +63,15 @@ void Collider::add_angula_acc(const DirectX::XMFLOAT3& acc, const float& delta_t
 #pragma region ALPphysics
 //::::::::::::::::::::::::::::::::::::::::::::
 
-const DirectX::XMFLOAT3 Collider::linear_velocity() const { return ALPphysics_ptr->linear_velocity(); }
-const DirectX::XMFLOAT3 Collider::angula_velocity() const { return ALPphysics_ptr->angula_velocity(); }
+const DirectX::XMFLOAT3 Collider::linear_velocity() const { return ALPphysics_ptr->linear_velocity_buffer(); }
+const DirectX::XMFLOAT3 Collider::angula_velocity() const { return ALPphysics_ptr->angula_velocity_buffer(); }
 const void Collider::linear_velocity(DirectX::XMFLOAT3 v) {
-	ALPphysics_ptr->set_linear_velocity(v);
-	ALPphysics_ptr->set_old_linear_velocity(v);
+	//ALPphysics_ptr->set_linear_velocity(v);
+	ALPphysics_ptr->set_linear_velocity_buffer(v);
 }
 const void Collider::angula_velocity(DirectX::XMFLOAT3 v) {
-	ALPphysics_ptr->set_angula_velocity(v);
-	ALPphysics_ptr->set_old_angula_velocity(v);
+	//ALPphysics_ptr->set_angula_velocity(v);
+	ALPphysics_ptr->set_angula_velocity_buffer(v);
 }
 void Collider::reset_force() { ALPphysics_ptr->reset_force(); };
 

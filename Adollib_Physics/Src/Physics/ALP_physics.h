@@ -91,11 +91,11 @@ namespace Adollib {
 
 		private:
 			//::: 見せるだけ :::::::::::::::::::::::::
-			Vector3 linear_velocity_;//並進速度
+			Vector3 linear_velocity_; //並進速度
 			Vector3 angula_velocity_; //回転速度
 
-			Vector3 old_linear_velocity_;//並進速度
-			Vector3 old_angula_velocity_; //回転速度
+			Vector3 linear_velocity_buffer_; //並進速度 ユーザー入力用
+			Vector3 angula_velocity_buffer_; //回転速度 ユーザー入力用
 
 			bool is_sleep_ = false; //sleep状態かのflag
 			float sleep_timer = 0; //
@@ -105,8 +105,8 @@ namespace Adollib {
 		public:
 			const Vector3& linear_velocity() const { return linear_velocity_; };
 			const Vector3& angula_velocity() const { return angula_velocity_; };
-			const Vector3& old_linear_velocity() const { return old_linear_velocity_; };
-			const Vector3& old_angula_velocity() const { return old_angula_velocity_; };
+			const Vector3& linear_velocity_buffer() const { return linear_velocity_buffer_; };
+			const Vector3& angula_velocity_buffer() const { return angula_velocity_buffer_; };
 			const bool& is_sleep()const { return is_sleep_; };
 
 		private:
@@ -140,9 +140,9 @@ namespace Adollib {
 			// 角速度の指定
 			void set_angula_velocity(const Vector3& vec) { std::lock_guard <std::mutex> lock(mtx); angula_velocity_ = vec; };
 			// old並進速度の指定
-			void set_old_linear_velocity(const Vector3& old_vec) { std::lock_guard <std::mutex> lock(mtx); old_linear_velocity_ += old_vec; };
+			void set_linear_velocity_buffer(const Vector3& old_vec) { std::lock_guard <std::mutex> lock(mtx); linear_velocity_buffer_ = old_vec; };
 			// old角速度の指定
-			void set_old_angula_velocity(const Vector3& old_vec) { std::lock_guard <std::mutex> lock(mtx); old_angula_velocity_ += old_vec; };
+			void set_angula_velocity_buffer(const Vector3& old_vec) { std::lock_guard <std::mutex> lock(mtx); angula_velocity_buffer_ = old_vec; };
 
 			// 速度制限を行う
 			void set_max_linear_velocity(const float& max_scalar) {/*std::lock_guard <std::mutex> lock(mtx);*/ max_linear_velocity = max_scalar; }; //max_linear_velocityにphsicsが値を入れないためmutexでlockしない

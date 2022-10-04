@@ -679,13 +679,13 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			Vector3 linervec;
 			XMStoreFloat3(&linervec, coll->get_ALPphysics()->solve->delta_LinearVelocity);
 			coll->get_ALPphysics()->set_linear_velocity(coll->get_ALPphysics()->linear_velocity() + linervec);
-			coll->get_ALPphysics()->set_old_linear_velocity(coll->get_ALPphysics()->old_linear_velocity() + linervec);
+			coll->get_ALPphysics()->set_linear_velocity_buffer(coll->get_ALPphysics()->linear_velocity_buffer() + linervec);
 		}
 		if (coll->get_ALPphysics()->is_kinmatic_anglar) {
 			Vector3 anglvec;
 			XMStoreFloat3(&anglvec, coll->get_ALPphysics()->solve->delta_AngulaVelocity);
 			coll->get_ALPphysics()->set_angula_velocity(coll->get_ALPphysics()->angula_velocity() + anglvec);
-			coll->get_ALPphysics()->set_old_angula_velocity(coll->get_ALPphysics()->old_angula_velocity() + anglvec);
+			coll->get_ALPphysics()->set_angula_velocity_buffer(coll->get_ALPphysics()->angula_velocity_buffer() + anglvec);
 		}
 
 		coll->get_ALPphysics()->solve = nullptr;
