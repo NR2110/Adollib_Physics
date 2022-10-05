@@ -106,10 +106,6 @@ namespace Adollib {
 			return (!(*this == M));
 		}
 
-		inline DirectX::XMMATRIX Matrix33::get_XMMATRIX() {
-			return DirectX::XMLoadFloat3x3(this);
-		}
-
 #pragma endregion
 		//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 

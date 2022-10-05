@@ -413,8 +413,8 @@ bool sat_obb_Triangle(
 	for (int OB1 = 0; OB1 < 3; OB1++) {
 		for (int OB2 = 0; OB2 < 3; OB2++) {
 
-			const XMVECTOR& tri_vertex_p0 = XMLoadFloat3(&mesh->vertices[mesh->edges[triangle.Edge_num[OB2]].vertexID[0]]);
-			const XMVECTOR& tri_vertex_p1 = XMLoadFloat3(&mesh->vertices[mesh->edges[triangle.Edge_num[OB2]].vertexID[1]]);
+			const XMVECTOR& tri_vertex_p0 = XMVECTOR(mesh->vertices[mesh->edges[triangle.Edge_num[OB2]].vertexID[0]]);
+			const XMVECTOR& tri_vertex_p1 = XMVECTOR(mesh->vertices[mesh->edges[triangle.Edge_num[OB2]].vertexID[1]]);
 
 			const XMVECTOR& world_tri_vertex_p0 = XMVector3Rotate(tri_vertex_p0 * triangle.world_scale, triangle.world_orientation);
 			const XMVECTOR& world_tri_vertex_p1 = XMVector3Rotate(tri_vertex_p1 * triangle.world_scale, triangle.world_orientation);
@@ -509,7 +509,7 @@ bool sat_obb_capsule(
 	//boxの軸にcupsuleを投影
 	for (int i = 0; i < 3; i++) {
 
-		const XMVECTOR axis = XMLoadFloat3(&DOP::AABB_axis[i]);
+		const XMVECTOR axis = XMVECTOR(DOP::AABB_axis[i]);
 
 		float ra = obb.half_width[i];
 		float rb = fabsf(XMVectorGetX(XMVector3Dot(axis, capsule.y_axis))) * capsule.hight + capsule.r;
@@ -553,9 +553,9 @@ bool sat_obb_capsule(
 			const XMVECTOR axis = XMVector3Normalize(capsule_pos - box_pos);
 
 			float ra =
-				fabsf(obb.half_width[0] * XMVector3Dot(axis, XMLoadFloat3(&DOP::AABB_axis[0])).m128_f32[0]) +
-				fabsf(obb.half_width[1] * XMVector3Dot(axis, XMLoadFloat3(&DOP::AABB_axis[1])).m128_f32[0]) +
-				fabsf(obb.half_width[2] * XMVector3Dot(axis, XMLoadFloat3(&DOP::AABB_axis[2])).m128_f32[0]);
+				fabsf(obb.half_width[0] * XMVector3Dot(axis, XMVECTOR(DOP::AABB_axis[0])).m128_f32[0]) +
+				fabsf(obb.half_width[1] * XMVector3Dot(axis, XMVECTOR(DOP::AABB_axis[1])).m128_f32[0]) +
+				fabsf(obb.half_width[2] * XMVector3Dot(axis, XMVECTOR(DOP::AABB_axis[2])).m128_f32[0]);
 			float rb = fabsf(XMVector3Dot(axis, capsule.y_axis).m128_f32[0] * capsule.hight) + capsule.r;
 
 			float penetration = ra + rb - fabsf(XMVector3Dot(axis, distCapsuleToObb).m128_f32[0]);
@@ -892,8 +892,8 @@ bool sat_obb_convex_mesh(const OBB_struct& obb, const Collider_shape* mesh,
 bool Physics_function::generate_contact_sphere_sphere(const Collider_shape* SA, const Collider_shape* SB, Contacts::Contact_pair*& pair, bool& is_crossing) {
 	using namespace DirectX;
 
-	DirectX::XMVECTOR pA = DirectX::XMLoadFloat3(&SA->world_position());
-	DirectX::XMVECTOR pB = DirectX::XMLoadFloat3(&SB->world_position());
+	DirectX::XMVECTOR pB = DirectX::XMVECTOR(SB->world_position());
+	DirectX::XMVECTOR pA = DirectX::XMVECTOR(SA->world_position());
 
 	//AddContact用の変数
 	bool is_AC = false;
@@ -908,8 +908,8 @@ bool Physics_function::generate_contact_sphere_sphere(const Collider_shape* SA, 
 	n = DirectX::XMVector3Normalize(n);
 
 	if (length < SA->world_scale().x + SB->world_scale().x) {
-		DirectX::XMVECTOR quat_A = DirectX::XMLoadFloat4(&Quaternion(SA->world_orientation()).inverse());
-		DirectX::XMVECTOR quat_B = DirectX::XMLoadFloat4(&Quaternion(SB->world_orientation()).inverse());
+		DirectX::XMVECTOR quat_A = DirectX::XMVECTOR(Quaternion(SA->world_orientation()).inverse());
+		DirectX::XMVECTOR quat_B = DirectX::XMVECTOR(Quaternion(SB->world_orientation()).inverse());
 
 		//DirectX::XMVector3Rotate
 		//衝突していたらContactオブジェクトを生成用に準備する
@@ -1124,12 +1124,12 @@ bool Physics_function::generate_contact_sphere_box(const Collider_shape* sphere,
 bool Physics_function::generate_contact_sphere_capsule(const Collider_shape* sphere, const Collider_shape* capsule, Contacts::Contact_pair*& pair, bool& is_crossing) {
 	using namespace DirectX;
 
-	const XMVECTOR sphere_wpos = XMLoadFloat3(&sphere->world_position());
-	const XMVECTOR capsule_wpos = XMLoadFloat3(&capsule->world_position());
+	const XMVECTOR sphere_wpos =  XMVECTOR(sphere->world_position());
+	const XMVECTOR capsule_wpos = XMVECTOR(capsule->world_position());
 
-	const XMVECTOR capsule_worient = XMLoadFloat4(&capsule->world_orientation());
-	const XMVECTOR capsule_worient_inv = XMLoadFloat4(&capsule->world_orientation().inverse());
-	const XMVECTOR sphere_worient_inv = XMLoadFloat4(&sphere->world_orientation().inverse());
+	const XMVECTOR capsule_worient = XMVECTOR(capsule->world_orientation());
+	const XMVECTOR capsule_worient_inv = XMVECTOR(capsule->world_orientation().inverse());
+	const XMVECTOR sphere_worient_inv = XMVECTOR(sphere->world_orientation().inverse());
 
 
 
@@ -1148,7 +1148,7 @@ bool Physics_function::generate_contact_sphere_capsule(const Collider_shape* sph
 	// sphereの中心点とcapsuleの直線の最近点を求める
 	float s;
 	Vector3 y1 = Vector3(0, 1, 0);
-	XMVECTOR y1_SIM = XMLoadFloat3(&y1);
+	XMVECTOR y1_SIM = XMVECTOR(y1);
 	Closest_func_SIM::get_closestP_point_line(sphere_pos_capcoord, XMVectorZero(), y1_SIM, s);
 	//s = XMVectorGetX(XMVector3Dot(y1_SIM, sphere_pos_capcoord - XMVectorZero()) / XMVector3Dot(y1_SIM, y1_SIM));
 	s = ALmax(ALmin(s, +capsule->world_scale().y), -capsule->world_scale().y); //capsuleの長さにクランプ
@@ -1258,11 +1258,11 @@ bool Physics_function::generate_contact_sphere_mesh(const Collider_shape* sphere
 	else {
 		//球とmeshの衝突判定を行う
 
-		const XMVECTOR& mesh_Wscale = XMLoadFloat3(&mesh->world_scale());
-		const XMVECTOR& mesh_Wpos = XMLoadFloat3(&mesh->world_position());
-		const XMVECTOR& mesh_Worient = XMLoadFloat4(&mesh->world_orientation());
+		const XMVECTOR& mesh_Wscale = XMVECTOR(mesh->world_scale());
+		const XMVECTOR& mesh_Wpos = XMVECTOR(mesh->world_position());
+		const XMVECTOR& mesh_Worient = XMVECTOR(mesh->world_orientation());
 
-		XMVECTOR sphere_pos_meshcoord = XMVector3Rotate(XMLoadFloat3(&(sphere->world_position() - mesh->world_position())), XMLoadFloat4(&mesh->world_orientation().inverse())); //mesh座標系でのsphereのpos
+		XMVECTOR sphere_pos_meshcoord = XMVector3Rotate(XMVECTOR((sphere->world_position() - mesh->world_position())), XMVECTOR(mesh->world_orientation().inverse())); //mesh座標系でのsphereのpos
 
 		float min_dis = sphere->world_scale().x;//最低距離をsphereの半径に
 		XMVECTOR closest_point; //mesh上の最近点
@@ -1271,10 +1271,10 @@ bool Physics_function::generate_contact_sphere_mesh(const Collider_shape* sphere
 
 		//球とmeshの判定
 		for (const auto& faset : mesh->get_mesh_data()->facets) {
-			const XMVECTOR& faset_normal = XMLoadFloat3(&faset.normal);
-			const XMVECTOR& faset_vertex0 = XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[0]));
-			const XMVECTOR& faset_vertex1 = XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[1]));
-			const XMVECTOR& faset_vertex2 = XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[2]));
+			const XMVECTOR& faset_normal = XMVECTOR(faset.normal);
+			const XMVECTOR& faset_vertex0 = XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[0]));
+			const XMVECTOR& faset_vertex1 = XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[1]));
+			const XMVECTOR& faset_vertex2 = XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[2]));
 
 			const XMVECTOR& nor = XMVector3Normalize(XMVectorMultiply(faset_normal, mesh_Wscale));
 			const XMVECTOR& mesh_pos0 = XMVectorMultiply(faset_vertex0, mesh_Wscale);
@@ -1316,7 +1316,7 @@ bool Physics_function::generate_contact_sphere_mesh(const Collider_shape* sphere
 		is_AC = true;
 		ACpenetration = sphere->world_scale().x - min_dis;
 		ACnormal = +Wn;
-		ACcontact_pointA = XMVectorScale(XMVector3Rotate(-Wn, XMLoadFloat4(&sphere->world_orientation().inverse())), sphere->world_scale().x);
+		ACcontact_pointA = XMVectorScale(XMVector3Rotate(-Wn, XMVECTOR(sphere->world_orientation().inverse())), sphere->world_scale().x);
 		ACcontact_pointB = closest_point;
 	}
 
@@ -1465,21 +1465,21 @@ bool Physics_function::generate_contact_box_box(const Collider_shape* boxA, cons
 	Matrix33 m;
 	m = boxA->world_orientation().get_rotate_matrix();
 	OBB_struct obbA;
-	obbA.world_position = XMLoadFloat3(&boxA->world_position());
+	obbA.world_position = XMVECTOR(boxA->world_position());
 	obbA.u_axes[0] = XMVectorSet(m._11, m._12, m._13, 0);
 	obbA.u_axes[1] = XMVectorSet(m._21, m._22, m._23, 0);
 	obbA.u_axes[2] = XMVectorSet(m._31, m._32, m._33, 0);
 	obbA.half_width[0] = boxA->world_scale()[0]; obbA.half_width[1] = boxA->world_scale()[1]; obbA.half_width[2] = boxA->world_scale()[2];
-	obbA.world_orientation = XMLoadFloat4(&boxA->world_orientation());
+	obbA.world_orientation = XMVECTOR(boxA->world_orientation());
 
 	m = boxB->world_orientation().get_rotate_matrix();
 	OBB_struct obbB;
-	obbB.world_position = XMLoadFloat3(&boxB->world_position());
+	obbB.world_position = XMVECTOR(boxB->world_position());
 	obbB.u_axes[0] = XMVectorSet(m._11, m._12, m._13, 0);
 	obbB.u_axes[1] = XMVectorSet(m._21, m._22, m._23, 0);
 	obbB.u_axes[2] = XMVectorSet(m._31, m._32, m._33, 0);
 	obbB.half_width[0] = boxB->world_scale()[0]; obbB.half_width[1] = boxB->world_scale()[1]; obbB.half_width[2] = boxB->world_scale()[2];
-	obbB.world_orientation = XMLoadFloat4(&boxB->world_orientation());
+	obbB.world_orientation = XMVECTOR(boxB->world_orientation());
 
 	float smallest_penetration = FLT_MAX;	//最小めり込み量
 	int smallest_axis[2];	//最小めり込み量を得た分離軸の作成に使用した各OBBのローカル軸番号 辺×辺用に2つ
@@ -1487,12 +1487,12 @@ bool Physics_function::generate_contact_box_box(const Collider_shape* boxA, cons
 	if (!sat_obb_obb(obbA, obbB, smallest_penetration, smallest_axis, smallest_case)) return false;
 
 
-	//const XMVECTOR boxA_Wpos    = XMLoadFloat3(&boxA->world_position());
-	//const XMVECTOR boxA_Worient = XMLoadFloat4(&boxA->world_orientation());
-	//const XMVECTOR boxA_Wscale  = XMLoadFloat3(&boxA->world_scale());
-	//const XMVECTOR boxB_Wpos    = XMLoadFloat3(&boxB->world_position());
-	//const XMVECTOR boxB_Worient = XMLoadFloat4(&boxB->world_orientation());
-	//const XMVECTOR boxB_Wscale  = XMLoadFloat3(&boxB->world_scale());
+	//const XMVECTOR boxA_Wpos    = XMVECTOR(boxA->world_position());
+	//const XMVECTOR boxA_Worient = XMVECTOR(boxA->world_orientation());
+	//const XMVECTOR boxA_Wscale  = XMVECTOR(boxA->world_scale());
+	//const XMVECTOR boxB_Wpos    = XMVECTOR(boxB->world_position());
+	//const XMVECTOR boxB_Worient = XMVECTOR(boxB->world_orientation());
+	//const XMVECTOR boxB_Wscale  = XMVECTOR(boxB->world_scale());
 
 	//obbBの頂点がobbAの面と衝突した場合
 	if (smallest_case == SAT_TYPE::POINTB_FACETA)
@@ -1532,7 +1532,7 @@ bool Physics_function::generate_contact_box_box(const Collider_shape* boxA, cons
 		if (cf.z > +box_halfsize.z)p0f.z = +box_halfsize.z;
 		if (cf.z < -box_halfsize.z)p0f.z = -box_halfsize.z;
 
-		XMVECTOR p0 = XMLoadFloat3(&p0f);
+		XMVECTOR p0 = XMVECTOR(p0f);
 		p0 = p0 + XMVectorScale(XMVector3Rotate(-Wn, XMQuaternionInverse(obbA.world_orientation)), smallest_penetration);
 
 		is_AC = true;
@@ -1587,7 +1587,7 @@ bool Physics_function::generate_contact_box_box(const Collider_shape* boxA, cons
 		if (cf.z > +box_halfsize.z)p1f.z = +box_halfsize.z;
 		if (cf.z < -box_halfsize.z)p1f.z = -box_halfsize.z;
 
-		XMVECTOR p1 = XMLoadFloat3(&p1f);
+		XMVECTOR p1 = XMVECTOR(p1f);
 		p1 = p1 + XMVectorScale(XMVector3Rotate(Wn, XMQuaternionInverse(obbB.world_orientation)), smallest_penetration);
 
 		is_AC = true;
@@ -1689,22 +1689,22 @@ bool Physics_function::generate_contact_box_capsule(const Collider_shape* box, c
 	Matrix33 m;
 	m = box->world_orientation().get_rotate_matrix();
 	OBB_struct obb;
-	obb.world_position = XMLoadFloat3(&box->world_position());
+	obb.world_position = XMVECTOR(box->world_position());
 	obb.u_axes[0] = XMVectorSet(m._11, m._12, m._13, 0);
 	obb.u_axes[1] = XMVectorSet(m._21, m._22, m._23, 0);
 	obb.u_axes[2] = XMVectorSet(m._31, m._32, m._33, 0);
 	obb.half_width[0] = box->world_scale()[0];	obb.half_width[1] = box->world_scale()[1];	obb.half_width[2] = box->world_scale()[2];
-	obb.world_orientation = XMLoadFloat4(&box->world_orientation());
+	obb.world_orientation = XMVECTOR(box->world_orientation());
 
 	//capsuleの情報を
 	Capsule_struct capsule_s;
-	capsule_s.world_position = XMLoadFloat3(&capsule->world_position());
+	capsule_s.world_position = XMVECTOR(capsule->world_position());
 	capsule_s.r = capsule->world_scale().x;
 	capsule_s.hight = capsule->world_scale().y;
 
-	XMVECTOR capsule_Worient = XMLoadFloat4(&capsule->world_orientation());
+	XMVECTOR capsule_Worient = XMVECTOR(capsule->world_orientation());
 	const XMVECTOR cuppos_boxcoord = XMVector3Rotate(capsule_s.world_position - obb.world_position, XMQuaternionInverse(obb.world_orientation));
-	const XMVECTOR cupYaxis_boxcoord = XMVector3Rotate(XMLoadFloat3(&Vector3(0, capsule->world_scale().y, 0)), XMQuaternionMultiply(capsule_Worient, XMQuaternionInverse(obb.world_orientation)));
+	const XMVECTOR cupYaxis_boxcoord = XMVector3Rotate(XMVECTOR(Vector3(0, capsule->world_scale().y, 0)), XMQuaternionMultiply(capsule_Worient, XMQuaternionInverse(obb.world_orientation)));
 
 	capsule_s.position = cuppos_boxcoord;
 	capsule_s.y_axis = XMVector3Normalize(cupYaxis_boxcoord);
@@ -1774,9 +1774,9 @@ bool Physics_function::generate_contact_box_capsule(const Collider_shape* box, c
 		//TODO : nearext_vertexは
 
 		//boxの辺とcapusleのy軸で線分の最近点を取る
-		XMVECTOR nearext_vertex_g = XMLoadFloat3(&nearext_vertex); //box線分(nearext_vertex ~ boxseg_g)
+		XMVECTOR nearext_vertex_g = XMVECTOR(nearext_vertex); //box線分(nearext_vertex ~ boxseg_g)
 		nearext_vertex[smallest_axis[0]] *= -1;
-		XMVECTOR boxseg_g = XMLoadFloat3(&nearext_vertex); //box線分(nearext_vertex ~ boxseg_g)
+		XMVECTOR boxseg_g = XMVECTOR(nearext_vertex); //box線分(nearext_vertex ~ boxseg_g)
 
 		//boxの辺,capsuleY軸の最近点を求め、分離軸を求める
 		XMVECTOR box_pos, capsule_pos;
@@ -1798,7 +1798,7 @@ bool Physics_function::generate_contact_box_capsule(const Collider_shape* box, c
 
 
 		{
-			XMVECTOR box_halfsize = XMLoadFloat3(&box->world_scale());
+			XMVECTOR box_halfsize = XMVECTOR(box->world_scale());
 
 			//boxの座標系で計算
 			XMVECTOR closest_box, closest_cap;
@@ -2133,12 +2133,12 @@ bool Physics_function::generate_contact_box_mesh(const Collider_shape* box, cons
 		Matrix33 m;
 		m = box->world_orientation().get_rotate_matrix();
 		OBB_struct obb;
-		obb.world_position = XMLoadFloat3(&box->world_position());
+		obb.world_position = XMVECTOR(box->world_position());
 		obb.u_axes[0] = XMVectorSet(m._11, m._12, m._13, 0);
 		obb.u_axes[1] = XMVectorSet(m._21, m._22, m._23, 0);
 		obb.u_axes[2] = XMVectorSet(m._31, m._32, m._33, 0);
 		obb.half_width[0] = box->world_scale()[0];	obb.half_width[1] = box->world_scale()[1];	obb.half_width[2] = box->world_scale()[2]; obb.half_width[3] = 0;
-		obb.world_orientation = XMLoadFloat4(&box->world_orientation());
+		obb.world_orientation = XMVECTOR(box->world_orientation());
 
 		Triangle_struct smallest_triangle;
 		float smallest_penetration = FLT_MAX;
@@ -2147,17 +2147,17 @@ bool Physics_function::generate_contact_box_mesh(const Collider_shape* box, cons
 
 
 		Triangle_struct triangle;
-		triangle.world_position = XMLoadFloat3(&mesh->world_position());
-		triangle.world_orientation = XMLoadFloat4(&mesh->world_orientation());
-		triangle.world_scale = XMLoadFloat3(&mesh->world_scale());
+		triangle.world_position = XMVECTOR(mesh->world_position());
+		triangle.world_orientation = XMVECTOR(mesh->world_orientation());
+		triangle.world_scale = XMVECTOR(mesh->world_scale());
 
 		std::vector<Crossing_struct> crossing_structs;
 		for (const auto& faset : mesh->get_mesh_data()->facets) {
 
 			auto& vertices = mesh->get_mesh_data()->vertices;
-			triangle.vertex_position[0] = XMLoadFloat3(&(vertices)[faset.vertexID[0]]);
-			triangle.vertex_position[1] = XMLoadFloat3(&(vertices)[faset.vertexID[1]]);
-			triangle.vertex_position[2] = XMLoadFloat3(&(vertices)[faset.vertexID[2]]);
+			triangle.vertex_position[0] = XMVECTOR((vertices)[faset.vertexID[0]]);
+			triangle.vertex_position[1] = XMVECTOR((vertices)[faset.vertexID[1]]);
+			triangle.vertex_position[2] = XMVECTOR((vertices)[faset.vertexID[2]]);
 
 			triangle.world_vertex_position[0] = XMVector3Rotate(XMVectorMultiply(triangle.vertex_position[0], triangle.world_scale), triangle.world_orientation);
 			triangle.world_vertex_position[1] = XMVector3Rotate(XMVectorMultiply(triangle.vertex_position[1], triangle.world_scale), triangle.world_orientation);
@@ -2167,7 +2167,7 @@ bool Physics_function::generate_contact_box_mesh(const Collider_shape* box, cons
 			triangle.Edge_num[1] = faset.edgeID[1];
 			triangle.Edge_num[2] = faset.edgeID[2];
 
-			triangle.normal = XMLoadFloat3(&faset.normal);
+			triangle.normal = XMVECTOR(faset.normal);
 			triangle.world_normal = XMVector3Rotate(triangle.normal, triangle.world_orientation);
 
 			assert(!isnan(triangle.normal.m128_f32[0]));
@@ -2323,8 +2323,8 @@ bool Physics_function::generate_contact_box_mesh(const Collider_shape* box, cons
 			{
 				//Vector3 d = obbB.world_position - obbA.world_position;
 
-				const XMVECTOR& tri_vertex_p0 = XMLoadFloat3(&mesh->get_mesh_data()->vertices[mesh->get_mesh_data()->edges[smallest_triangle.Edge_num[smallest_axis[1]]].vertexID[0]]);
-				const XMVECTOR& tri_vertex_p1 = XMLoadFloat3(&mesh->get_mesh_data()->vertices[mesh->get_mesh_data()->edges[smallest_triangle.Edge_num[smallest_axis[1]]].vertexID[1]]);
+				const XMVECTOR& tri_vertex_p0 = XMVECTOR(mesh->get_mesh_data()->vertices[mesh->get_mesh_data()->edges[smallest_triangle.Edge_num[smallest_axis[1]]].vertexID[0]]);
+				const XMVECTOR& tri_vertex_p1 = XMVECTOR(mesh->get_mesh_data()->vertices[mesh->get_mesh_data()->edges[smallest_triangle.Edge_num[smallest_axis[1]]].vertexID[1]]);
 
 				const XMVECTOR& world_tri_vertex_p0 = XMVector3Rotate(XMVectorMultiply(tri_vertex_p0, triangle.world_scale), triangle.world_orientation);
 				const XMVECTOR& world_tri_vertex_p1 = XMVector3Rotate(XMVectorMultiply(tri_vertex_p1, triangle.world_scale), triangle.world_orientation);
@@ -2448,11 +2448,11 @@ bool Physics_function::generate_contact_capsule_capsule(const Collider_shape* ca
 	XMVECTOR ACcontact_pointB;
 
 	const XMVECTOR capsule_base_axis = XMVectorSet(0, 1, 0, 0);
-	const XMVECTOR capsuleA_Worient = XMLoadFloat4(&capsuleA->world_orientation());
-	const XMVECTOR capsuleB_Worient = XMLoadFloat4(&capsuleB->world_orientation());
+	const XMVECTOR capsuleA_Worient = XMVECTOR(capsuleA->world_orientation());
+	const XMVECTOR capsuleB_Worient = XMVECTOR(capsuleB->world_orientation());
 
-	const XMVECTOR capsuleA_Wpos = XMLoadFloat3(&capsuleA->world_position());
-	const XMVECTOR capsuleB_Wpos = XMLoadFloat3(&capsuleB->world_position());
+	const XMVECTOR capsuleA_Wpos = XMVECTOR(capsuleA->world_position());
+	const XMVECTOR capsuleB_Wpos = XMVECTOR(capsuleB->world_position());
 
 	const XMVECTOR Avec_Wco = XMVectorScale(XMVector3Rotate(capsule_base_axis, capsuleA_Worient), capsuleA->world_scale().y);
 	const XMVECTOR Bvec_Wco = XMVectorScale(XMVector3Rotate(capsule_base_axis, capsuleB_Worient), capsuleB->world_scale().y);
@@ -2582,12 +2582,12 @@ bool Physics_function::generate_contact_capsule_mesh(const Collider_shape* capsu
 		//}
 	}
 	else {
-		const XMVECTOR capusle_Wpos = XMLoadFloat3(&capsule->world_position());
-		const XMVECTOR capusle_Worient = XMLoadFloat4(&capsule->world_orientation());
+		const XMVECTOR capusle_Wpos = XMVECTOR(capsule->world_position());
+		const XMVECTOR capusle_Worient = XMVECTOR(capsule->world_orientation());
 
-		const XMVECTOR mesh_Wpos = XMLoadFloat3(&mesh->world_position());
-		const XMVECTOR mesh_Worient = XMLoadFloat4(&mesh->world_orientation());
-		const XMVECTOR mesh_Wscale = XMLoadFloat3(&mesh->world_scale());
+		const XMVECTOR mesh_Wpos = XMVECTOR(mesh->world_position());
+		const XMVECTOR mesh_Worient = XMVECTOR(mesh->world_orientation());
+		const XMVECTOR mesh_Wscale = XMVECTOR(mesh->world_scale());
 
 		//球とmeshの衝突判定を行う 球がゆがむと面倒なのでscaleはworldのままで
 		const XMVECTOR capsule_pos_meshcoord = XMVector3Rotate(capusle_Wpos - mesh_Wpos, XMQuaternionInverse(mesh_Worient)); //mesh座標系でのsphereのpos
@@ -2602,10 +2602,10 @@ bool Physics_function::generate_contact_capsule_mesh(const Collider_shape* capsu
 		//capsuleとmeshの判定
 		for (const auto& faset : mesh->get_mesh_data()->facets) {
 
-			const XMVECTOR faset_normal = XMLoadFloat3(&faset.normal);
+			const XMVECTOR faset_normal = XMVECTOR(faset.normal);
 
 			const XMVECTOR nor = XMVector3Normalize(XMVectorMultiply(faset_normal, mesh_Wscale));
-			const XMVECTOR mesh_pos0 = XMVectorMultiply(XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[0])), mesh_Wscale);
+			const XMVECTOR mesh_pos0 = XMVectorMultiply(XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[0])), mesh_Wscale);
 			//mesh平面の"d"
 			float dis = XMVector3Dot(nor, mesh_pos0).m128_f32[0];
 
@@ -2628,8 +2628,8 @@ bool Physics_function::generate_contact_capsule_mesh(const Collider_shape* capsu
 			//sphereがMeshの裏にいる または mesh平面とsphereの距離がmin_disより大きければ衝突しない
 			if (dis_sp - dis < 0 || dis_sp - dis > min_dis) continue;
 
-			const XMVECTOR mesh_pos1 = XMVectorMultiply(XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[1])), mesh_Wscale);
-			const XMVECTOR mesh_pos2 = XMVectorMultiply(XMLoadFloat3(&mesh->get_mesh_data()->vertices.at(faset.vertexID[2])), mesh_Wscale);
+			const XMVECTOR mesh_pos1 = XMVectorMultiply(XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[1])), mesh_Wscale);
+			const XMVECTOR mesh_pos2 = XMVectorMultiply(XMVECTOR(mesh->get_mesh_data()->vertices.at(faset.vertexID[2])), mesh_Wscale);
 
 			XMVECTOR closest_p;
 			Closest_func_SIM::get_closestP_segment_triangle(

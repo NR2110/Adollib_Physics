@@ -85,6 +85,7 @@ namespace Adollib {
 			constexpr Vector3(Vector2 xy, float z) noexcept :XMFLOAT3(xy.x, xy.y, z) {};
 			constexpr explicit Vector3(float v) noexcept :XMFLOAT3(v, v, v) {};
 			constexpr Vector3(DirectX::XMFLOAT3 xm) noexcept :XMFLOAT3(xm.x, xm.y, xm.z) {};
+			explicit operator DirectX::XMVECTOR() const noexcept { return DirectX::XMLoadFloat3(this); }
 
 			//vector3(n_vector2 V) :x(V.x), y(V.y), z(0) {};
 

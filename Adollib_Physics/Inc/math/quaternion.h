@@ -37,6 +37,8 @@ namespace Adollib {
 			Quaternion(float w, float x, float y, float z)noexcept;
 
 			Quaternion(const Quaternion& Q)noexcept;
+			explicit operator DirectX::XMVECTOR() const noexcept { return DirectX::XMLoadFloat4(this); }
+
 			~Quaternion() {}
 
 			Quaternion operator+(const Quaternion&) const;

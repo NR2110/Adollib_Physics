@@ -32,14 +32,14 @@ void CalcTangentVector(const Vector3& normal, const XMVECTOR& vrel, XMVECTOR& ta
 		vec = Vector3(0.0f, 1.0f, 0.0f);
 	}
 
-	XMVECTOR xmnorm = XMLoadFloat3(&normal);
-	tangent1 = XMVector3Normalize(XMVector3Cross(xmnorm, XMLoadFloat3(&vec)));
+	XMVECTOR xmnorm = XMVECTOR(normal);
+	tangent1 = XMVector3Normalize(XMVector3Cross(xmnorm, XMVECTOR(vec)));
 	tangent2 = XMVector3Normalize(XMVector3Cross(tangent1, xmnorm));
 #else
 	// 相対速度の方向にtangentをとる(適当な方向にtangentをとるとfrictionがうまく働かなくなる)
 
 	// 二つの相対速度の向きからtangentを求める
-	XMVECTOR xmnorm = XMLoadFloat3(&normal);
+	XMVECTOR xmnorm = XMVECTOR(normal);
 	XMVECTOR dot = XMVector3Dot(xmnorm, vrel);
 
 	if (XMVectorGetX(dot) < 1 + FLT_EPSILON && XMVectorGetX(dot) > 1 - FLT_EPSILON) {
@@ -50,7 +50,7 @@ void CalcTangentVector(const Vector3& normal, const XMVECTOR& vrel, XMVECTOR& ta
 		if (n.norm() < FLT_EPSILON) {
 			vec = Vector3(0.0f, 1.0f, 0.0f);
 		}
-		tangent1 = XMVector3Normalize(XMVector3Cross(xmnorm, XMLoadFloat3(&vec)));
+		tangent1 = XMVector3Normalize(XMVector3Cross(xmnorm, XMVECTOR(vec)));
 		tangent2 = XMVector3Normalize(XMVector3Cross(tangent1, xmnorm));
 
 	}
@@ -81,20 +81,20 @@ bool Calc_joint_effect(ALP_Joint* joint, float inv_duration)
 		if (penetrate == 0)return false;
 
 		//anchorそれぞれのlocal座標
-		const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint->limit_constraint_pos[0]), XMLoadFloat4(&transform[0]->orientation));
-		const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint->limit_constraint_pos[1]), XMLoadFloat4(&transform[1]->orientation));
+		const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint->limit_constraint_pos[0]), XMVECTOR(transform[0]->orientation));
+		const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint->limit_constraint_pos[1]), XMVECTOR(transform[1]->orientation));
 
 		//anchorそれぞれのworld座標
-		position[0] = XMVectorAdd(XMLoadFloat3(&transform[0]->position), rA);
-		position[1] = XMVectorAdd(XMLoadFloat3(&transform[1]->position), rB);
+		position[0] = XMVectorAdd(XMVECTOR(transform[0]->position), rA);
+		position[1] = XMVectorAdd(XMVECTOR(transform[1]->position), rB);
 		XMVECTOR direction = XMVectorSubtract(position[1], position[0]);
 		XMVECTOR distance = XMVector3Length(direction);
 		if (XMVectorGetX(distance) == 0)return false;
 
 		direction = XMVectorDivide(direction, distance);
 
-		XMVECTOR velocityA = XMVectorAdd(XMLoadFloat3(&ALPphysics[0]->linear_velocity()), XMVector3Cross(XMLoadFloat3(&ALPphysics[0]->angula_velocity()), rA));
-		XMVECTOR velocityB = XMVectorAdd(XMLoadFloat3(&ALPphysics[1]->linear_velocity()), XMVector3Cross(XMLoadFloat3(&ALPphysics[1]->angula_velocity()), rB));
+		XMVECTOR velocityA = XMVectorAdd(XMVECTOR(ALPphysics[0]->linear_velocity()), XMVector3Cross(XMVECTOR(ALPphysics[0]->angula_velocity()), rA));
+		XMVECTOR velocityB = XMVectorAdd(XMVECTOR(ALPphysics[1]->linear_velocity()), XMVector3Cross(XMVECTOR(ALPphysics[1]->angula_velocity()), rB));
 		XMVECTOR relativeVelocity = XMVectorSubtract(velocityA, velocityB);
 
 		const float& term1 = ALPphysics[0]->inverse_mass();
@@ -154,14 +154,14 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			SB.delta_LinearVelocity = XMVectorZero();
 			SB.delta_AngulaVelocity = XMVectorZero();
 
-			if (coll->get_ALPphysics()->is_kinmatic_anglar) SB.inv_tensor = XMLoadFloat3x3(&coll->get_ALPphysics()->inverse_inertial_tensor());
-			else SB.inv_tensor = XMLoadFloat3x3(&matrix33_zero());
+			if (coll->get_ALPphysics()->is_kinmatic_anglar) SB.inv_tensor = XMMATRIX(coll->get_ALPphysics()->inverse_inertial_tensor());
+			else SB.inv_tensor = XMMATRIX(matrix33_zero());
 
 			if (coll->get_ALPphysics()->is_kinmatic_linear) SB.inv_mass = coll->get_ALPphysics()->inverse_mass();
 			else SB.inv_mass = 0;
 
-			SB.Worient = XMLoadFloat4(&coll->transform.orientation);
-			SB.Wposition = XMLoadFloat3(&coll->transform.position);
+			SB.Worient = XMVECTOR(coll->transform.orientation);
+			SB.Wposition = XMVECTOR(coll->transform.position);
 
 			SBs.emplace_back(SB);
 			++count;
@@ -224,8 +224,8 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 				auto& constraint = joint->constraint[i];
 
 				//anchorそれぞれのlocal座標
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint_posA), solverbody[0]->Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint_posB), solverbody[1]->Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint_posA), solverbody[0]->Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint_posB), solverbody[1]->Worient);
 
 				//anchorそれぞれのworld座標
 				position[0] = solverbody[0]->Wposition + rA;
@@ -267,8 +267,8 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 
 				direction = XMVectorDivide(direction, distance);
 
-				XMVECTOR velocityA = XMLoadFloat3(&ALPphysics[0]->linear_velocity()) + XMVector3Cross(XMLoadFloat3(&ALPphysics[0]->angula_velocity()), rA);
-				XMVECTOR velocityB = XMLoadFloat3(&ALPphysics[1]->linear_velocity()) + XMVector3Cross(XMLoadFloat3(&ALPphysics[1]->angula_velocity()), rB);
+				XMVECTOR velocityA = XMVECTOR(ALPphysics[0]->linear_velocity()) + XMVector3Cross(XMVECTOR(ALPphysics[0]->angula_velocity()), rA);
+				XMVECTOR velocityB = XMVECTOR(ALPphysics[1]->linear_velocity()) + XMVector3Cross(XMVECTOR(ALPphysics[1]->angula_velocity()), rB);
 				XMVECTOR relativeVelocity = velocityA - velocityB;
 
 				const float& term1 = ALPphysics[0]->inverse_mass();
@@ -325,8 +325,8 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 		for (int C_num = 0; C_num < pair->contacts.contact_num; C_num++) {
 			Contactpoint& cp = pair->contacts.contactpoints[C_num];
 
-			const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&coll[0]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[0]), XMLoadFloat4(&coll[0]->local_orientation)), solverbody[0]->Worient);
-			const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&coll[1]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[1]), XMLoadFloat4(&coll[1]->local_orientation)), solverbody[1]->Worient);
+			const XMVECTOR rA = XMVector3Rotate(XMVECTOR(coll[0]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[0]), XMVECTOR(coll[0]->local_orientation)), solverbody[0]->Worient);
+			const XMVECTOR rB = XMVector3Rotate(XMVECTOR(coll[1]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[1]), XMVECTOR(coll[1]->local_orientation)), solverbody[1]->Worient);
 
 			// 反発係数の獲得
 			// 継続の衝突の場合反発係数を0にする
@@ -335,12 +335,12 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 
 			//衝突時のそれぞれの速度
 			XMVECTOR pdota;
-			pdota = XMVector3Cross(XMLoadFloat3(&ALPphysics[0]->angula_velocity()), rA);
-			pdota = pdota + XMLoadFloat3(&ALPphysics[0]->linear_velocity());
+			pdota = XMVector3Cross(XMVECTOR(ALPphysics[0]->angula_velocity()), rA);
+			pdota = pdota + XMVECTOR(ALPphysics[0]->linear_velocity());
 
 			XMVECTOR pdotb;
-			pdotb = XMVector3Cross(XMLoadFloat3(&ALPphysics[1]->angula_velocity()), rB);
-			pdotb = pdotb + XMLoadFloat3(&ALPphysics[1]->linear_velocity());
+			pdotb = XMVector3Cross(XMVECTOR(ALPphysics[1]->angula_velocity()), rB);
+			pdotb = pdotb + XMVECTOR(ALPphysics[1]->linear_velocity());
 
 			//衝突時の衝突平面法線方向の相対速度(結局衝突に使うのは法線方向への速さ)
 			XMVECTOR vrel = pdota - pdotb;
@@ -360,7 +360,7 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			// Normal
 			{
 				// Baraff[1997]の式(8-18)の分母(denominator)を求める
-				axis = XMLoadFloat3(&cp.normal);
+				axis = XMVECTOR(cp.normal);
 				tA = XMVector3Cross(rA, axis);
 				tB = XMVector3Cross(rB, axis);
 				tA = XMVector3Transform(tA, ALPphysics[0]->solve->inv_tensor);
@@ -446,12 +446,12 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			//衝突点の情報
 			const Contactpoint& cp = pair->contacts.contactpoints[C_num];
 
-			const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&coll[0]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[0]), XMLoadFloat4(&coll[0]->local_orientation)), solverbody[0]->Worient);
-			const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&coll[1]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[1]), XMLoadFloat4(&coll[1]->local_orientation)), solverbody[1]->Worient);
+			const XMVECTOR rA = XMVector3Rotate(XMVECTOR(coll[0]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[0]), XMVECTOR(coll[0]->local_orientation)), solverbody[0]->Worient);
+			const XMVECTOR rB = XMVector3Rotate(XMVECTOR(coll[1]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[1]), XMVECTOR(coll[1]->local_orientation)), solverbody[1]->Worient);
 
 			for (int k = 0; k < 3; k++) {
 				const float& deltaImpulse = cp.constraint[k].accuminpulse;
-				const XMVECTOR axis = XMLoadFloat3(&cp.constraint[k].axis);
+				const XMVECTOR axis = XMVECTOR(cp.constraint[k].axis);
 
 				solverbody[0]->delta_LinearVelocity = solverbody[0]->delta_LinearVelocity + XMVectorScale(axis, deltaImpulse * solverbody[0]->inv_mass);
 				solverbody[0]->delta_AngulaVelocity = solverbody[0]->delta_AngulaVelocity + XMVectorScale(XMVector3Transform(XMVector3Cross(rA, axis), solverbody[0]->inv_tensor), deltaImpulse);
@@ -473,22 +473,22 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			solverbody[0] = ALPphysics[0]->solve;
 			solverbody[1] = ALPphysics[1]->solve;
 
-			const XMVECTOR obj0_Worient = XMLoadFloat4(&transform[0]->orientation);
-			const XMVECTOR obj1_Worient = XMLoadFloat4(&transform[1]->orientation);
+			const XMVECTOR obj0_Worient = XMVECTOR(transform[0]->orientation);
+			const XMVECTOR obj1_Worient = XMVECTOR(transform[1]->orientation);
 
 
 			for (int i = 0; i < joint->anchor_count; i++) {
 				const Vector3 joint_posA = joint->anchor[i].posA;
 				const Vector3 joint_posB = joint->anchor[i].posB;
 
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint_posA), obj0_Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint_posB), obj1_Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint_posA), obj0_Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint_posB), obj1_Worient);
 
 				//衝突点の情報
 				Constraint& constraint = joint->constraint[i];
 
 				const float& deltaImpulse = constraint.accuminpulse;
-				XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+				XMVECTOR axis = XMVECTOR(constraint.axis);
 
 				solverbody[0]->delta_LinearVelocity = solverbody[0]->delta_LinearVelocity + XMVectorScale(axis, deltaImpulse * solverbody[0]->inv_mass);
 				solverbody[0]->delta_AngulaVelocity = solverbody[0]->delta_AngulaVelocity + XMVectorScale(XMVector3Transform(XMVector3Cross(rA, axis), solverbody[0]->inv_tensor), deltaImpulse);
@@ -500,14 +500,14 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 				const Vector3 joint_posA = joint->limit_constraint_pos[0];
 				const Vector3 joint_posB = joint->limit_constraint_pos[1];
 
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint_posA), obj0_Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint_posB), obj1_Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint_posA), obj0_Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint_posB), obj1_Worient);
 
 				//衝突点の情報
 				Constraint& constraint = joint->constraint_limit;
 
 				const float& deltaImpulse = constraint.accuminpulse;
-				XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+				XMVECTOR axis = XMVECTOR(constraint.axis);
 
 				solverbody[0]->delta_LinearVelocity = solverbody[0]->delta_LinearVelocity + XMVectorScale(axis, deltaImpulse * solverbody[0]->inv_mass);
 				solverbody[0]->delta_AngulaVelocity = solverbody[0]->delta_AngulaVelocity + XMVectorScale(XMVector3Transform(XMVector3Cross(rA, axis), solverbody[0]->inv_tensor), deltaImpulse);
@@ -532,11 +532,11 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 				solverbody[0] = ALPphysics[0]->solve;
 				solverbody[1] = ALPphysics[1]->solve;
 
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint_posA), solverbody[0]->Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint_posB), solverbody[1]->Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint_posA), solverbody[0]->Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint_posB), solverbody[1]->Worient);
 
 				Constraint& constraint = joint->constraint_limit;
-				const XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+				const XMVECTOR axis = XMVECTOR(constraint.axis);
 
 				float delta_impulse = constraint.rhs;
 				XMVECTOR delta_velocity[2];
@@ -564,11 +564,11 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 				solverbody[0] = ALPphysics[0]->solve;
 				solverbody[1] = ALPphysics[1]->solve;
 
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&joint_posA), solverbody[0]->Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&joint_posB), solverbody[1]->Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(joint_posA), solverbody[0]->Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(joint_posB), solverbody[1]->Worient);
 
 				Constraint& constraint = joint->constraint[i];
-				const XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+				const XMVECTOR axis = XMVECTOR(constraint.axis);
 
 				float delta_impulse = constraint.rhs;
 				XMVECTOR delta_velocity[2];
@@ -603,12 +603,12 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 				//衝突点の情報
 				Contactpoint& cp = pair->contacts.contactpoints[C_num];
 
-				const XMVECTOR rA = XMVector3Rotate(XMLoadFloat3(&coll[0]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[0]), XMLoadFloat4(&coll[0]->local_orientation)), solverbody[0]->Worient);
-				const XMVECTOR rB = XMVector3Rotate(XMLoadFloat3(&coll[1]->local_position) + XMVector3Rotate(XMLoadFloat3(&cp.point[1]), XMLoadFloat4(&coll[1]->local_orientation)), solverbody[1]->Worient);
+				const XMVECTOR rA = XMVector3Rotate(XMVECTOR(coll[0]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[0]), XMVECTOR(coll[0]->local_orientation)), solverbody[0]->Worient);
+				const XMVECTOR rB = XMVector3Rotate(XMVECTOR(coll[1]->local_position) + XMVector3Rotate(XMVECTOR(cp.point[1]), XMVECTOR(coll[1]->local_orientation)), solverbody[1]->Worient);
 
 				{
 					Constraint& constraint = cp.constraint[0];
-					const XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+					const XMVECTOR axis = XMVECTOR(constraint.axis);
 
 					float delta_impulse = constraint.rhs;
 					XMVECTOR delta_velocity[2];
@@ -632,7 +632,7 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 
 				{
 					Constraint& constraint = cp.constraint[1];
-					XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+					XMVECTOR axis = XMVECTOR(constraint.axis);
 
 					float delta_impulse = constraint.rhs;
 					XMVECTOR delta_velocity[2];
@@ -651,7 +651,7 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 
 				{
 					Constraint& constraint = cp.constraint[2];
-					XMVECTOR axis = XMLoadFloat3(&constraint.axis);
+					XMVECTOR axis = XMVECTOR(constraint.axis);
 
 					float delta_impulse = constraint.rhs;
 					XMVECTOR delta_velocity[2];

@@ -149,7 +149,7 @@ namespace Adollib {
 
 			friend Matrix33 operator*(float S, const Matrix33& M);
 
-			DirectX::XMMATRIX get_XMMATRIX();
+			operator DirectX::XMMATRIX() const noexcept { return DirectX::XMLoadFloat3x3(this);}
 
 		private:
 

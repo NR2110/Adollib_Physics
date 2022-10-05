@@ -4,37 +4,37 @@
   crossing_func.cpp
   crossing_func_SIM.cpp
   ALP_broadphase.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_broadphase.cpp(176,15): warning C4018: '>': signed と unsigned の数値を比較しようとしました。
   ALP_collider.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_contact.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_generate_contact.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_generate_contact_SIM.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_generate_contact_SIM.cpp(506,11): warning C4101: 'axis': ローカル変数は 1 度も使われていません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_generate_contact_SIM.cpp(2214,26): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   ALP_integrate.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_joint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_midphase.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_physics.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_raycast.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_raycast.cpp(119,23): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_raycast.cpp(377,23): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
@@ -51,43 +51,43 @@ C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_raycast
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_raycast.cpp(518,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_raycast.cpp(519,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   ALP_resolve_contact.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ALP_resolve_contact_SIM.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\ALP_resolve_contact_SIM.cpp(467,12): warning C4101: 'position': ローカル変数は 1 度も使われていません。
   ALP__physics_manager.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   balljoint.cpp
   collider.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   コンパイル中...
   collider_shape.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   conejoint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   coneTwistjoint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   hingejoint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Src\Physics\hingejoint.cpp(133,78): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   joint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   joint_base.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   ray.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
   twistjoint.cpp
-C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,29): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(121,57): warning C4150: 'Adollib::Physics_function::Meshcollider_data' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
 C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Inc\collider_shape.h(10): message : 'Adollib::Physics_function::Meshcollider_data' の宣言を確認してください
-  Adollib_Physics.vcxproj -> C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\\Bin\x86\2022\Release\Adollib_Physics.lib
+  Adollib_Physics.vcxproj -> C:\Users\waaaa\Documents\Adollib_Physics\Adollib_Physics\Bin\x86\2022\Release\Adollib_Physics.lib
