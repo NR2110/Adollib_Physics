@@ -154,11 +154,11 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 			SB.delta_LinearVelocity = XMVectorZero();
 			SB.delta_AngulaVelocity = XMVectorZero();
 
-			if (coll->get_ALPphysics()->is_kinmatic_anglar) SB.inv_tensor = XMMATRIX(coll->get_ALPphysics()->inverse_inertial_tensor());
-			else SB.inv_tensor = XMMATRIX(matrix33_zero());
+			if (coll->get_ALPphysics()->is_kinmatic_anglar) SB.inv_tensor = XMMATRIX(matrix33_zero());
+			else	SB.inv_tensor = XMMATRIX(coll->get_ALPphysics()->inverse_inertial_tensor());
 
-			if (coll->get_ALPphysics()->is_kinmatic_linear) SB.inv_mass = coll->get_ALPphysics()->inverse_mass();
-			else SB.inv_mass = 0;
+			if (coll->get_ALPphysics()->is_kinmatic_linear) SB.inv_mass = 0;
+			else	SB.inv_mass = coll->get_ALPphysics()->inverse_mass();
 
 			SB.Worient = XMVECTOR(coll->transform.orientation);
 			SB.Wposition = XMVECTOR(coll->transform.position);
@@ -675,13 +675,13 @@ void Physics_function::resolve_contact(std::list<Physics_function::ALP_Collider*
 	// ‘¬“x‚ÌXV
 	for (auto& coll : ALP_colliders) {
 
-		if (coll->get_ALPphysics()->is_kinmatic_linear) {
+		if (!coll->get_ALPphysics()->is_kinmatic_linear) {
 			Vector3 linervec;
 			XMStoreFloat3(&linervec, coll->get_ALPphysics()->solve->delta_LinearVelocity);
 			coll->get_ALPphysics()->set_linear_velocity(coll->get_ALPphysics()->linear_velocity() + linervec);
 			coll->get_ALPphysics()->set_linear_velocity_buffer(coll->get_ALPphysics()->linear_velocity_buffer() + linervec);
 		}
-		if (coll->get_ALPphysics()->is_kinmatic_anglar) {
+		if (!coll->get_ALPphysics()->is_kinmatic_anglar) {
 			Vector3 anglvec;
 			XMStoreFloat3(&anglvec, coll->get_ALPphysics()->solve->delta_AngulaVelocity);
 			coll->get_ALPphysics()->set_angula_velocity(coll->get_ALPphysics()->angula_velocity() + anglvec);

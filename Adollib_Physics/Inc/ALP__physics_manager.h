@@ -61,8 +61,8 @@ namespace Adollib
 			static constexpr float restitution = 0.1f;	 //”½”­ŒW”
 
 			static constexpr bool is_fallable = true; //—‚¿‚é‚©
-			static constexpr bool is_kinmatic_anglar = true; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å‰ñ“]‘¬“x‚ª•Ï‰»‚µ‚È‚¢
-			static constexpr bool is_kinmatic_linear = true; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å•Ài‘¬“x‚ª•Ï‰»‚µ‚È‚¢
+			static constexpr bool is_kinmatic_anglar = false; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å‰ñ“]‘¬“x‚ª•Ï‰»‚µ‚È‚¢
+			static constexpr bool is_kinmatic_linear = false; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å•Ài‘¬“x‚ª•Ï‰»‚µ‚È‚¢
 			static constexpr bool is_moveable = true;//“®‚­‚©
 			static constexpr bool is_hitable = true;  //Õ“Ë‚µ‚È‚¢
 			static constexpr bool is_static = false; //static“¯m‚ÍÕ“Ë‚¹‚¸ oncoll_enter‚ª”­¶‚µ‚È‚¢ ‚¯‚ÇŒy‚­‚È‚é
