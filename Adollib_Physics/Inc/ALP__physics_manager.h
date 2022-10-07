@@ -107,8 +107,8 @@ namespace Adollib
 			float angula_sleep_threrhold = 0.1f; //freeze‚Ìè‡’l
 
 			bool is_fallable = true; //—‚¿‚é‚©
-			bool is_kinmatic_anglar = true; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å‰ñ“]‘¬“x‚ª•Ï‰»‚µ‚È‚¢
-			bool is_kinmatic_linear = true; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å•Ài‘¬“x‚ª•Ï‰»‚µ‚È‚¢
+			bool is_kinmatic_anglar = false; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å‰ñ“]‘¬“x‚ª•Ï‰»‚µ‚È‚¢
+			bool is_kinmatic_linear = false; //‚Ù‚©‚Ì•¨‘Ì‚©‚ç‚Ì‰e‹¿‚Å•Ài‘¬“x‚ª•Ï‰»‚µ‚È‚¢
 			bool is_moveable = true;//“®‚­‚©
 			bool is_hitable = true;  //Õ“Ë‚µ‚È‚¢
 			bool is_static = false; //static“¯m‚ÍÕ“Ë‚¹‚¸ oncoll_enter‚ª”­¶‚µ‚È‚¢ ‚¯‚ÇŒy‚­‚È‚é
