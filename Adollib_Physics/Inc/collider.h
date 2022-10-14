@@ -44,7 +44,7 @@ namespace Adollib {
 		DirectX::XMFLOAT4 pearent_Worientation_inverse;
 
 	private:
-		Physics_function::ALP_Physics* ALPphysics_ptr = nullptr;
+		Physics_function::ALP_Physics*  ALPphysics_ptr = nullptr;
 		Physics_function::ALP_Collider* ALPcollider_ptr = nullptr;
 
 	public:

@@ -26,6 +26,8 @@ namespace Adollib
 {
 	volatile bool Physics_manager::is_added_ALPcollider = true; //physicsを更新したframeだけtrueになる
 	volatile bool Physics_manager::is_caluculate_physics = true; //trueの時に処理する
+	volatile bool Physics_manager::is_use_fixedupdate = false; //fixedupdateを使用するか するならis_wait_updateを使用
+	volatile bool Physics_manager::is_wait_update = false; //処理後trueになる mainthreadからfalseにすることで処理が再開する
 
 	std::thread Physics_manager::physics_thread; //physicsのthread用
 	bool Physics_manager::is_stop_physics_thread = false; //trueになったときthread_updateを止める
@@ -199,7 +201,7 @@ bool Physics_manager::update()
 		QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&update_end_time));
 		update_time = static_cast<float>(update_end_time.QuadPart - update_start_time.QuadPart) * 0.0000001f;;
 	}
-	else
+	else if(is_use_fixedupdate == false)
 	{
 		float sleep_time = physicsParams.caluculate_time - physicsParams.timeStep - 0.0005f;
 
@@ -504,6 +506,9 @@ void Physics_manager::thread_update() {
 	while (is_stop_physics_thread == false)
 	{
 		update();
+
+		if (is_use_fixedupdate) is_wait_update = true;
+		while (!is_stop_physics_thread && is_use_fixedupdate && is_wait_update) {}
 	}
 }
 
@@ -514,6 +519,7 @@ void Physics_manager::adapt_added_data(bool is_mutex_lock) {
 		for (auto coll : added_buffer_ALP_colliders) {
 			// 追加されたcolliderの初期化&Broadphaseに登録
 			coll->adapt_added_data();
+
 			//coll->copy_transform_gameobject();
 			coll->copy_transform();
 			added_collider_for_insertsort.emplace_back(coll);

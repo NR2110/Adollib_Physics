@@ -171,6 +171,8 @@ namespace Adollib
 		public:
 			static volatile bool is_added_ALPcollider;    //Colliderが追加されたときtrueになる
 			static volatile bool is_caluculate_physics; //trueの時に処理する
+			static volatile bool is_use_fixedupdate; //fixedupdateを使用するか するならis_wait_updateを使用
+			static volatile bool is_wait_update; //処理後trueになる mainthreadからfalseにすることで処理が再開する
 
 
 			// 生成時のphysicsの値

@@ -29,8 +29,15 @@ c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\hingejoint.ob
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\conetwistjoint.obj
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\conejoint.obj
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\collider_shape.obj
-c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\win32\2022\debug\adollib_physics.lib
-c:\users\waaaa\documents\adollib_physics\adollib_physics\\bin\win32\2022\debug\adollib_physics.lib
+c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\shape_croth.obj
+c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\collider_croth.obj
+c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\x64\2022\debug\adollib_physics.idb
+c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\x86\2022\debug\adollib_physics.idb
+c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\x64\2022\debug\adollib_physics.pdb
+c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\x86\2022\debug\adollib_physics.pdb
+c:\users\waaaa\documents\adollib_physics\adollib_physics\bin\x64\2022\debug\adollib_physics.lib
+c:\users\waaaa\documents\adollib_physics\adollib_physics\\bin\x64\2022\debug\adollib_physics.pdb
+c:\users\waaaa\documents\adollib_physics\adollib_physics\\obj\debug\adollib_physics.vcxproj.filelistabsolute.txt
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\adollib_physics.tlog\cl.command.1.tlog
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\adollib_physics.tlog\cl.read.1.tlog
 c:\users\waaaa\documents\adollib_physics\adollib_physics\obj\debug\adollib_physics.tlog\cl.write.1.tlog
