@@ -266,7 +266,7 @@ void ALP_Collider::add_contacted_collider(const Contacts::Contact_pair* pair, co
 		//shapeÀ•WŒn‚©‚çGOÀ•WŒn‚É’¼‚µ‚Ä•Û‘¶(c‚ğ‡‚í‚¹‚½‚¢‚©‚ç"0+"‚ğ“ü‚ê‚Ä‚¢‚é)
 		data.contacted_pointA = vector3_quatrotate(contact_point.point[0 + num], pair->body[0 + num]->local_orientation) + Vector3(pair->body[0 + num]->local_position) * pair->body[0 + num]->get_ALPcollider()->transform.scale;
 		data.contacted_pointB = vector3_quatrotate(contact_point.point[1 - num], pair->body[1 - num]->local_orientation) + Vector3(pair->body[1 - num]->local_position) * pair->body[1 - num]->get_ALPcollider()->transform.scale;
-		data.normal = contact_point.normal; //ƒ[ƒ‹ƒhî•ñ
+		data.normal = (num == 0 ? contact_point.normal : -contact_point.normal);
 		data.penetrate = contact_point.distance;
 
 		contacted_colliders[contacted_colliders_num].emplace_back(data);
