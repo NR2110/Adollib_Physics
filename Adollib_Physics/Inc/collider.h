@@ -68,9 +68,6 @@ namespace Adollib {
 		void set_ptr_to_joint(Physics_function::ALP_Joint* joint_base);
 
 	public:
-		// Œğ·‚µ‚Ä‚¢‚½‚çtrue‚ğ•Ô‚·
-		const bool concoll_enter(const unsigned int tag_name);
-
 		// •ÀiˆÚ“®‚É—Í‚ğ‰Á‚¦‚é
 		void add_force(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_force_local = false);
 

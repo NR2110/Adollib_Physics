@@ -67,14 +67,8 @@ void Physics_function::generate_contact(std::vector<Contacts::Contact_pair*>& pa
 
 		//‚à‚µŒð·‚µ‚Ä‚¢‚½‚ç‚»‚ê‚¼‚ê‚Ìoncoll_bit‚É‘ŠŽè‚Ìtag‚ð’Ç‰Á
 		if (is_crossing) {
-			pair->body[0]->get_ALPcollider()->add_oncoll_bits(pair->body[1]->get_ALPcollider()->tag);
-			pair->body[1]->get_ALPcollider()->add_oncoll_bits(pair->body[0]->get_ALPcollider()->tag);
-
-			if (!pair->check_oncoll_only) {
-				pair->body[0]->get_ALPcollider()->add_contacted_collider(pair, 0); //Ž©g‚ÌŠÖ‚í‚éÕ“Ëî•ñ‚ð•Û‘¶‚·‚é
-				pair->body[1]->get_ALPcollider()->add_contacted_collider(pair, 1);
-			}
-
+			pair->body[0]->get_ALPcollider()->add_contacted_collider(pair, 0); //Ž©g‚ÌŠÖ‚í‚éÕ“Ëî•ñ‚ð•Û‘¶‚·‚é
+			pair->body[1]->get_ALPcollider()->add_contacted_collider(pair, 1);
 		}
 
 
@@ -1124,7 +1118,7 @@ bool Physics_function::generate_contact_sphere_box(const Collider_shape* sphere,
 bool Physics_function::generate_contact_sphere_capsule(const Collider_shape* sphere, const Collider_shape* capsule, Contacts::Contact_pair*& pair, bool& is_crossing) {
 	using namespace DirectX;
 
-	const XMVECTOR sphere_wpos =  XMVECTOR(sphere->world_position());
+	const XMVECTOR sphere_wpos = XMVECTOR(sphere->world_position());
 	const XMVECTOR capsule_wpos = XMVECTOR(capsule->world_position());
 
 	const XMVECTOR capsule_worient = XMVECTOR(capsule->world_orientation());

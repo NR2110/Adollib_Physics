@@ -15,13 +15,6 @@ using namespace Physics_function;
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #pragma region Collider
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const bool ALP_Collider::concoll_enter(const unsigned int tag_name) {
-	//std::lock_guard <std::mutex> lock(mtx); //oncoll_check_bitsはphysicsで変更されないため
-
-	oncoll_check_bits |= tag_name;
-	return (oncoll_bits[1 - oncoll_bits_num] & tag_name);
-}
-
 void ALP_Collider::update_world_trans() {
 	std::lock_guard <std::mutex> lock(mtx); //userの任意のタイミングで呼ぶことが可能なためshapesのaddedの処理が重なる可能性がある
 
@@ -44,9 +37,6 @@ void ALP_Collider::update_contacted_collider_data() {
 
 	contacted_colliders_num = 1 - contacted_colliders_num;
 	contacted_colliders[contacted_colliders_num].clear();
-
-	oncoll_bits_num = 1 - oncoll_bits_num;
-	oncoll_bits[oncoll_bits_num] = 0;
 }
 
 void ALP_Collider::update_world_trans_contain_added() {

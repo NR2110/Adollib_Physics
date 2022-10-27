@@ -25,10 +25,6 @@ using namespace Physics_function;
 #pragma region Rigitbody
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-const bool Collider::concoll_enter(const Collider_tagbit tag_name) {
-	return ALPcollider_ptr->concoll_enter(tag_name);
-}
-
 void Collider::add_force(const DirectX::XMFLOAT3& force, const float& delta_time, const bool& is_force_local) {
 	if (delta_time > inv60 * 10)return;
 	const Vector3& force_casted = force;
