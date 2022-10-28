@@ -416,8 +416,11 @@ void Physics_function::BroadMidphase(
 		// if (collA->get_ALPphysics()->is_sleep == true && collB->get_ALPphysics()->is_sleep == true)is_generate_contact = false;
 
 		// ƒ^ƒO‚É‚æ‚éÕ“Ë‚Ì¥”ñ
-		if (collA->get_ALPphysics()->is_hitable == false || (meshA->get_tag() & meshB->get_ignore_tags())) is_generate_contact = false;
-		if (collB->get_ALPphysics()->is_hitable == false || (meshB->get_tag() & meshA->get_ignore_tags())) is_generate_contact = false;
+		if (meshA->get_tag() & meshB->get_ignore_tags()) return;
+		if (meshB->get_tag() & meshA->get_ignore_tags()) return;
+
+		if (collA->get_ALPphysics()->is_hitable == false) is_generate_contact = false;
+		if (collB->get_ALPphysics()->is_hitable == false) is_generate_contact = false;
 
 
 		bool check_oncoll_only = false;
