@@ -424,7 +424,7 @@ void Physics_function::BroadMidphase(
 		if (is_generate_contact == false) {
 			//if (collA->get_oncoll_check_bits() & meshB->get_tag())check_oncoll_only = true;
 			//if (collB->get_oncoll_check_bits() & meshA->get_tag())check_oncoll_only = true;
-			if (collA->is_save_contacted_colls && collB->is_save_contacted_colls)check_oncoll_only = true;
+			if (collA->is_save_contacted_colls || collB->is_save_contacted_colls)check_oncoll_only = true;
 		}
 		if (is_generate_contact == false && check_oncoll_only == false)return;
 

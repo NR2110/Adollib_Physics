@@ -69,6 +69,8 @@ void Physics_function::generate_contact(std::vector<Contacts::Contact_pair*>& pa
 		if (is_crossing) {
 			pair->body[0]->get_ALPcollider()->add_contacted_collider(pair, 0); //Ž©g‚ÌŠÖ‚í‚éÕ“Ëî•ñ‚ð•Û‘¶‚·‚é
 			pair->body[1]->get_ALPcollider()->add_contacted_collider(pair, 1);
+
+			if (pair->check_oncoll_only) pair->contacts.contact_num = 0;
 		}
 
 
@@ -919,7 +921,7 @@ bool Physics_function::generate_contact_sphere_sphere(const Collider_shape* SA, 
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡addcontact‚¹‚¸‚Éreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -975,7 +977,7 @@ bool Physics_function::generate_contact_sphere_plane(const Collider_shape* spher
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		n = p.y > 0 ? n : -n;
 
@@ -991,7 +993,7 @@ bool Physics_function::generate_contact_sphere_plane(const Collider_shape* spher
 	if (is_AC)
 	{
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		pair->contacts.addcontact(
 			ACpenetration,
@@ -1093,7 +1095,7 @@ bool Physics_function::generate_contact_sphere_box(const Collider_shape* sphere,
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		if (pair->body[0]->get_shape_tag() == box->get_shape_tag())
 			pair->contacts.addcontact(
@@ -1174,7 +1176,7 @@ bool Physics_function::generate_contact_sphere_capsule(const Collider_shape* sph
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -1319,7 +1321,7 @@ bool Physics_function::generate_contact_sphere_mesh(const Collider_shape* sphere
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -1423,7 +1425,7 @@ bool Physics_function::generate_contact_box_plane(const Collider_shape* box, con
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		if (pair->body[0]->get_shape_tag() == box->get_shape_tag())
 			pair->contacts.addcontact(
@@ -1646,7 +1648,7 @@ bool Physics_function::generate_contact_box_box(const Collider_shape* boxA, cons
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -1941,7 +1943,7 @@ bool Physics_function::generate_contact_box_capsule(const Collider_shape* box, c
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -2081,7 +2083,7 @@ bool Physics_function::generate_contact_box_capsule(const Collider_shape* box, c
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		if (pair->body[0]->get_shape_tag() == box->get_shape_tag())
 			pair->contacts.addcontact(
@@ -2375,7 +2377,7 @@ bool Physics_function::generate_contact_box_mesh(const Collider_shape* box, cons
 		if (is_AC)
 		{
 			is_crossing = true;
-			if (pair->check_oncoll_only == true) return false;
+			//if (pair->check_oncoll_only == true) return false;
 
 			float smallest_penetrate = FLT_MAX;
 			XMVECTOR smallest_axis = XMVectorZero();
@@ -2486,7 +2488,7 @@ bool Physics_function::generate_contact_capsule_capsule(const Collider_shape* ca
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
@@ -2666,7 +2668,7 @@ bool Physics_function::generate_contact_capsule_mesh(const Collider_shape* capsu
 		is_crossing = true;
 
 		//oncoll_enter‚Ì‚Ý‚Ìê‡‚±‚±‚Åreturn
-		if (pair->check_oncoll_only == true) return false;
+		//if (pair->check_oncoll_only == true) return false;
 
 		Vector3 ACnormal_;
 		Vector3 ACcontact_pointA_;
