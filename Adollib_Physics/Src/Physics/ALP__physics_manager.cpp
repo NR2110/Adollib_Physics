@@ -431,6 +431,7 @@ bool Physics_manager::ray_cast(
 
 	for (const auto coll : ALP_colliders) {
 		if (!(coll->tag & tag))continue;
+		if (coll->is_deleted == true)continue;
 
 		if (Physics_function::ray_cast(
 			Ray_pos, Ray_dir,
@@ -478,6 +479,7 @@ bool Physics_manager::sphere_cast(
 
 	for (const auto coll : ALP_colliders) {
 		if (!(coll->tag & tag))continue;
+		if (coll->is_deleted == true)continue;
 
 		if (Physics_function::sphere_cast(
 			Ray_pos, Ray_dir, radius, contactp,
