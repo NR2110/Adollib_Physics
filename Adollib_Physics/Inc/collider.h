@@ -47,6 +47,8 @@ namespace Adollib {
 		Physics_function::ALP_Physics*  ALPphysics_ptr = nullptr;
 		Physics_function::ALP_Collider* ALPcollider_ptr = nullptr;
 
+		int a = 0;
+
 	public:
 		//::: 後で変更する :::
 		const DirectX::XMFLOAT3 linear_velocity() const;
@@ -134,7 +136,7 @@ namespace Adollib {
 		// Wpos, Worient, Wscale : world transform の初期値
 		// pearent_Worient_inv : 落下方向はWorld座標系での落下方向なので 変化量の算出時に親の回転のinvをかける
 		//:::::::::
-		void awake(const Physics_ID ID, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam = true);
+		void awake(std::weak_ptr<Collider> this_ptr, const Physics_ID ID, const DirectX::XMFLOAT3& Wpos, const DirectX::XMFLOAT4& Worient, const DirectX::XMFLOAT3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam = true);
 
 		void update();
 

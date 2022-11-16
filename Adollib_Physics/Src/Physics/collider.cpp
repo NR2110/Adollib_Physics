@@ -211,7 +211,7 @@ const DirectX::XMFLOAT3 Collider::get_barycenter() const {
 
 
 
-void Collider::awake(const Physics_ID ID, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv, bool is_use_defaultrigitbodyparam) {
+void Collider::awake(std::weak_ptr<Collider> this_ptr, const Physics_ID ID, const DirectX::XMFLOAT3& l_Wpos, const DirectX::XMFLOAT4& l_Worient, const DirectX::XMFLOAT3& l_Wscale, const DirectX::XMFLOAT4& l_pearent_Worient_inv, bool is_use_defaultrigitbodyparam) {
 	Physics_manager::ColliderPhysics_ptrs data;
 
 	Wposition = l_Wpos;
@@ -220,7 +220,7 @@ void Collider::awake(const Physics_ID ID, const DirectX::XMFLOAT3& l_Wpos, const
 	pearent_Worientation_inverse = l_pearent_Worient_inv;
 
 
-	data = Physics_manager::add_collider(this, ID, Wposition, Worientation, Wscale, pearent_Worientation_inverse, is_use_defaultrigitbodyparam);
+	data = Physics_manager::add_collider(this_ptr, ID, Wposition, Worientation, Wscale, pearent_Worientation_inverse, is_use_defaultrigitbodyparam);
 
 	ALPcollider_ptr = data.ALPcollider_ptr;
 	ALPphysics_ptr = data.ALPphysics_ptr;
@@ -255,7 +255,6 @@ void Collider::update() {
 }
 
 void Collider::finalize() {
-
 	//Phyisics_manager::add_delete_buffer_ALPCollider(ALPcollider_ptr);
 	//Phyisics_manager::add_delete_buffer_ALPPhysics(ALPphysics_ptr);
 	Physics_manager::add_delete_buffer_ALPCollider_and_ALPPhsics(ALPcollider_ptr, ALPphysics_ptr);

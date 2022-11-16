@@ -37,7 +37,7 @@ namespace Adollib {
 			//コンストラクタ
 			ALP_Collider(
 				const Physics_ID l_UUID,
-				Collider* l_collitr,
+				std::weak_ptr<Collider> l_collitr,
 				std::list<ALP_Collider*>::iterator l_itr,
 				ALP_Physics* l_ALPphysics,
 				const u_int l_index
@@ -46,7 +46,7 @@ namespace Adollib {
 
 		private:
 			//::: ComponentがアタッチされたColliderへのイテレータ :::
-			Collider* coll_ptr = nullptr;
+			std::weak_ptr<Collider> coll_ptr;
 
 			//::: Physicsへのポインタ :::
 			ALP_Physics* ALPphysics = nullptr;
@@ -82,7 +82,7 @@ namespace Adollib {
 			Collider_tagbit ignore_tags = 0; //衝突しないtags(bit)
 
 		public:
-			Collider* get_collptr() const { return coll_ptr; };
+			std::weak_ptr<Collider> get_collptr() const { return coll_ptr; };
 			ALP_Physics* get_ALPphysics() const { return ALPphysics; };
 
 			// ALPphysics_ptrのset

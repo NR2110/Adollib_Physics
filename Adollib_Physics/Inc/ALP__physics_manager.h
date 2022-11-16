@@ -189,7 +189,7 @@ namespace Adollib
 				ALP_Physics* ALPphysics_ptr = nullptr;
 			};
 
-			static ColliderPhysics_ptrs add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam);
+			static ColliderPhysics_ptrs add_collider(std::weak_ptr<Collider> coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam);
 
 			static ALP_Joint* add_Joint();
 
@@ -223,7 +223,7 @@ namespace Adollib
 				const float& ray_min,
 				float& tmin, float& tmax,
 				Vector3& normal,
-				Collider*& coll
+				std::weak_ptr<Collider>& coll
 			);
 
 			//::::::
@@ -247,7 +247,7 @@ namespace Adollib
 				const float& ray_min,
 				float& tmin, float& tmax,
 				Vector3& normal,
-				Collider*& coll
+				std::weak_ptr<Collider>& coll
 			);
 
 			// ìÆÇ¢ÇΩÇ‡ÇÃÇ∆ÇµÇƒmoved_colliderÇ…ìoò^(sweep&pruneÇ≈ÇÃë}ì¸É\Å[ÉgÇ…ÇƒégÇ§)

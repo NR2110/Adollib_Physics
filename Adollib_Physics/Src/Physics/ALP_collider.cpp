@@ -137,9 +137,9 @@ void ALP_Collider::copy_transform() {
 };
 
 void ALP_Collider::adapt_collider_component_data() {
-	tag = coll_ptr->tag; //tag
-	ignore_tags = coll_ptr->ignore_tags; //衝突しないtag
-	is_save_contacted_colls = coll_ptr->is_save_contacted_colls; //衝突したcolliderを保存するかのフラグ
+	tag = coll_ptr.lock()->tag; //tag
+	ignore_tags = coll_ptr.lock()->ignore_tags; //衝突しないtag
+	is_save_contacted_colls = coll_ptr.lock()->is_save_contacted_colls; //衝突したcolliderを保存するかのフラグ
 }
 
 void ALP_Collider::Update_hierarchy() {
@@ -289,5 +289,5 @@ void ALP_Collider::destroy() {
 
 };
 
-Collider_tagbit ALP_Collider::get_tag()const { return coll_ptr->tag; }; //自身のtag(bit)
-Collider_tagbit ALP_Collider::get_ignore_tags() const { return coll_ptr->ignore_tags; }; //衝突しないtags
+Collider_tagbit ALP_Collider::get_tag()const { return coll_ptr.lock()->tag; }; //自身のtag(bit)
+Collider_tagbit ALP_Collider::get_ignore_tags() const { return coll_ptr.lock()->ignore_tags; }; //衝突しないtags

@@ -432,7 +432,7 @@ void ALP_Physics::update_tensor_and_barycenter(const std::list<Collider_shape*>&
 }
 
 void ALP_Physics::adapt_collider_component_data() {
-	Rigitbody_params Cdata = ALPcollider->get_collptr()->physics_data;
+	Rigitbody_params Cdata = ALPcollider->get_collptr().lock()->physics_data;
 
 	inertial_mass     = Cdata.inertial_mass;
 	linear_drag       = Cdata.drag;

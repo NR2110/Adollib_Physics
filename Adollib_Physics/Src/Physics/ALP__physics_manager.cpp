@@ -277,7 +277,7 @@ bool Physics_manager::update_Gui() {
 */
 
 #pragma region Add_collider, Remove_collider
-Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam) {
+Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(std::weak_ptr<Collider> coll, const Physics_ID ID, const Physics_function::Vector3& Wpos, const Physics_function::Quaternion& Worient, const Physics_function::Vector3& Wscale, const DirectX::XMFLOAT4& pearent_Worient_inv, bool is_use_defaultrigitbodyparam) {
 	std::lock_guard <std::mutex> lock(mtx);
 
 	is_added_ALPcollider = true;
@@ -320,7 +320,7 @@ Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(Collider* co
 	ALPcollider_ptr->transform.scale = Wscale;
 	ALPcollider_ptr->transform.parent_orientate_inv = pearent_Worient_inv;
 
-	if(is_use_defaultrigitbodyparam) physicsParams.set_default_physics_data(coll->physics_data);
+	if(is_use_defaultrigitbodyparam) physicsParams.set_default_physics_data(coll.lock()->physics_data);
 
 	collider_index_count++;
 
@@ -415,7 +415,7 @@ bool Physics_manager::ray_cast(
 	const float& ray_min,
 	float& tmin, float& tmax,
 	Vector3& normal,
-	Collider*& ret_coll
+	std::weak_ptr<Collider>& ret_coll
 ) {
 
 	std::lock_guard <std::mutex> lock(mtx);
@@ -462,7 +462,7 @@ bool Physics_manager::sphere_cast(
 	const float& ray_min,
 	float& tmin, float& tmax,
 	Vector3& normal,
-	Collider*& ret_coll
+	std::weak_ptr<Collider>& ret_coll
 ) {
 
 	std::lock_guard <std::mutex> lock(mtx);

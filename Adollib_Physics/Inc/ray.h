@@ -2,6 +2,7 @@
 
 #include <DirectXMath.h>
 #include <limits.h>
+#include <memory>
 
 namespace Adollib {
 
@@ -18,7 +19,7 @@ namespace Adollib {
 			float raymin = 0;              // Ray‚ÌÕ“Ë‚µ‚½Å¬’l
 			float raymax = 0;              // Ray‚ÌÕ“Ë‚µ‚½Å‘å’l
 			DirectX::XMFLOAT3 normal;                // Ray‚ÌÕ“Ë‚µ‚½Å‹ß‚ÌêŠ‚Ì–@ü
-			Collider* coll = nullptr;      // Ray‚ÌÕ“Ë‚µ‚½Å‹ß‚ÌCollider
+			std::weak_ptr<Collider> coll;      // Ray‚ÌÕ“Ë‚µ‚½Å‹ß‚ÌCollider
 		};
 	public:
 		bool ray_cast(Raycast_struct& str);
