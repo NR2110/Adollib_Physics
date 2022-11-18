@@ -294,6 +294,9 @@
     <ClInclude Include="Inc\shape_initalizedata.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\raycastStruct.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Physics\ALP__physics_manager.cpp">

@@ -10,6 +10,7 @@
 //#include "../Src/Physics/ALP_broadphase.h"
 
 //#include "../Src/Physics/ALP_contact.h"
+#include "raycastStruct.h"
 
 #include "collider_shape.h"
 #include "id_struct.h"
@@ -219,11 +220,8 @@ namespace Adollib
 			//:::::::
 			static bool ray_cast(
 				const Vector3& Ray_pos, const Vector3& Ray_dir,
-				u_int tag,
-				const float& ray_min,
-				float& tmin, float& tmax,
-				Vector3& normal,
-				std::weak_ptr<Collider>& coll
+				const unsigned int collider_tag,
+				Raycast_struct& data
 			);
 
 			//::::::
@@ -241,14 +239,51 @@ namespace Adollib
 			//:::::::
 			static bool sphere_cast(
 				const Vector3& Ray_pos, const Vector3& Ray_dir,
+				const unsigned int collider_tag,
 				const float& radius,
-				Vector3& contact_point,
-				u_int tag,
-				const float& ray_min,
-				float& tmin, float& tmax,
-				Vector3& normal,
-				std::weak_ptr<Collider>& coll
+				Raycast_struct& data
 			);
+
+
+			//::::::
+			//raycastを行う
+			// ray_pos : rayの始点
+			// ray_dir : rayの向き
+			// tag : rayの衝突するtag
+			// ray_min
+			// Sce  : Rayの衝突するcolliderの存在するscene
+			// ---out---
+			// tmin : rayの最近点
+			// tmax : rayの最遠点
+			// normal : 衝突した面のnormal
+			// coll : 衝突したcoiiderへのポインタ
+			//:::::::
+			static bool ray_castAll(
+				const Vector3& Ray_pos, const Vector3& Ray_dir,
+				const unsigned int collider_tag,
+				std::vector<Raycast_struct>& data
+			);
+
+			//::::::
+			//raycastを行う
+			// ray_pos : rayの始点
+			// ray_dir : rayの向き
+			// tag : rayの衝突するtag
+			// ray_min
+			// Sce  : Rayの衝突するcolliderの存在するscene
+			// ---out---
+			// tmin : rayの最近点
+			// tmax : rayの最遠点
+			// normal : 衝突した面のnormal
+			// coll : 衝突したcoiiderへのポインタ
+			//:::::::
+			static bool sphere_castAll(
+				const Vector3& Ray_pos, const Vector3& Ray_dir,
+				const unsigned int collider_tag,
+				const float& radius,
+				std::vector<Raycast_struct>& data
+			);
+
 
 			// 動いたものとしてmoved_colliderに登録(sweep&pruneでの挿入ソートにて使う)
 			static void add_moved(Physics_function::ALP_Collider* coll) {

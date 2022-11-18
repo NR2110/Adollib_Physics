@@ -201,7 +201,7 @@ bool Physics_manager::update()
 		QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&update_end_time));
 		update_time = static_cast<float>(update_end_time.QuadPart - update_start_time.QuadPart) * 0.0000001f;;
 	}
-	else if(is_use_fixedupdate == false)
+	else if (is_use_fixedupdate == false)
 	{
 		float sleep_time = physicsParams.caluculate_time - physicsParams.timeStep - 0.0005f;
 
@@ -320,7 +320,7 @@ Physics_manager::ColliderPhysics_ptrs Physics_manager::add_collider(std::weak_pt
 	ALPcollider_ptr->transform.scale = Wscale;
 	ALPcollider_ptr->transform.parent_orientate_inv = pearent_Worient_inv;
 
-	if(is_use_defaultrigitbodyparam) physicsParams.set_default_physics_data(coll.lock()->physics_data);
+	if (is_use_defaultrigitbodyparam) physicsParams.set_default_physics_data(coll.lock()->physics_data);
 
 	collider_index_count++;
 
@@ -411,20 +411,25 @@ void Physics_manager::remove_ALPphysics(
 
 bool Physics_manager::ray_cast(
 	const Vector3& Ray_pos, const Vector3& Ray_dir,
-	u_int tag,
-	const float& ray_min,
-	float& tmin, float& tmax,
-	Vector3& normal,
-	std::weak_ptr<Collider>& ret_coll
+	const unsigned int collider_tag,
+	Raycast_struct& data
 ) {
 
 	std::lock_guard <std::mutex> lock(mtx);
 
+	const auto& tag = collider_tag;
+	auto ray_min = 0;
+	auto& tmin = data.raymin;
+	auto& tmax = data.raymax;
+	auto& normal = data.normal;
+	auto& ret_coll = data.coll;
+	auto& contactPoint = data.contactPoint;
+
 	//tmin‚©‚çtmax‚É‚©‚¯‚Äray‚ªŒð·‚µ‚Ä‚¢‚é
 	tmin = +FLT_MAX;
 	tmax = -FLT_MAX;
-	float min = -FLT_MAX;
-	float max = +FLT_MAX;
+	float min_ = -FLT_MAX;
+	float max_ = +FLT_MAX;
 	Vector3 norm;
 
 	bool ret = false;
@@ -437,41 +442,47 @@ bool Physics_manager::ray_cast(
 			Ray_pos, Ray_dir,
 			ray_min,
 			coll,
-			min, max, norm
+			min_, max_, norm
 		) == false) continue;
 
 		ret = true;
 
-		if (tmin > min) {
-			tmin = min;
+		if (tmin > min_) {
+			tmin = min_;
 			normal = norm;
 			ret_coll = coll->get_collptr();
 		}
 		//tmin = ALmin(tmin, min);
-		tmax = ALmax(tmax, max);
+		tmax = ALmax(tmax, max_);
 	}
+
+	contactPoint = Ray_pos + Ray_dir * data.raymin;
 
 	return ret;
 }
 
 bool Physics_manager::sphere_cast(
 	const Vector3& Ray_pos, const Vector3& Ray_dir,
+	const unsigned int collider_tag,
 	const float& radius,
-	Vector3& contact_point,
-	u_int tag,
-	const float& ray_min,
-	float& tmin, float& tmax,
-	Vector3& normal,
-	std::weak_ptr<Collider>& ret_coll
+	Raycast_struct& data
 ) {
 
 	std::lock_guard <std::mutex> lock(mtx);
 
+	const auto& tag = collider_tag;
+	auto ray_min = 0;
+	auto& tmin = data.raymin;
+	auto& tmax = data.raymax;
+	auto& normal = data.normal;
+	auto& ret_coll = data.coll;
+	auto& contact_point = data.contactPoint;
+
 	//tmin‚©‚çtmax‚É‚©‚¯‚Äray‚ªŒð·‚µ‚Ä‚¢‚é
 	tmin = +FLT_MAX;
 	tmax = -FLT_MAX;
-	float min = -FLT_MAX;
-	float max = +FLT_MAX;
+	float min_ = -FLT_MAX;
+	float max_ = +FLT_MAX;
 	Vector3 norm;
 	Vector3 contactp;
 
@@ -485,24 +496,131 @@ bool Physics_manager::sphere_cast(
 			Ray_pos, Ray_dir, radius, contactp,
 			ray_min,
 			coll,
-			min, max, norm
+			min_, max_, norm
 		) == false) continue;
 
 		ret = true;
 
-		if (tmin > min) {
-			tmin = min;
+		if (tmin > min_) {
+			tmin = min_;
 			normal = norm;
 			ret_coll = coll->get_collptr();
 			contact_point = contactp;
 		}
 		//tmin = ALmin(tmin, min);
-		tmax = ALmax(tmax, max);
+		tmax = ALmax(tmax, max_);
 	}
 
 	return ret;
 }
 
+bool Physics_manager::ray_castAll(
+	const Vector3& Ray_pos, const Vector3& Ray_dir,
+	const unsigned int collider_tag,
+	std::vector<Raycast_struct>& retdata
+) {
+
+	std::lock_guard <std::mutex> lock(mtx);
+
+	bool ret = false;
+	const auto& tag = collider_tag;
+	auto ray_min = 0;
+
+	for (const auto coll : ALP_colliders) {
+		Raycast_struct data;
+
+		if (!(coll->tag & tag))continue;
+		if (coll->is_deleted == true)continue;
+
+		auto& tmin = data.raymin;
+		auto& tmax = data.raymax;
+		auto& normal = data.normal;
+		auto& ret_coll = data.coll;
+		auto& contactPoint = data.contactPoint;
+
+		//tmin‚©‚çtmax‚É‚©‚¯‚Äray‚ªŒð·‚µ‚Ä‚¢‚é
+		tmin = +FLT_MAX;
+		tmax = -FLT_MAX;
+		float min_ = -FLT_MAX;
+		float max_ = +FLT_MAX;
+		Vector3 norm;
+
+		if (Physics_function::ray_cast(
+			Ray_pos, Ray_dir,
+			ray_min,
+			coll,
+			min_, max_, norm
+		) == false) continue;
+
+		ret = true;
+
+		{
+			tmin = min_;
+			tmax = max_;
+			normal = norm;
+			ret_coll = coll->get_collptr();
+			contactPoint = Ray_pos + Ray_dir * data.raymin;
+		}
+		retdata.emplace_back(data);
+	}
+
+	return ret;
+}
+
+bool Physics_manager::sphere_castAll(
+	const Vector3& Ray_pos, const Vector3& Ray_dir,
+	const unsigned int collider_tag,
+	const float& radius,
+	std::vector<Raycast_struct>& retdata
+) {
+
+	std::lock_guard <std::mutex> lock(mtx);
+
+	bool ret = false;
+	const auto& tag = collider_tag;
+	auto ray_min = 0;
+
+	for (const auto coll : ALP_colliders) {
+
+		if (!(coll->tag & tag))continue;
+		if (coll->is_deleted == true)continue;
+
+		Raycast_struct data;
+		auto& tmin = data.raymin;
+		auto& tmax = data.raymax;
+		auto& normal = data.normal;
+		auto& ret_coll = data.coll;
+		auto& contactPoint = data.contactPoint;
+
+		//tmin‚©‚çtmax‚É‚©‚¯‚Äray‚ªŒð·‚µ‚Ä‚¢‚é
+		tmin = +FLT_MAX;
+		tmax = -FLT_MAX;
+		float min_ = -FLT_MAX;
+		float max_ = +FLT_MAX;
+		Vector3 norm;
+		Vector3 contactp;
+
+		if (Physics_function::sphere_cast(
+			Ray_pos, Ray_dir, radius, contactp,
+			ray_min,
+			coll,
+			min_, max_, norm
+		) == false) continue;
+
+		ret = true;
+
+		{
+			tmin = min_;
+			tmax = max_;
+			normal = norm;
+			ret_coll = coll->get_collptr();
+			contactPoint = contactp;
+		}
+		retdata.emplace_back(data);
+	}
+
+	return ret;
+}
 
 void Physics_manager::thread_update() {
 	while (is_stop_physics_thread == false)
@@ -570,7 +688,7 @@ void Physics_manager::adapt_added_data(bool is_mutex_lock) {
 
 	for (auto added_coll : ALP_colliders) {
 		// Šecollider‚Ìshape‚Ìadded_data‚ðˆ—
-		if(added_coll->adapt_added_data()) added_collider_for_insertsort.emplace_back(added_coll);
+		if (added_coll->adapt_added_data()) added_collider_for_insertsort.emplace_back(added_coll);
 	}
 
 	if (added_buffer_ALP_joints.size() != 0)

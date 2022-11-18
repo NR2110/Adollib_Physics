@@ -190,6 +190,7 @@
     <ClInclude Include="Inc\math\vector.h" />
     <ClInclude Include="Inc\math\vectorSIM_e.h" />
     <ClInclude Include="Inc\ray.h" />
+    <ClInclude Include="Inc\raycastStruct.h" />
     <ClInclude Include="Inc\rigitbody_params.h" />
     <ClInclude Include="Inc\shape_box.h" />
     <ClInclude Include="Inc\shape_capsule.h" />
