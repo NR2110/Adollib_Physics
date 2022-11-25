@@ -97,7 +97,7 @@ namespace Adollib {
 		T* add_shape(Physics_function::Shape_InitData* basedata = nullptr) {
 			static_assert(std::is_base_of<Collider_shape, T>::value == true, "template T must inherit Collider_shape");
 
-			T* shape = new T(ALPcollider_ptr);
+			T* shape = newD T(ALPcollider_ptr);
 
 			auto collider_shape = static_cast<Collider_shape*>(shape);
 			if (basedata != nullptr) collider_shape->initiazlie(basedata);

@@ -778,6 +778,13 @@ void Physics_manager::reset_calculated_data() {
 	for (auto& phys : ALP_physicses) {
 		phys->reset_force();
 	}
+
+	for (auto& p : pairs[0]) {
+		delete p;
+	}
+	for (auto& p : pairs[1]) {
+		delete p;
+	}
 	pairs[0].clear();
 	pairs[1].clear();
 }
