@@ -628,7 +628,10 @@ void Physics_manager::thread_update() {
 		update();
 
 		if (is_use_fixedupdate) is_wait_update = true;
-		while (!is_stop_physics_thread && is_use_fixedupdate && is_wait_update) {}
+		while (!is_stop_physics_thread && is_use_fixedupdate && is_wait_update)
+		{
+			std::this_thread::sleep_for(std::chrono::milliseconds((long)(0.016f * 1000 * 0.5f)));
+		}
 	}
 }
 
